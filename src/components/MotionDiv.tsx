@@ -12,7 +12,7 @@ const defaultVariants = {
 
 const defaultTransition = {
   duration: 0.5,
-  ease: [0.32, 0.72, 0, 1],
+  ease: [0.32, 0.72, 0, 1] as [number, number, number, number],
 };
 
 export const MotionDiv = ({ children, ...props }: MotionDivProps) => {

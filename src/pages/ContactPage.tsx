@@ -1,22 +1,87 @@
 import { useState } from "react";
 import { MotionDiv } from "@/components/MotionDiv";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { SEOHead } from "@/components/SEOHead";
+import { useToast } from "@/hooks/use-toast";
+import { Loader2 } from "lucide-react";
+import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Le nom est requis").max(100),
+  email: z.string().trim().email("Email invalide").max(255),
+  company: z.string().trim().max(100).optional(),
+  message: z.string().trim().min(1, "Le message est requis").max(2000),
+});
+
+type ContactForm = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData.entries());
 
-    // TODO: Remplacer par un appel API réel (Resend, webhook, etc.)
-    console.log("Form data:", data);
-    setSubmitted(true);
+    // Honeypot check
+    if (formData.get("website")) return;
+
+    const raw = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      company: (formData.get("company") as string) || undefined,
+      message: formData.get("message") as string,
+    };
+
+    const result = contactSchema.safeParse(raw);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof ContactForm, string>> = {};
+      result.error.issues.forEach((issue) => {
+        const field = issue.path[0] as keyof ContactForm;
+        fieldErrors[field] = issue.message;
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+
+    setErrors({});
+    setLoading(true);
+
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: result.data,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message envoyé !",
+        description: "Merci, nous vous recontacterons dans les plus brefs délais.",
+      });
+      (event.target as HTMLFormElement).reset();
+    } catch {
+      toast({
+        title: "Erreur",
+        description: "L'envoi a échoué. Veuillez réessayer ou nous contacter par email.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <div className="mx-auto max-w-2xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <SEOHead
+        title="Contact — Odoc | Demandez une démo"
+        description="Contactez l'équipe Odoc pour une démonstration personnalisée de la plateforme d'intelligence documentaire."
+        canonical="/contact"
+      />
+
       <MotionDiv className="text-center">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Contactez-nous</h1>
         <p className="mt-4 text-lg text-muted-foreground">
@@ -31,62 +96,42 @@ export default function ContactPage() {
         viewport={{ once: true }}
         className="mt-12"
       >
-        {submitted ? (
-          <div className="p-8 text-center bg-card rounded-lg shadow-card">
-            <h2 className="text-2xl font-semibold text-foreground">Merci !</h2>
-            <p className="mt-2 text-muted-foreground">Votre message a bien été envoyé. Nous vous recontacterons dans les plus brefs délais.</p>
+        <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg shadow-card">
+          {/* Honeypot */}
+          <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input type="text" name="website" id="website" tabIndex={-1} autoComplete="off" />
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg shadow-card">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-muted-foreground">Nom complet</label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  required
-                  className="mt-1 block w-full rounded-md bg-background border border-border shadow-sm focus:border-primary focus:ring-1 focus:ring-ring text-sm h-10 px-3 text-foreground"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-muted-foreground">Email professionnel</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  className="mt-1 block w-full rounded-md bg-background border border-border shadow-sm focus:border-primary focus:ring-1 focus:ring-ring text-sm h-10 px-3 text-foreground"
-                />
-              </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-muted-foreground">Nom complet</label>
+              <Input type="text" name="name" id="name" required className="mt-1" />
+              {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
             </div>
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-muted-foreground">Entreprise</label>
-              <input
-                type="text"
-                name="company"
-                id="company"
-                className="mt-1 block w-full rounded-md bg-background border border-border shadow-sm focus:border-primary focus:ring-1 focus:ring-ring text-sm h-10 px-3 text-foreground"
-              />
+              <label htmlFor="email" className="block text-sm font-medium text-muted-foreground">Email professionnel</label>
+              <Input type="email" name="email" id="email" required className="mt-1" />
+              {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
             </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-muted-foreground">Votre message</label>
-              <textarea
-                name="message"
-                id="message"
-                rows={4}
-                required
-                className="mt-1 block w-full rounded-md bg-background border border-border shadow-sm focus:border-primary focus:ring-1 focus:ring-ring text-sm p-3 text-foreground"
-              />
-            </div>
-            <Button type="submit" className="w-full" size="lg">
-              Envoyer le message
-            </Button>
-            <p className="text-xs text-center text-muted-foreground">
-              Vos données sont protégées. Nous ne les partagerons jamais.
-            </p>
-          </form>
-        )}
+          </div>
+          <div>
+            <label htmlFor="company" className="block text-sm font-medium text-muted-foreground">Entreprise</label>
+            <Input type="text" name="company" id="company" className="mt-1" />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-muted-foreground">Votre message</label>
+            <Textarea name="message" id="message" rows={4} required className="mt-1" />
+            {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+          </div>
+          <Button type="submit" className="w-full" size="lg" disabled={loading}>
+            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            Envoyer le message
+          </Button>
+          <p className="text-xs text-center text-muted-foreground">
+            Vos données sont protégées conformément au RGPD. Nous ne les partagerons jamais.
+          </p>
+        </form>
       </MotionDiv>
     </div>
   );

@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom";
 import { getPosts } from "@/lib/blog";
 import { MotionDiv } from "@/components/MotionDiv";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function BlogPage() {
   const posts = getPosts();
 
   return (
     <div className="mx-auto max-w-5xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <SEOHead
+        title="Blog — Odoc | IA documentaire, factures et automatisation"
+        description="Analyses, conseils et bonnes pratiques sur l'IA documentaire, le traitement des factures et le pilotage financier pour les dirigeants de PME."
+        canonical="/blog"
+      />
+
       <MotionDiv className="text-center">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Le blog Odoc</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">

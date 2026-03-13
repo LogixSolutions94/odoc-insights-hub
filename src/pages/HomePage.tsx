@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/MotionDiv";
+import { SEOHead } from "@/components/SEOHead";
 import {
   ArrowRight,
   FileText,
@@ -115,9 +116,49 @@ const steps = [
   { num: "03", title: "Pilotez", description: "Utilisez les tableaux de bord, la recherche intelligente et les alertes pour prendre des décisions rapides et informées." },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Odoc",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description:
+    "Plateforme SaaS d'intelligence documentaire pour PME et cabinets. Centralisation, analyse IA et tableaux de bord décisionnels.",
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Starter",
+      price: "29",
+      priceCurrency: "EUR",
+      billingIncrement: "P1M",
+    },
+    {
+      "@type": "Offer",
+      name: "Pro",
+      price: "79",
+      priceCurrency: "EUR",
+      billingIncrement: "P1M",
+    },
+    {
+      "@type": "Offer",
+      name: "Entreprise",
+      price: "0",
+      priceCurrency: "EUR",
+      description: "Sur devis",
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <div className="flex flex-col items-center">
+      <SEOHead
+        title="Odoc — Intelligence documentaire pour PME et cabinets"
+        description="Odoc centralise, lit et analyse tous vos documents grâce à l'IA. Factures, contrats, mails : reprenez le contrôle et pilotez vos décisions."
+        canonical="/"
+        jsonLd={jsonLd}
+      />
+
       {/* Hero */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center min-h-[80svh] flex flex-col justify-center items-center">
         <MotionDiv>
@@ -144,23 +185,12 @@ export default function HomePage() {
       <section className="w-full py-16 sm:py-24 border-t border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MotionDiv className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              Le chaos documentaire vous freine
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Vous reconnaissez-vous dans ces situations ?
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Le chaos documentaire vous freine</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Vous reconnaissez-vous dans ces situations ?</p>
           </MotionDiv>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {painPoints.map((point, i) => (
-              <MotionDiv
-                key={point.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
-                viewport={{ once: true }}
-                className="p-6 rounded-lg border border-border/60 bg-card/50"
-              >
+              <MotionDiv key={point.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }} viewport={{ once: true }} className="p-6 rounded-lg border border-border/60 bg-card/50">
                 <div className="mb-3">{point.icon}</div>
                 <h3 className="text-base font-semibold text-foreground">{point.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{point.description}</p>
@@ -174,26 +204,13 @@ export default function HomePage() {
       <section id="solution" className="w-full py-16 sm:py-24 bg-card/50 border-y border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MotionDiv className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              De la paperasse à la performance
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Odoc n'est pas un simple espace de stockage. C'est une usine d'intelligence qui travaille pour vous.
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">De la paperasse à la performance</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Odoc n'est pas un simple espace de stockage. C'est une usine d'intelligence qui travaille pour vous.</p>
           </MotionDiv>
           <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {solutionCards.map((card, i) => (
-              <MotionDiv
-                key={card.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
-                viewport={{ once: true }}
-                className="p-6 bg-card rounded-lg shadow-card hover:shadow-card-hover transition-shadow"
-              >
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary/10 mb-4">
-                  {card.icon}
-                </div>
+              <MotionDiv key={card.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }} viewport={{ once: true }} className="p-6 bg-card rounded-lg shadow-card hover:shadow-card-hover transition-shadow">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary/10 mb-4">{card.icon}</div>
                 <h3 className="text-lg font-semibold text-foreground">{card.title}</h3>
                 <p className="mt-2 text-muted-foreground">{card.description}</p>
               </MotionDiv>
@@ -207,20 +224,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MotionDiv className="text-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Fonctionnalités clés</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Tout ce dont vous avez besoin pour reprendre le contrôle de vos documents.
-            </p>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Tout ce dont vous avez besoin pour reprendre le contrôle de vos documents.</p>
           </MotionDiv>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {features.map((feature, i) => (
-              <MotionDiv
-                key={feature.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
-                viewport={{ once: true }}
-                className="flex gap-4 p-6 rounded-lg border border-border/40 hover:border-border transition-colors"
-              >
+              <MotionDiv key={feature.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }} viewport={{ once: true }} className="flex gap-4 p-6 rounded-lg border border-border/40 hover:border-border transition-colors">
                 <div className="flex-shrink-0 mt-1">{feature.icon}</div>
                 <div>
                   <h3 className="font-semibold text-foreground">{feature.title}</h3>
@@ -240,17 +248,8 @@ export default function HomePage() {
           </MotionDiv>
           <div className="mt-12 grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
             {audiences.map((audience, i) => (
-              <MotionDiv
-                key={audience.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.15, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
-                viewport={{ once: true }}
-                className="p-8 bg-card rounded-lg shadow-card"
-              >
-                <div className="flex items-center justify-center h-14 w-14 rounded-lg bg-primary/10 mb-5">
-                  {audience.icon}
-                </div>
+              <MotionDiv key={audience.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.15, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }} viewport={{ once: true }} className="p-8 bg-card rounded-lg shadow-card">
+                <div className="flex items-center justify-center h-14 w-14 rounded-lg bg-primary/10 mb-5">{audience.icon}</div>
                 <h3 className="text-xl font-semibold text-foreground">{audience.title}</h3>
                 <ul className="mt-4 space-y-3">
                   {audience.benefits.map((benefit) => (
@@ -275,14 +274,7 @@ export default function HomePage() {
           </MotionDiv>
           <div className="mt-12 grid md:grid-cols-3 gap-8 text-left">
             {steps.map((step, i) => (
-              <MotionDiv
-                key={step.num}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
-                viewport={{ once: true }}
-                className="p-6 bg-card rounded-lg shadow-card"
-              >
+              <MotionDiv key={step.num} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }} viewport={{ once: true }} className="p-6 bg-card rounded-lg shadow-card">
                 <div className="font-mono text-2xl font-bold text-primary">{step.num}</div>
                 <h3 className="mt-2 text-lg font-semibold text-foreground">{step.title}</h3>
                 <p className="mt-1 text-muted-foreground">{step.description}</p>
@@ -296,12 +288,8 @@ export default function HomePage() {
       <section className="w-full py-16 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-card rounded-2xl p-8 sm:p-12 shadow-card">
           <MotionDiv>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              Prêt à transformer votre gestion documentaire ?
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Libérez-vous de l'administratif et concentrez-vous sur ce qui compte vraiment : la croissance de votre entreprise.
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Prêt à transformer votre gestion documentaire ?</h2>
+            <p className="mt-4 text-lg text-muted-foreground">Libérez-vous de l'administratif et concentrez-vous sur ce qui compte vraiment : la croissance de votre entreprise.</p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/contact">
                 <Button size="lg">Demander une démo personnalisée</Button>

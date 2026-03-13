@@ -1,6 +1,13 @@
+import { SEOHead } from "@/components/SEOHead";
+
 export default function MentionsLegalesPage() {
   return (
     <div className="mx-auto max-w-3xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <SEOHead
+        title="Mentions Légales — Odoc"
+        description="Mentions légales du site Odoc, plateforme d'intelligence documentaire."
+        canonical="/mentions-legales"
+      />
       <h1 className="text-3xl font-bold tracking-tight text-foreground">Mentions Légales</h1>
       <div className="mt-8 space-y-6 text-muted-foreground">
         {/* TODO: Remplacer par les vraies mentions légales */}

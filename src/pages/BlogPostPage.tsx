@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { getPostBySlug } from "@/lib/blog";
 import { MotionDiv } from "@/components/MotionDiv";
 import { Button } from "@/components/ui/button";
+import { SEOHead } from "@/components/SEOHead";
 import NotFound from "./NotFound";
 
 export default function BlogPostPage() {
@@ -12,6 +13,13 @@ export default function BlogPostPage() {
 
   return (
     <article className="mx-auto max-w-3xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <SEOHead
+        title={`${post.title} — Blog Odoc`}
+        description={post.summary}
+        canonical={`/blog/${post.slug}`}
+        ogType="article"
+      />
+
       <MotionDiv>
         <header className="text-center">
           <p className="text-sm font-semibold text-primary uppercase tracking-wider">{post.category}</p>

@@ -1,6 +1,13 @@
+import { SEOHead } from "@/components/SEOHead";
+
 export default function CguPage() {
   return (
     <div className="mx-auto max-w-3xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <SEOHead
+        title="CGU — Odoc | Conditions Générales d'Utilisation"
+        description="Conditions générales d'utilisation de la plateforme Odoc."
+        canonical="/cgu"
+      />
       <h1 className="text-3xl font-bold tracking-tight text-foreground">Conditions Générales d'Utilisation</h1>
       <div className="mt-8 space-y-6 text-muted-foreground">
         {/* TODO: Remplacer par les vraies CGU */}

@@ -13,6 +13,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import ContactPage from "./pages/ContactPage";
 import MentionsLegalesPage from "./pages/MentionsLegalesPage";
 import CguPage from "./pages/CguPage";
+import AProposPage from "./pages/AProposPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

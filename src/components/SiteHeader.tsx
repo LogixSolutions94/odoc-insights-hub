@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const navLinks = [
   { href: "/fonctionnalites", label: "Fonctionnalités" },
+  { href: "/a-propos", label: "À propos" },
   { href: "/pricing", label: "Tarifs" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
@@ -31,6 +32,9 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex flex-1 items-center justify-end gap-2">
+          <Link to="/auth" className="hidden sm:inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Connexion
+          </Link>
           <Link to="/contact" className="hidden sm:inline-flex">
             <Button size="sm">Demander une démo</Button>
           </Link>

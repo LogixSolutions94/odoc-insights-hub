@@ -14,39 +14,46 @@ import {
 const plans = [
   {
     name: "Starter",
-    monthlyPrice: 29,
+    subtitle: "Le strict nécessaire",
+    monthlyPrice: 0,
+    priceLabel: "Gratuit",
     features: [
       "1 utilisateur",
-      "50 factures / mois",
-      "Export PDF",
-      "Support email",
+      "50 documents traités / mois",
+      "Extraction IA standard (reçus, factures simples)",
+      "Support par email",
     ],
-    cta: "Essayer",
+    cta: "Essayer gratuitement",
     ctaLink: "/contact",
     highlight: false,
   },
   {
-    name: "Pro",
-    monthlyPrice: 79,
+    name: "Essentiel",
+    subtitle: "Le choix populaire",
+    monthlyPrice: 29,
+    priceLabel: null,
     features: [
-      "5 utilisateurs",
-      "Factures illimitées",
-      "Relances automatiques",
-      "PO Matching",
-      "Support prioritaire",
+      "1 utilisateur",
+      "300 documents traités / mois",
+      "Odoc Brain (Assistant IA conversationnel)",
+      "Exports comptables (FEC)",
+      "Synchronisation Drive / Dropbox",
     ],
     cta: "Démarrer",
     ctaLink: "/contact",
     highlight: true,
   },
   {
-    name: "Entreprise",
-    monthlyPrice: null,
+    name: "Pro",
+    subtitle: "Pour les équipes",
+    monthlyPrice: 79,
+    priceLabel: null,
     features: [
-      "Utilisateurs illimités",
-      "Conformité Factur-X / NF Z42-013",
-      "Onboarding dédié",
-      "SLA garanti",
+      "3 utilisateurs max",
+      "Documents illimités",
+      "Rapprochement BdC / Factures (PO Matching)",
+      "Workflows d'approbation multi-niveaux",
+      "Support prioritaire",
     ],
     cta: "Nous contacter",
     ctaLink: "/contact",
@@ -73,7 +80,7 @@ const faqItems = [
   {
     question: "Proposez-vous un essai gratuit ?",
     answer:
-      "Oui, le plan Starter est disponible en essai gratuit pendant 14 jours, sans carte bancaire requise. Vous pouvez tester toutes les fonctionnalités de base avant de vous engager.",
+      "Oui, le plan Starter est entièrement gratuit et vous permet de traiter jusqu'à 50 documents par mois sans carte bancaire. Vous pouvez passer à un plan supérieur à tout moment.",
   },
   {
     question: "Comment fonctionne la facturation ?",
@@ -89,7 +96,7 @@ export default function PricingPage() {
     <div className="flex flex-col items-center">
       <SEOHead
         title="Tarifs — Odoc | Intelligence documentaire pour PME"
-        description="Découvrez les tarifs d'Odoc : Starter, Pro et Entreprise. Choisissez le plan adapté à votre gestion documentaire intelligente."
+        description="Découvrez les tarifs d'Odoc : Starter gratuit, Essentiel à 29€/mois et Pro à 79€/mois. Choisissez le plan adapté à votre gestion documentaire intelligente."
         canonical="/pricing"
       />
 
@@ -141,11 +148,12 @@ export default function PricingPage() {
       <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
         <div className="grid gap-8 md:grid-cols-3">
           {plans.map((plan, i) => {
-            const price = plan.monthlyPrice
-              ? annual
-                ? Math.round(plan.monthlyPrice * 0.8)
-                : plan.monthlyPrice
-              : null;
+            const price =
+              plan.monthlyPrice === 0
+                ? 0
+                : annual
+                  ? Math.round(plan.monthlyPrice * 0.8)
+                  : plan.monthlyPrice;
 
             return (
               <MotionDiv
@@ -166,18 +174,19 @@ export default function PricingPage() {
               >
                 {plan.highlight && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">
-                    Recommandé
+                    Populaire
                   </span>
                 )}
                 <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{plan.subtitle}</p>
                 <div className="mt-4 flex items-baseline gap-1">
-                  {price !== null ? (
+                  {price === 0 ? (
+                    <span className="text-4xl font-bold text-foreground">{plan.priceLabel}</span>
+                  ) : (
                     <>
                       <span className="text-4xl font-bold text-foreground">{price}€</span>
                       <span className="text-muted-foreground text-sm">/ mois</span>
                     </>
-                  ) : (
-                    <span className="text-2xl font-bold text-foreground">Sur devis</span>
                   )}
                 </div>
                 <ul className="mt-8 flex-1 space-y-3">

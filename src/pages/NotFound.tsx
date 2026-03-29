@@ -1,21 +1,43 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { MotionDiv } from "@/components/MotionDiv";
+import { SEOHead } from "@/components/SEOHead";
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+    <div className="flex min-h-[70svh] items-center justify-center px-4">
+      <SEOHead
+        title="Page introuvable — Odoc"
+        description="La page que vous recherchez n'existe pas ou a été déplacée."
+      />
+      <div className="text-center max-w-lg">
+        <MotionDiv
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="text-[8rem] sm:text-[10rem] font-bold leading-none bg-gradient-to-br from-primary to-ring bg-clip-text text-transparent select-none">
+            404
+          </span>
+        </MotionDiv>
+        <MotionDiv
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <h1 className="mt-4 text-2xl sm:text-3xl font-bold text-foreground">Cette page a pris congé.</h1>
+          <p className="mt-3 text-muted-foreground">
+            Elle est peut-être en train de traiter des factures avec Odoc.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link to="/">
+              <Button size="lg">Retour à l'accueil</Button>
+            </Link>
+            <Link to="/fonctionnalites">
+              <Button size="lg" variant="outline">Voir nos fonctionnalités</Button>
+            </Link>
+          </div>
+        </MotionDiv>
       </div>
     </div>
   );

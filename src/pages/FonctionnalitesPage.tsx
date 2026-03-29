@@ -5,97 +5,169 @@ import { MotionDiv } from "@/components/MotionDiv";
 import { SEOHead } from "@/components/SEOHead";
 import {
   FileText,
-  Mail,
-  GitCompareArrows,
+  Receipt,
+  Brain,
   BarChart3,
   Users,
-  ShieldCheck,
+  UserCog,
+  KanbanSquare,
+  MessageSquare,
+  Link2,
+  Cloud,
 } from "lucide-react";
+
+const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
 
 const modules = [
   {
-    id: "factures-ia",
+    id: "documents",
     icon: FileText,
-    title: "Génération de factures IA",
-    description:
-      "Créez des factures conformes Factur-X en quelques clics. L'IA pré-remplit les champs à partir de vos données clients et génère automatiquement un PDF prêt à l'envoi.",
+    title: "Gestion Documentaire",
+    description: "Uploadez, classez et retrouvez n'importe quel document en secondes. L'IA extrait les données clés automatiquement et les organise dans une arborescence intelligente.",
     benefits: [
-      "Factures Factur-X conformes générées automatiquement",
-      "Pré-remplissage intelligent à partir du CRM intégré",
-      "Export PDF et envoi automatisé par email",
+      "Import par glisser-déposer, email dédié ou API",
+      "Classification automatique par type de document",
+      "OCR et extraction de données IA",
+      "Recherche en langage naturel",
+      "Archivage sécurisé avec historique complet",
     ],
-    screenshotLabel: "Aperçu — Génération facture IA",
+    screenshotLabel: "Aperçu — Gestion documentaire IA",
     screenshotColor: "from-primary/20 to-primary/5",
   },
   {
-    id: "relances",
-    icon: Mail,
-    title: "Relances automatiques",
-    description:
-      "Ne laissez plus aucune facture impayée sans suivi. Odoc déclenche des relances par email aux échéances que vous définissez, avec un suivi complet de chaque étape.",
+    id: "factures-ia",
+    icon: Receipt,
+    title: "Factures IA",
+    description: "Extraction automatique, workflow de validation, conformité NF Z42-013, détection de fraude et archivage légal SHA-256. De la réception au paiement, tout est automatisé.",
     benefits: [
-      "Séquences de relance personnalisables par client",
-      "Envoi automatique à J+0, J+7, J+30…",
-      "Historique complet des relances et statuts de paiement",
+      "Extraction automatique des montants, TVA, fournisseurs",
+      "Workflow de validation multi-niveaux",
+      "Conformité NF Z42-013 et Factur-X",
+      "Détection de doublons et de fraude",
+      "Archivage à valeur probante SHA-256",
     ],
-    screenshotLabel: "Aperçu — Tableau des relances",
+    screenshotLabel: "Aperçu — Traitement factures IA",
     screenshotColor: "from-ring/20 to-ring/5",
   },
   {
-    id: "po-matching",
-    icon: GitCompareArrows,
-    title: "PO Matching",
-    description:
-      "Rapprochez automatiquement vos bons de commande et vos factures fournisseurs. L'IA détecte les écarts de montant, de quantité ou de référence pour un contrôle sans effort.",
+    id: "odoc-brain",
+    icon: Brain,
+    title: "Odoc Brain (Copilot IA)",
+    description: "Posez n'importe quelle question sur vos documents en langage naturel. Obtenez des réponses précises avec sources, citations et recommandations.",
     benefits: [
-      "Rapprochement automatique commande ↔ facture",
-      "Alertes en cas d'écart ou d'anomalie",
-      "Validation en un clic pour un workflow fluide",
+      "Questions en langage naturel sur tous vos documents",
+      "Réponses sourcées avec citations exactes",
+      "Analyse croisée de plusieurs documents",
+      "Résumés automatiques de contrats et rapports",
+      "Suggestions proactives et alertes intelligentes",
     ],
-    screenshotLabel: "Aperçu — Rapprochement PO",
+    screenshotLabel: "Aperçu — Odoc Brain",
     screenshotColor: "from-primary/20 to-ring/5",
   },
   {
     id: "analytics",
     icon: BarChart3,
-    title: "Analytics & tableaux de bord",
-    description:
-      "Visualisez en temps réel votre chiffre d'affaires, les retards de paiement et les tendances de dépenses. Des graphiques clairs pour des décisions éclairées.",
+    title: "Analytics Multi-Métiers",
+    description: "Tableaux de bord Général, Comptable, Juridique et Administratif. Visualisez vos KPIs en temps réel et exportez vos rapports en PDF et CSV.",
     benefits: [
-      "Dashboard CA, encaissements et retards en temps réel",
-      "Graphiques interactifs par période, client ou catégorie",
-      "Export des rapports pour vos réunions de direction",
+      "Dashboard général avec vue d'ensemble",
+      "Vue comptable : CA, dépenses, trésorerie",
+      "Vue juridique : contrats, échéances, alertes",
+      "Vue administrative : documents traités, volumétrie",
+      "Export PDF et CSV en un clic",
     ],
-    screenshotLabel: "Aperçu — Dashboard analytics",
+    screenshotLabel: "Aperçu — Analytics multi-métiers",
     screenshotColor: "from-ring/20 to-primary/5",
   },
   {
-    id: "multi-utilisateurs",
+    id: "equipe",
     icon: Users,
-    title: "Multi-utilisateurs & rôles",
-    description:
-      "Invitez votre équipe et attribuez des rôles précis : administrateur, comptable ou lecteur. Chacun accède uniquement aux données qui le concernent.",
+    title: "Gestion d'Équipe",
+    description: "Invitez vos collaborateurs, assignez des rôles (comptable, juriste, admin) et gérez les accès par profil. Chacun voit exactement ce dont il a besoin.",
     benefits: [
-      "Rôles admin, comptable et lecteur configurables",
-      "Permissions granulaires par module",
-      "Journal d'activité pour la traçabilité",
+      "Invitation par email en un clic",
+      "Rôles prédéfinis : admin, comptable, juriste, lecteur",
+      "Permissions granulaires par module et par dossier",
+      "Journal d'activité et traçabilité complète",
+      "Gestion des équipes et départements",
     ],
-    screenshotLabel: "Aperçu — Gestion des rôles",
+    screenshotLabel: "Aperçu — Gestion d'équipe",
     screenshotColor: "from-primary/15 to-primary/5",
   },
   {
-    id: "conformite",
-    icon: ShieldCheck,
-    title: "Conformité légale FR",
-    description:
-      "Respectez les exigences françaises sans y penser. Odoc assure la conformité NF Z42-013, l'archivage à valeur probante et un audit trail complet.",
+    id: "rh",
+    icon: UserCog,
+    title: "Module RH",
+    description: "Gestion des employés, suivi des congés, approbations automatiques et export des données RH. Tout ce qu'il faut pour piloter vos ressources humaines.",
     benefits: [
-      "Archivage conforme NF Z42-013",
-      "Piste d'audit complète et horodatée",
-      "Certificats de conformité exportables",
+      "Fiches employés complètes",
+      "Suivi des congés et absences",
+      "Workflows d'approbation automatiques",
+      "Export des données RH (CSV, PDF)",
+      "Alertes de renouvellement de contrats",
     ],
-    screenshotLabel: "Aperçu — Audit trail",
+    screenshotLabel: "Aperçu — Module RH",
     screenshotColor: "from-ring/15 to-ring/5",
+  },
+  {
+    id: "projets",
+    icon: KanbanSquare,
+    title: "Projets Kanban",
+    description: "Créez vos projets, assignez des tâches avec priorités et suivez l'avancement en vue Kanban ou liste. Simple, visuel et collaboratif.",
+    benefits: [
+      "Vue Kanban et vue liste",
+      "Tâches avec priorités, assignation et échéances",
+      "Commentaires et pièces jointes par tâche",
+      "Filtres et recherche avancée",
+      "Notifications en temps réel",
+    ],
+    screenshotLabel: "Aperçu — Projets Kanban",
+    screenshotColor: "from-primary/20 to-ring/10",
+  },
+  {
+    id: "messagerie",
+    icon: MessageSquare,
+    title: "Messagerie Interne",
+    description: "Canaux d'équipe, messages temps réel, @mentions et pièces jointes. Communiquez avec votre équipe sans quitter Odoc.",
+    benefits: [
+      "Canaux publics et privés",
+      "Messages en temps réel",
+      "@mentions et notifications",
+      "Partage de fichiers et documents Odoc",
+      "Recherche dans l'historique des conversations",
+    ],
+    screenshotLabel: "Aperçu — Messagerie interne",
+    screenshotColor: "from-ring/20 to-primary/10",
+  },
+  {
+    id: "portail-fournisseur",
+    icon: Link2,
+    title: "Portail Fournisseur",
+    description: "Envoyez un lien sécurisé à vos fournisseurs pour qu'ils déposent leurs factures directement dans Odoc. Plus de mails perdus.",
+    benefits: [
+      "Lien sécurisé unique par fournisseur",
+      "Upload direct dans votre espace Odoc",
+      "Notifications de réception automatiques",
+      "Historique complet des dépôts",
+      "Aucun compte requis pour le fournisseur",
+    ],
+    screenshotLabel: "Aperçu — Portail fournisseur",
+    screenshotColor: "from-primary/15 to-ring/5",
+  },
+  {
+    id: "connectors",
+    icon: Cloud,
+    title: "Smart Connectors",
+    description: "Connectez Google Drive et Dropbox pour synchroniser vos documents automatiquement dans Odoc. Votre écosystème, unifié.",
+    benefits: [
+      "Synchronisation Google Drive bidirectionnelle",
+      "Synchronisation Dropbox bidirectionnelle",
+      "Import automatique des nouveaux fichiers",
+      "Mapping de dossiers personnalisable",
+      "API ouverte pour intégrations custom",
+    ],
+    screenshotLabel: "Aperçu — Smart Connectors",
+    screenshotColor: "from-ring/15 to-primary/5",
   },
 ];
 
@@ -125,8 +197,8 @@ export default function FonctionnalitesPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Fonctionnalités — Odoc | Modules d'intelligence documentaire"
-        description="Découvrez les fonctionnalités d'Odoc : facturation IA, relances, PO Matching, analytics, multi-utilisateurs et conformité légale française."
+        title="Fonctionnalités — Odoc | Les 10 modules du copilot IA"
+        description="Découvrez les 10 modules d'Odoc : documents, factures IA, Odoc Brain, analytics, équipe, RH, projets, messagerie, portail fournisseur et smart connectors."
         canonical="/fonctionnalites"
       />
 
@@ -134,10 +206,10 @@ export default function FonctionnalitesPage() {
       <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 text-center">
         <MotionDiv>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Tout ce qu'il faut pour piloter vos documents
+            Les 10 modules de votre copilot IA
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Six modules pensés pour automatiser, sécuriser et valoriser votre gestion documentaire.
+            Chaque module est conçu pour automatiser une facette de votre entreprise. Ensemble, ils forment un employé IA complet.
           </p>
         </MotionDiv>
       </section>
@@ -173,31 +245,21 @@ export default function FonctionnalitesPage() {
                   <MotionDiv
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.05,
-                      duration: 0.5,
-                      ease: [0.32, 0.72, 0, 1] as [number, number, number, number],
-                    }}
+                    transition={{ delay: 0.05, duration: 0.5 }}
                     viewport={{ once: true }}
                     className="grid gap-8 lg:grid-cols-2 items-center"
                   >
-                    {/* Text */}
                     <div className={i % 2 === 1 ? "lg:order-2" : ""}>
                       <div className="flex items-center gap-3 mb-4">
                         <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10">
                           <Icon className="h-5 w-5 text-primary" />
                         </div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                          {m.title}
-                        </h2>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground">{m.title}</h2>
                       </div>
                       <p className="text-muted-foreground">{m.description}</p>
                       <ul className="mt-6 space-y-3">
                         {m.benefits.map((b) => (
-                          <li
-                            key={b}
-                            className="flex items-start gap-2 text-sm text-muted-foreground"
-                          >
+                          <li key={b} className="flex items-start gap-2 text-sm text-muted-foreground">
                             <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                             {b}
                           </li>
@@ -205,15 +267,12 @@ export default function FonctionnalitesPage() {
                       </ul>
                     </div>
 
-                    {/* Placeholder screenshot */}
                     <div
                       className={`rounded-xl bg-gradient-to-br ${m.screenshotColor} border border-border/40 aspect-video flex items-center justify-center ${
                         i % 2 === 1 ? "lg:order-1" : ""
                       }`}
                     >
-                      <span className="text-sm text-muted-foreground font-medium">
-                        {m.screenshotLabel}
-                      </span>
+                      <span className="text-sm text-muted-foreground font-medium">{m.screenshotLabel}</span>
                     </div>
                   </MotionDiv>
                 </div>
@@ -227,20 +286,14 @@ export default function FonctionnalitesPage() {
       <section className="w-full py-16 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-card rounded-2xl p-8 sm:p-12 shadow-card">
           <MotionDiv>
-            <h2 className="text-3xl font-bold tracking-tight">
-              Prêt à découvrir Odoc en action ?
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Consultez nos tarifs ou demandez directement une démonstration personnalisée.
-            </p>
+            <h2 className="text-3xl font-bold tracking-tight">Prêt à découvrir Odoc en action ?</h2>
+            <p className="mt-4 text-lg text-muted-foreground">Essayez gratuitement ou demandez une démonstration personnalisée.</p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/pricing">
-                <Button size="lg">Voir les tarifs</Button>
-              </Link>
+              <a href={`${APP_URL}/signup`}>
+                <Button size="lg">Essayer gratuitement</Button>
+              </a>
               <Link to="/contact">
-                <Button size="lg" variant="outline">
-                  Demander une démo
-                </Button>
+                <Button size="lg" variant="outline">Demander une démo</Button>
               </Link>
             </div>
           </MotionDiv>

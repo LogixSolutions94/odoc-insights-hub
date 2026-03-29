@@ -14,6 +14,7 @@ import ContactPage from "./pages/ContactPage";
 import MentionsLegalesPage from "./pages/MentionsLegalesPage";
 import CguPage from "./pages/CguPage";
 import AProposPage from "./pages/AProposPage";
+import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialitePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,8 +37,9 @@ const App = () => (
               <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
               <Route path="/cgu" element={<CguPage />} />
               <Route path="/a-propos" element={<AProposPage />} />
+              <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

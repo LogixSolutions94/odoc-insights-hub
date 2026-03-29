@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/MotionDiv";
 import { SEOHead } from "@/components/SEOHead";
-import { Check } from "lucide-react";
+import { Check, Lock, BadgeCheck, Shield, Zap } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -11,82 +11,99 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
+
 const plans = [
   {
     name: "Starter",
-    subtitle: "Le strict nécessaire",
+    badge: "Pour démarrer",
     monthlyPrice: 0,
     priceLabel: "Gratuit",
     features: [
+      "Jusqu'à 50 documents",
       "1 utilisateur",
-      "50 documents traités / mois",
-      "Extraction IA standard (reçus, factures simples)",
-      "Support par email",
+      "Odoc Brain (10 questions/mois)",
+      "Factures IA (5/mois)",
+      "Documents, Brain, Analytics basique",
     ],
-    cta: "Essayer gratuitement",
-    ctaLink: "/contact",
+    cta: "Commencer gratuitement",
+    ctaLink: `${APP_URL}/signup`,
+    external: true,
     highlight: false,
   },
   {
     name: "Essentiel",
-    subtitle: "Le choix populaire",
+    badge: "Pour les petites équipes",
     monthlyPrice: 29,
     priceLabel: null,
     features: [
-      "1 utilisateur",
-      "300 documents traités / mois",
-      "Odoc Brain (Assistant IA conversationnel)",
-      "Exports comptables (FEC)",
-      "Synchronisation Drive / Dropbox",
+      "Jusqu'à 500 documents",
+      "3 utilisateurs",
+      "Odoc Brain illimité",
+      "Factures IA (50/mois)",
+      "Documents, Brain, Factures, Analytics, RH basique",
+      "Support email",
     ],
-    cta: "Démarrer",
-    ctaLink: "/contact",
-    highlight: true,
+    cta: "Commencer l'essai 14 jours",
+    ctaLink: `${APP_URL}/signup`,
+    external: true,
+    highlight: false,
   },
   {
     name: "Pro",
-    subtitle: "Pour les équipes",
+    badge: "⭐ Le plus populaire",
     monthlyPrice: 79,
     priceLabel: null,
     features: [
-      "3 utilisateurs max",
       "Documents illimités",
-      "Rapprochement BdC / Factures (PO Matching)",
-      "Workflows d'approbation multi-niveaux",
+      "10 utilisateurs",
+      "Tous les modules inclus",
+      "PO Matching IA",
+      "Détection fraude",
+      "Export FEC + PDF",
       "Support prioritaire",
     ],
-    cta: "Nous contacter",
+    cta: "Commencer l'essai 14 jours",
+    ctaLink: `${APP_URL}/signup`,
+    external: true,
+    highlight: true,
+  },
+  {
+    name: "Entreprise",
+    badge: "Pour les grandes organisations",
+    monthlyPrice: -1,
+    priceLabel: "Parlons-en",
+    features: [
+      "Tout le plan Pro",
+      "Utilisateurs illimités",
+      "SLA garanti",
+      "Onboarding dédié",
+      "Intégrations sur mesure",
+      "Facturation personnalisée",
+      "Account manager dédié",
+    ],
+    cta: "Contacter l'équipe",
     ctaLink: "/contact",
+    external: false,
     highlight: false,
   },
 ];
 
 const faqItems = [
-  {
-    question: "Y a-t-il un engagement minimum ?",
-    answer:
-      "Non, tous nos plans sont sans engagement. Vous pouvez résilier à tout moment depuis votre espace client. En cas de paiement annuel, vous bénéficiez d'une réduction de 20 % et restez actif jusqu'à la fin de la période payée.",
-  },
-  {
-    question: "Mes données sont-elles protégées (RGPD) ?",
-    answer:
-      "Absolument. Odoc est conforme au RGPD. Vos documents sont chiffrés au repos et en transit, hébergés en France, et ne sont jamais partagés avec des tiers. Vous pouvez exercer vos droits d'accès, de rectification et de suppression à tout moment.",
-  },
-  {
-    question: "Puis-je exporter mes données ?",
-    answer:
-      "Oui. Vous pouvez exporter l'intégralité de vos documents et métadonnées à tout moment aux formats PDF, CSV ou JSON depuis les paramètres de votre compte.",
-  },
-  {
-    question: "Proposez-vous un essai gratuit ?",
-    answer:
-      "Oui, le plan Starter est entièrement gratuit et vous permet de traiter jusqu'à 50 documents par mois sans carte bancaire. Vous pouvez passer à un plan supérieur à tout moment.",
-  },
-  {
-    question: "Comment fonctionne la facturation ?",
-    answer:
-      "La facturation est mensuelle ou annuelle selon votre choix. Vous recevez une facture conforme à chaque début de période. Les changements de plan prennent effet immédiatement avec un prorata automatique.",
-  },
+  { question: "Puis-je changer de plan à tout moment ?", answer: "Oui, vous pouvez passer à un plan supérieur ou inférieur à tout moment. Les changements prennent effet immédiatement avec un prorata automatique." },
+  { question: "Y a-t-il une période d'essai ?", answer: "Les plans Essentiel et Pro incluent un essai gratuit de 14 jours sans carte bancaire. Le plan Starter est gratuit sans limite de durée." },
+  { question: "Mes données sont-elles sécurisées ?", answer: "Absolument. Vos données sont chiffrées AES-256, hébergées en France et conformes au RGPD. Nous ne revendons jamais vos données." },
+  { question: "Le plan Starter est-il vraiment gratuit ?", answer: "Oui, le plan Starter est gratuit pour toujours. Aucune carte bancaire n'est requise. Vous pouvez évoluer quand vous le souhaitez." },
+  { question: "Comment fonctionne la facturation annuelle ?", answer: "En choisissant le paiement annuel, vous bénéficiez de 20% de réduction. Vous recevez une facture conforme à chaque début de période." },
+  { question: "Proposez-vous des remises pour les associations ou startups ?", answer: "Oui, contactez-nous pour discuter de tarifs adaptés. Nous proposons des remises pour les associations, startups early-stage et structures éducatives." },
+];
+
+const trustBadges = [
+  { icon: "🇫🇷", label: "Données hébergées en France" },
+  { icon: <Lock className="h-4 w-4" />, label: "Chiffrement AES-256" },
+  { icon: <BadgeCheck className="h-4 w-4" />, label: "Conforme RGPD" },
+  { icon: <Shield className="h-4 w-4" />, label: "Norme NF Z42-013" },
+  { icon: <Zap className="h-4 w-4" />, label: "99.9% Uptime garanti" },
 ];
 
 export default function PricingPage() {
@@ -95,101 +112,73 @@ export default function PricingPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Tarifs — Odoc | Intelligence documentaire pour PME"
-        description="Découvrez les tarifs d'Odoc : Starter gratuit, Essentiel à 29€/mois et Pro à 79€/mois. Choisissez le plan adapté à votre gestion documentaire intelligente."
+        title="Tarifs — Odoc | Copilot IA d'entreprise"
+        description="Découvrez les tarifs d'Odoc : Starter gratuit, Essentiel à 29€/mois, Pro à 79€/mois et Entreprise sur mesure. Essai gratuit 14 jours."
         canonical="/pricing"
       />
 
       {/* Hero */}
       <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 text-center">
         <MotionDiv>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Des tarifs simples et transparents
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Choisissez le plan adapté à votre entreprise. Sans surprise, sans engagement.
-          </p>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Un tarif pour chaque étape de votre croissance</h1>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Commencez gratuitement. Évoluez quand vous êtes prêts.</p>
         </MotionDiv>
 
         {/* Toggle */}
         <MotionDiv className="mt-8 flex items-center justify-center gap-3">
-          <span
-            className={`text-sm font-medium ${!annual ? "text-foreground" : "text-muted-foreground"}`}
-          >
-            Mensuel
-          </span>
+          <span className={`text-sm font-medium ${!annual ? "text-foreground" : "text-muted-foreground"}`}>Mensuel</span>
           <button
             onClick={() => setAnnual(!annual)}
-            className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${
-              annual ? "bg-primary" : "bg-muted"
-            }`}
+            className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${annual ? "bg-primary" : "bg-muted"}`}
             aria-label="Basculer entre mensuel et annuel"
           >
-            <span
-              className={`inline-block h-5 w-5 transform rounded-full bg-foreground transition-transform ${
-                annual ? "translate-x-6" : "translate-x-1"
-              }`}
-            />
+            <span className={`inline-block h-5 w-5 transform rounded-full bg-foreground transition-transform ${annual ? "translate-x-6" : "translate-x-1"}`} />
           </button>
-          <span
-            className={`text-sm font-medium ${annual ? "text-foreground" : "text-muted-foreground"}`}
-          >
-            Annuel
-          </span>
-          {annual && (
-            <span className="ml-1 rounded-full bg-primary/20 px-2.5 py-0.5 text-xs font-semibold text-primary">
-              -20 %
-            </span>
-          )}
+          <span className={`text-sm font-medium ${annual ? "text-foreground" : "text-muted-foreground"}`}>Annuel</span>
+          {annual && <span className="ml-1 rounded-full bg-primary/20 px-2.5 py-0.5 text-xs font-semibold text-primary">Économisez 20%</span>}
         </MotionDiv>
       </section>
 
       {/* Pricing Cards */}
-      <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
-        <div className="grid gap-8 md:grid-cols-3">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan, i) => {
-            const price =
-              plan.monthlyPrice === 0
-                ? 0
-                : annual
-                  ? Math.round(plan.monthlyPrice * 0.8)
-                  : plan.monthlyPrice;
+            const price = plan.monthlyPrice <= 0 ? 0 : annual ? Math.round(plan.monthlyPrice * 0.8) : plan.monthlyPrice;
+            const isCustom = plan.monthlyPrice === -1;
 
             return (
               <MotionDiv
                 key={plan.name}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: i * 0.12,
-                  duration: 0.5,
-                  ease: [0.32, 0.72, 0, 1] as [number, number, number, number],
-                }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className={`relative flex flex-col rounded-xl p-8 ${
+                className={`relative flex flex-col rounded-xl p-6 ${
                   plan.highlight
-                    ? "border-2 border-primary bg-card shadow-card-hover ring-1 ring-primary/20"
+                    ? "border-2 border-primary bg-card shadow-card-hover ring-1 ring-primary/20 scale-[1.02]"
                     : "border border-border/60 bg-card shadow-card"
                 }`}
               >
                 {plan.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">
-                    Populaire
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground whitespace-nowrap">
+                    {plan.badge}
                   </span>
                 )}
                 <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{plan.subtitle}</p>
+                {!plan.highlight && <p className="text-xs text-muted-foreground mt-1">{plan.badge}</p>}
                 <div className="mt-4 flex items-baseline gap-1">
-                  {price === 0 ? (
-                    <span className="text-4xl font-bold text-foreground">{plan.priceLabel}</span>
+                  {isCustom ? (
+                    <span className="text-3xl font-bold text-foreground">{plan.priceLabel}</span>
+                  ) : price === 0 ? (
+                    <span className="text-3xl font-bold text-foreground">{plan.priceLabel}</span>
                   ) : (
                     <>
-                      <span className="text-4xl font-bold text-foreground">{price}€</span>
+                      <span className="text-3xl font-bold text-foreground">{price}€</span>
                       <span className="text-muted-foreground text-sm">/ mois</span>
                     </>
                   )}
                 </div>
-                <ul className="mt-8 flex-1 space-y-3">
+                <ul className="mt-6 flex-1 space-y-2.5">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
@@ -197,15 +186,15 @@ export default function PricingPage() {
                     </li>
                   ))}
                 </ul>
-                <Link to={plan.ctaLink} className="mt-8">
-                  <Button
-                    className="w-full"
-                    variant={plan.highlight ? "default" : "outline"}
-                    size="lg"
-                  >
-                    {plan.cta}
-                  </Button>
-                </Link>
+                {plan.external ? (
+                  <a href={plan.ctaLink} className="mt-6">
+                    <Button className="w-full" variant={plan.highlight ? "default" : "outline"} size="lg">{plan.cta}</Button>
+                  </a>
+                ) : (
+                  <Link to={plan.ctaLink} className="mt-6">
+                    <Button className="w-full" variant="outline" size="lg">{plan.cta}</Button>
+                  </Link>
+                )}
               </MotionDiv>
             );
           })}
@@ -220,15 +209,25 @@ export default function PricingPage() {
         <Accordion type="single" collapsible className="mt-8">
           {faqItems.map((item, i) => (
             <AccordionItem key={i} value={`faq-${i}`}>
-              <AccordionTrigger className="text-left text-foreground">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                {item.answer}
-              </AccordionContent>
+              <AccordionTrigger className="text-left text-foreground">{item.question}</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">{item.answer}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
+      </section>
+
+      {/* Trust Badges */}
+      <section className="w-full py-8 border-t border-border/40">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+            {trustBadges.map((b, i) => (
+              <div key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="text-primary">{typeof b.icon === "string" ? b.icon : b.icon}</span>
+                <span>{b.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );

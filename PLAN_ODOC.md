@@ -8,26 +8,26 @@ Ce document sert de journal de bord pour le développement du site marketing d'O
 
 ## Pages Créées
 
-- `/` (Homepage): Landing page principale (Hero, Problème, Solution, Fonctionnalités, Audience, Steps, CTA) + JSON-LD Schema.org SoftwareApplication. ✅
-- `/a-propos`: Page À propos (Hero, Histoire, Valeurs, KPIs animés, CTA). ✅
-- `/pricing`: Page tarifs avec toggle mensuel/annuel, 3 cartes (Starter gratuit, Essentiel 29€, Pro 79€), FAQ accordéon. ✅
-- `/fonctionnalites`: Page détaillée des 6 modules (Factures IA, Relances, PO Matching, Analytics, Multi-utilisateurs, Conformité) avec sticky nav latérale. ✅
+- `/` (Homepage): Landing page "Copilot IA d'entreprise" — Hero, Problème, Solution hub, 10 outils, Démo, Pour qui, Newsletter, Témoignages, Trust badges, CTA. ✅
+- `/a-propos`: Page À propos (Vision copilot, Mission, Valeurs, 4 KPIs animés, CTA). ✅
+- `/pricing`: Page tarifs 4 plans (Starter 0€, Essentiel 29€, Pro 79€, Entreprise sur mesure) + toggle annuel + FAQ + trust badges. ✅
+- `/fonctionnalites`: 10 modules du copilot IA (Documents, Factures, Brain, Analytics, Équipe, RH, Projets, Messagerie, Portail Fournisseur, Connectors) avec sticky nav. ✅
 - `/blog`: Page index dynamique (Supabase), recherche, filtres catégories, article featured, pagination, état vide. ✅
 - `/blog/[slug]`: Article dynamique (Supabase), rendu Markdown, CTA inline, articles similaires, SEO dynamique, compteur de vues. ✅
 - `/contact`: Formulaire de contact avec validation Zod, honeypot anti-spam, soumission via Edge Function Resend. ✅
 - `/mentions-legales`: Mentions légales complètes (éditeur, hébergeur, RGPD, cookies, PI). ✅
 - `/cgu`: CGU complètes (5 articles : objet, accès, abonnements, données, responsabilité). ✅
+- `/politique-confidentialite`: Politique de confidentialité RGPD complète (9 sections). ✅
 
 ## Composants Générés
 
-- `SiteHeader`: Navigation principale (Fonctionnalités, À propos, Tarifs, Blog, Contact) + lien Connexion + menu mobile.
-- `SiteFooter`: Pied de page structuré en 4 colonnes (Produit, Entreprise, Ressources, Légal).
-- `MarketingLayout`: Layout wrapper avec Header + Footer.
-- `MotionDiv`: Wrapper pour `framer-motion` avec animation d'entrée par défaut.
-- `SEOHead`: Composant react-helmet-async pour title, description, canonical, Open Graph, Twitter Card, JSON-LD.
-- `BlogCard`: Carte d'article blog réutilisable (variants: default, compact, featured).
-- `BlogCategoryBadge`: Badge coloré par catégorie de blog.
-- `BlogSEOHead`: Composant SEO spécialisé pour les pages blog.
+- `SiteHeader`: Navigation (Fonctionnalités, Tarifs, Blog, À propos, Contact) + Connexion/Essai gratuit + mobile.
+- `SiteFooter`: 4 colonnes (Produit, Entreprise, Ressources, Légal) + mention "Fait en France".
+- `MarketingLayout`: Layout wrapper Header + Footer + CookieBanner.
+- `CookieBanner`: Bandeau cookies RGPD (slide-up, localStorage, accept/refuse).
+- `MotionDiv`: Wrapper framer-motion.
+- `SEOHead`: react-helmet-async (title, desc, canonical, OG, Twitter, JSON-LD).
+- `BlogCard`, `BlogCategoryBadge`, `BlogSEOHead`: Composants blog réutilisables.
 
 ## Architecture
 
@@ -36,68 +36,63 @@ Ce document sert de journal de bord pour le développement du site marketing d'O
 - Routing : React Router DOM
 - Animations : Framer Motion
 - SEO : react-helmet-async + sitemap dynamique (Edge Function) + robots.txt + JSON-LD
-- Blog : Table Supabase `blog_posts` (données dynamiques) + rendu Markdown (react-markdown + rehype-highlight)
+- Blog : Table Supabase `blog_posts` + rendu Markdown (react-markdown + rehype-highlight)
 - Backend : Lovable Cloud (Supabase)
   - Edge Function `send-contact-email` : envoi email via API Resend
-  - Edge Function `publish-blog-post` : webhook N8N pour CRUD articles (auth Bearer token)
+  - Edge Function `publish-blog-post` : webhook N8N pour CRUD articles
   - Edge Function `sitemap` : génération dynamique du sitemap XML
   - Fonction SQL `increment_view_count` : compteur de vues par article
 
 ## Base de données
 
 ### Table `blog_posts`
-- id, slug (unique), title, excerpt, content, cover_image_url
-- category (facturation, comptabilite, ia-documents, gestion-pme, tutoriel, general)
-- tags[], author_name, author_avatar_url
-- seo_title, seo_description, seo_keywords, og_image_url
-- status (draft, published, archived), featured, read_time_minutes
-- published_at, created_at, updated_at, view_count
-- RLS : lecture publique (published uniquement), écriture service_role
-- Indexes : slug, status, category, published_at DESC, featured (partial)
-- Trigger : updated_at automatique
+- Schéma complet avec catégories, SEO, status, featured, view_count
+- RLS : lecture publique (published), écriture service_role
 
-## SEO
+### Table `newsletter_subscribers`
+- email (unique), subscribed_at, source
+- RLS : insert public, read service_role uniquement
 
-- `<SEOHead>` utilisé sur toutes les pages (title, description, canonical, OG, Twitter)
-- Sitemap dynamique via Edge Function (pages statiques + articles publiés)
-- `public/robots.txt` : allow all, disallow /auth /settings /team, pointer sitemap
-- JSON-LD Schema.org `SoftwareApplication` sur la homepage avec les 3 offres tarifaires
+## Positionnement
 
-## Secrets configurés
+Odoc = **Copilot d'entreprise IA** — 10 outils intégrés :
+1. Gestion Documentaire
+2. Factures IA
+3. Odoc Brain (Copilot IA)
+4. Analytics Multi-Métiers
+5. Gestion d'Équipe
+6. Module RH
+7. Projets Kanban
+8. Messagerie Interne
+9. Portail Fournisseur
+10. Smart Connectors
 
-- `RESEND_API_KEY` : clé API Resend pour l'envoi d'emails
-- `BLOG_WEBHOOK_SECRET` : token d'authentification pour le webhook N8N
+Tagline : "Votre employé IA. Disponible 24h/24."
+Cible : TPE/PME, cabinets comptables, services juridiques, équipes RH.
 
 ---
 
 ## Historique des modifications
 
-*Le format à suivre est : `[YYYY-MM-DD] - [Page/Composant] - [Description du changement]`*
-
 - [2026-03-12] - Projet complet - Création initiale du site marketing
-- [2026-03-13] - /pricing - Création page tarifs (toggle, 3 cartes, FAQ)
-- [2026-03-13] - /fonctionnalites - Création page fonctionnalités (6 modules, sticky nav)
-- [2026-03-13] - /contact - Refonte formulaire (Zod, honeypot, Edge Function Resend, toast)
-- [2026-03-13] - SEOHead - Composant SEO ajouté sur toutes les pages
-- [2026-03-13] - sitemap.xml / robots.txt - Création fichiers SEO
-- [2026-03-13] - HomePage - Ajout JSON-LD SoftwareApplication
-- [2026-03-13] - SiteHeader / SiteFooter - Ajout liens Fonctionnalités et Tarifs
-- [2026-03-13] - Edge Function send-contact-email - Création (API Resend)
-- [2026-03-14] - /a-propos - Création page À propos (hero, histoire, valeurs, KPIs animés, CTA)
-- [2026-03-14] - /mentions-legales - Remplacement placeholder par contenu juridique réel
-- [2026-03-14] - /cgu - Remplacement placeholder par 5 articles juridiques complets
-- [2026-03-14] - Blog - Ajout de 3 articles SEO (conformité, productivité, guide GED)
-- [2026-03-14] - /pricing - Refonte 3 offres (Starter gratuit, Essentiel 29€, Pro 79€)
-- [2026-03-14] - SiteHeader - Ajout lien Connexion + lien À propos dans navigation
-- [2026-03-14] - SiteFooter - Ajout lien À propos
-- [2026-03-14] - sitemap.xml - Ajout /a-propos et 3 nouveaux articles blog
-- [2026-03-15] - Blog infra - Migration table blog_posts + indexes + RLS + trigger updated_at + fonction increment_view_count
-- [2026-03-15] - /blog - Refonte complète : données dynamiques Supabase, recherche, filtres catégorie, featured, pagination, état vide
-- [2026-03-15] - /blog/:slug - Refonte complète : données dynamiques, rendu Markdown, CTA inline, articles similaires, SEO dynamique, compteur vues
-- [2026-03-15] - Composants blog - Création BlogCard, BlogCategoryBadge, BlogSEOHead
-- [2026-03-15] - Edge Function publish-blog-post - Webhook N8N (create/update/publish/unpublish) avec auth Bearer
-- [2026-03-15] - Edge Function sitemap - Génération dynamique XML (pages statiques + articles publiés)
-- [2026-03-15] - robots.txt - Mise à jour (disallow /auth /settings /team, pointer sitemap)
-- [2026-03-15] - SiteFooter - Restructuration en 4 colonnes (Produit, Entreprise, Ressources, Légal)
+- [2026-03-13] - Pages pricing, fonctionnalités, contact, SEO
+- [2026-03-14] - À propos, mentions légales, CGU, articles blog, pricing refonte
+- [2026-03-15] - Blog infra Supabase, Edge Functions, composants blog
+- [2026-03-29] - **REFONTE COMPLÈTE** — Nouveau positionnement "Copilot IA d'entreprise"
+  - HomePage : toutes sections recréées (hero, problème, solution, 10 outils, démo, pour qui, newsletter, témoignages, trust, CTA)
+  - PricingPage : 4 plans (Starter/Essentiel/Pro/Entreprise) + FAQ + trust badges
+  - FonctionnalitesPage : 10 modules avec descriptions longues et sous-features
+  - AProposPage : vision/mission copilot, 4 KPIs mis à jour
+  - NotFound : page 404 custom avec gradient et CTA
+  - PolitiqueConfidentialitePage : politique RGPD complète (9 sections)
+  - CookieBanner : bandeau cookies RGPD (accept/refuse, localStorage)
+  - Newsletter : table Supabase + formulaire inscription
+  - SiteHeader : Connexion + Essai gratuit → app.odoc.fr
+  - SiteFooter : 4 colonnes restructurées + liens morts placeholder
+  - MarketingLayout : ajout CookieBanner
+  - App.tsx : route /politique-confidentialite + 404 dans MarketingLayout
+  - sitemap.xml : ajout /politique-confidentialite
+  - robots.txt : inchangé
+  - PLAN_ODOC.md : mise à jour complète
 
 ---

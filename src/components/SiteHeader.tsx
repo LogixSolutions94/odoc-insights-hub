@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
+const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
+
 const navLinks = [
   { href: "/fonctionnalites", label: "Fonctionnalités" },
-  { href: "/a-propos", label: "À propos" },
   { href: "/pricing", label: "Tarifs" },
   { href: "/blog", label: "Blog" },
+  { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -32,15 +34,16 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex flex-1 items-center justify-end gap-2">
-          <Link to="/auth" className="hidden sm:inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <a href={`${APP_URL}/login`} className="hidden sm:inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors">
             Connexion
-          </Link>
-          <Link to="/contact" className="hidden sm:inline-flex">
-            <Button size="sm">Demander une démo</Button>
-          </Link>
+          </a>
+          <a href={`${APP_URL}/signup`} className="hidden sm:inline-flex">
+            <Button size="sm">Essai gratuit</Button>
+          </a>
           <button
             className="md:hidden p-2 text-muted-foreground hover:text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -58,9 +61,12 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Link to="/contact" onClick={() => setMobileOpen(false)}>
-            <Button size="sm" className="w-full mt-2">Demander une démo</Button>
-          </Link>
+          <a href={`${APP_URL}/login`} className="block text-sm text-muted-foreground hover:text-foreground" onClick={() => setMobileOpen(false)}>
+            Connexion
+          </a>
+          <a href={`${APP_URL}/signup`} onClick={() => setMobileOpen(false)}>
+            <Button size="sm" className="w-full mt-2">Essai gratuit</Button>
+          </a>
         </div>
       )}
     </header>

@@ -6,7 +6,8 @@ import { Target, Shield, Rocket, Building2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
-/* ── Animated Counter ── */
+const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
+
 function AnimatedCounter({ end, suffix, label }: { end: number; suffix: string; label: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
@@ -37,8 +38,7 @@ function AnimatedCounter({ end, suffix, label }: { end: number; suffix: string; 
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.5 }}
       >
-        {count}
-        {suffix}
+        {count}{suffix}
       </motion.span>
       <span className="text-sm text-muted-foreground text-center">{label}</span>
     </div>
@@ -46,67 +46,55 @@ function AnimatedCounter({ end, suffix, label }: { end: number; suffix: string; 
 }
 
 const values = [
-  {
-    icon: <Target className="h-8 w-8 text-primary" />,
-    title: "Simplicité",
-    description: "Un outil que vos équipes adoptent en moins d'une journée.",
-  },
-  {
-    icon: <Shield className="h-8 w-8 text-primary" />,
-    title: "Sécurité",
-    description: "Vos données hébergées en Europe, chiffrées, jamais revendues.",
-  },
-  {
-    icon: <Rocket className="h-8 w-8 text-primary" />,
-    title: "Innovation",
-    description: "Chaque semaine, de nouvelles fonctionnalités IA pour aller plus loin.",
-  },
+  { icon: <Target className="h-8 w-8 text-primary" />, title: "Simplicité", description: "Un outil que vos équipes adoptent en moins d'une journée." },
+  { icon: <Shield className="h-8 w-8 text-primary" />, title: "Sécurité", description: "Vos données hébergées en Europe, chiffrées, jamais revendues." },
+  { icon: <Rocket className="h-8 w-8 text-primary" />, title: "Innovation", description: "Chaque semaine, de nouvelles fonctionnalités IA pour aller plus loin." },
 ];
 
 const kpis = [
-  { end: 8, suffix: "h", label: "économisées / semaine par utilisateur" },
-  { end: 98, suffix: "%", label: "de précision d'extraction IA" },
-  { end: 29, suffix: "€", label: "/ mois tout inclus" },
+  { end: 10, suffix: "+", label: "outils intégrés" },
+  { end: 1000, suffix: "", label: "entreprises visées en 2026" },
+  { end: 8, suffix: "h", label: "/ semaine économisées en moyenne" },
+  { end: 99, suffix: ".9%", label: "uptime garanti" },
 ];
 
 export default function AProposPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="À propos d'Odoc | IA documentaire pour PME"
-        description="Découvrez l'équipe et la mission derrière Odoc, la plateforme SaaS d'intelligence documentaire pour PME et cabinets comptables."
+        title="À propos d'Odoc | Copilot IA d'entreprise"
+        description="Découvrez la mission et la vision derrière Odoc, le copilot IA qui rend accessible aux PME les outils jusqu'ici réservés aux grandes corporations."
         canonical="/a-propos"
       />
 
       {/* Hero */}
       <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 text-center">
         <MotionDiv>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            L'IA au service de votre entreprise
-          </h1>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">L'IA au service de votre entreprise</h1>
           <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Odoc est né d'un constat simple : les PME perdent en moyenne 8h/semaine à traiter leurs documents. Nous avons décidé d'y remédier.
+            Odoc est né d'un constat simple : les PME perdent en moyenne 8h/semaine à gérer des tâches répétitives. Nous avons créé le copilot IA qui change la donne.
           </p>
         </MotionDiv>
       </section>
 
-      {/* Histoire */}
+      {/* Vision & Mission */}
       <section className="w-full py-16 sm:py-24 border-t border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <MotionDiv>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground">Notre histoire</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground">Notre vision</h2>
               <p className="mt-6 text-muted-foreground leading-relaxed">
-                Fondée en 2025 en Île-de-France, Odoc a été pensée par des entrepreneurs pour des entrepreneurs. Fatigués des outils complexes et coûteux, nous avons construit une plateforme simple, puissante et accessible dès 29€/mois.
+                Rendre accessible à chaque entreprise un copilot IA qui était jusqu'ici réservé aux grandes corporations. Nous croyons que chaque PME mérite des outils intelligents pour se concentrer sur ce qui crée vraiment de la valeur.
               </p>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Notre mission : permettre à chaque dirigeant de PME de reprendre le contrôle sur ses documents et de piloter son entreprise avec des données fiables, en temps réel.
+              <h3 className="mt-8 text-xl font-bold text-foreground">Notre mission</h3>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                Automatiser les tâches répétitives pour que les équipes se concentrent sur ce qui crée vraiment de la valeur. Fondée en 2025 en Île-de-France, Odoc a été pensée par des entrepreneurs pour des entrepreneurs.
               </p>
             </MotionDiv>
             <MotionDiv
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="flex items-center justify-center"
             >
@@ -133,13 +121,11 @@ export default function AProposPage() {
                 key={v.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.12, duration: 0.5, ease: [0.32, 0.72, 0, 1] as [number, number, number, number] }}
+                transition={{ delay: i * 0.12, duration: 0.5 }}
                 viewport={{ once: true }}
                 className="p-8 bg-card rounded-xl shadow-card hover:shadow-card-hover transition-shadow text-center"
               >
-                <div className="flex items-center justify-center h-14 w-14 rounded-lg bg-primary/10 mx-auto mb-5">
-                  {v.icon}
-                </div>
+                <div className="flex items-center justify-center h-14 w-14 rounded-lg bg-primary/10 mx-auto mb-5">{v.icon}</div>
                 <h3 className="text-xl font-semibold text-foreground">{v.title}</h3>
                 <p className="mt-3 text-muted-foreground">{v.description}</p>
               </MotionDiv>
@@ -150,8 +136,8 @@ export default function AProposPage() {
 
       {/* KPIs */}
       <section className="w-full py-16 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
             {kpis.map((kpi) => (
               <AnimatedCounter key={kpi.label} {...kpi} />
             ))}
@@ -163,14 +149,12 @@ export default function AProposPage() {
       <section className="w-full py-16 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-card rounded-2xl p-8 sm:p-12 shadow-card">
           <MotionDiv>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Prêt à transformer votre gestion documentaire ?</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Libérez-vous de l'administratif et concentrez-vous sur ce qui compte vraiment : la croissance de votre entreprise.
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Votre copilot d'entreprise vous attend.</h2>
+            <p className="mt-4 text-lg text-muted-foreground">Démarrez gratuitement et découvrez comment Odoc peut transformer votre quotidien.</p>
             <div className="mt-8">
-              <Link to="/contact">
+              <a href={`${APP_URL}/signup`}>
                 <Button size="lg">Démarrer gratuitement</Button>
-              </Link>
+              </a>
             </div>
           </MotionDiv>
         </div>

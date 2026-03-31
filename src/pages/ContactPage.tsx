@@ -27,7 +27,6 @@ export default function ContactPage() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    // Honeypot check
     if (formData.get("website")) return;
 
     const raw = {
@@ -75,7 +74,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-2xl py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
       <SEOHead
         title="Contact — Odoc | Demandez une démo"
         description="Contactez l'équipe Odoc pour une démonstration personnalisée de la plateforme d'intelligence documentaire."
@@ -83,7 +82,7 @@ export default function ContactPage() {
       />
 
       <MotionDiv className="text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Contactez-nous</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">Contactez-nous</h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Discutons de la manière dont Odoc peut aider votre entreprise. Remplissez le formulaire ou demandez une démo.
         </p>
@@ -96,8 +95,7 @@ export default function ContactPage() {
         viewport={{ once: true }}
         className="mt-12"
       >
-        <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg shadow-card">
-          {/* Honeypot */}
+        <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-xl shadow-card border border-border">
           <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
             <label htmlFor="website">Website</label>
             <input type="text" name="website" id="website" tabIndex={-1} autoComplete="off" />
@@ -105,26 +103,26 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-muted-foreground">Nom complet</label>
-              <Input type="text" name="name" id="name" required className="mt-1" />
+              <label htmlFor="name" className="block text-sm font-medium text-foreground">Nom complet</label>
+              <Input type="text" name="name" id="name" required className="mt-1.5" />
               {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-muted-foreground">Email professionnel</label>
-              <Input type="email" name="email" id="email" required className="mt-1" />
+              <label htmlFor="email" className="block text-sm font-medium text-foreground">Email professionnel</label>
+              <Input type="email" name="email" id="email" required className="mt-1.5" />
               {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
             </div>
           </div>
           <div>
-            <label htmlFor="company" className="block text-sm font-medium text-muted-foreground">Entreprise</label>
-            <Input type="text" name="company" id="company" className="mt-1" />
+            <label htmlFor="company" className="block text-sm font-medium text-foreground">Entreprise</label>
+            <Input type="text" name="company" id="company" className="mt-1.5" />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-muted-foreground">Votre message</label>
-            <Textarea name="message" id="message" rows={4} required className="mt-1" />
+            <label htmlFor="message" className="block text-sm font-medium text-foreground">Votre message</label>
+            <Textarea name="message" id="message" rows={4} required className="mt-1.5" />
             {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
           </div>
-          <Button type="submit" className="w-full" size="lg" disabled={loading}>
+          <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" size="lg" disabled={loading}>
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Envoyer le message
           </Button>

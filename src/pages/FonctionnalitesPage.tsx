@@ -32,7 +32,6 @@ const modules = [
       "Archivage sécurisé avec historique complet",
     ],
     screenshotLabel: "Aperçu — Gestion documentaire IA",
-    screenshotColor: "from-primary/20 to-primary/5",
   },
   {
     id: "factures-ia",
@@ -47,7 +46,6 @@ const modules = [
       "Archivage à valeur probante SHA-256",
     ],
     screenshotLabel: "Aperçu — Traitement factures IA",
-    screenshotColor: "from-ring/20 to-ring/5",
   },
   {
     id: "odoc-brain",
@@ -62,7 +60,6 @@ const modules = [
       "Suggestions proactives et alertes intelligentes",
     ],
     screenshotLabel: "Aperçu — Odoc Brain",
-    screenshotColor: "from-primary/20 to-ring/5",
   },
   {
     id: "analytics",
@@ -77,7 +74,6 @@ const modules = [
       "Export PDF et CSV en un clic",
     ],
     screenshotLabel: "Aperçu — Analytics multi-métiers",
-    screenshotColor: "from-ring/20 to-primary/5",
   },
   {
     id: "equipe",
@@ -92,7 +88,6 @@ const modules = [
       "Gestion des équipes et départements",
     ],
     screenshotLabel: "Aperçu — Gestion d'équipe",
-    screenshotColor: "from-primary/15 to-primary/5",
   },
   {
     id: "rh",
@@ -107,7 +102,6 @@ const modules = [
       "Alertes de renouvellement de contrats",
     ],
     screenshotLabel: "Aperçu — Module RH",
-    screenshotColor: "from-ring/15 to-ring/5",
   },
   {
     id: "projets",
@@ -122,7 +116,6 @@ const modules = [
       "Notifications en temps réel",
     ],
     screenshotLabel: "Aperçu — Projets Kanban",
-    screenshotColor: "from-primary/20 to-ring/10",
   },
   {
     id: "messagerie",
@@ -137,7 +130,6 @@ const modules = [
       "Recherche dans l'historique des conversations",
     ],
     screenshotLabel: "Aperçu — Messagerie interne",
-    screenshotColor: "from-ring/20 to-primary/10",
   },
   {
     id: "portail-fournisseur",
@@ -152,7 +144,6 @@ const modules = [
       "Aucun compte requis pour le fournisseur",
     ],
     screenshotLabel: "Aperçu — Portail fournisseur",
-    screenshotColor: "from-primary/15 to-ring/5",
   },
   {
     id: "connectors",
@@ -167,7 +158,6 @@ const modules = [
       "API ouverte pour intégrations custom",
     ],
     screenshotLabel: "Aperçu — Smart Connectors",
-    screenshotColor: "from-ring/15 to-primary/5",
   },
 ];
 
@@ -203,31 +193,31 @@ export default function FonctionnalitesPage() {
       />
 
       {/* Hero */}
-      <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 text-center">
+      <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-14 text-center">
         <MotionDiv>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
             Les 10 modules de votre copilot IA
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+          <p className="mt-5 max-w-2xl mx-auto text-lg text-muted-foreground">
             Chaque module est conçu pour automatiser une facette de votre entreprise. Ensemble, ils forment un employé IA complet.
           </p>
         </MotionDiv>
       </section>
 
       {/* Modules with sticky nav */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28">
         <div className="flex gap-12">
-          {/* Sticky sidebar — desktop only */}
+          {/* Sticky sidebar */}
           <nav className="hidden lg:block w-56 flex-shrink-0">
-            <div className="sticky top-20 space-y-1">
+            <div className="sticky top-24 space-y-1">
               {modules.map((m) => (
                 <a
                   key={m.id}
                   href={`#${m.id}`}
-                  className={`block rounded-md px-3 py-2 text-sm transition-colors ${
+                  className={`block rounded-lg px-3 py-2.5 text-sm transition-all duration-200 ${
                     activeSection === m.id
-                      ? "bg-primary/10 text-primary font-medium"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "bg-primary/10 text-primary font-semibold shadow-sm"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                   }`}
                 >
                   {m.title}
@@ -237,7 +227,7 @@ export default function FonctionnalitesPage() {
           </nav>
 
           {/* Sections */}
-          <div className="flex-1 space-y-24">
+          <div className="flex-1 space-y-28">
             {modules.map((m, i) => {
               const Icon = m.icon;
               return (
@@ -247,20 +237,20 @@ export default function FonctionnalitesPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.05, duration: 0.5 }}
                     viewport={{ once: true }}
-                    className="grid gap-8 lg:grid-cols-2 items-center"
+                    className="grid gap-10 lg:grid-cols-2 items-center"
                   >
                     <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10">
+                      <div className="flex items-center gap-3 mb-5">
+                        <div className="flex items-center justify-center h-11 w-11 rounded-xl bg-primary/10">
                           <Icon className="h-5 w-5 text-primary" />
                         </div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground">{m.title}</h2>
                       </div>
-                      <p className="text-muted-foreground">{m.description}</p>
+                      <p className="text-muted-foreground leading-relaxed">{m.description}</p>
                       <ul className="mt-6 space-y-3">
                         {m.benefits.map((b) => (
-                          <li key={b} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                          <li key={b} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
                             {b}
                           </li>
                         ))}
@@ -268,7 +258,7 @@ export default function FonctionnalitesPage() {
                     </div>
 
                     <div
-                      className={`rounded-xl bg-gradient-to-br ${m.screenshotColor} border border-border/40 aspect-video flex items-center justify-center ${
+                      className={`rounded-xl bg-secondary border border-border aspect-video flex items-center justify-center shadow-card ${
                         i % 2 === 1 ? "lg:order-1" : ""
                       }`}
                     >
@@ -283,20 +273,22 @@ export default function FonctionnalitesPage() {
       </section>
 
       {/* CTA */}
-      <section className="w-full py-16 sm:py-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-card rounded-2xl p-8 sm:p-12 shadow-card">
-          <MotionDiv>
-            <h2 className="text-3xl font-bold tracking-tight">Prêt à découvrir Odoc en action ?</h2>
-            <p className="mt-4 text-lg text-muted-foreground">Essayez gratuitement ou demandez une démonstration personnalisée.</p>
-            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-              <a href={`${APP_URL}/signup`}>
-                <Button size="lg">Essayer gratuitement</Button>
-              </a>
-              <Link to="/contact">
-                <Button size="lg" variant="outline">Demander une démo</Button>
-              </Link>
-            </div>
-          </MotionDiv>
+      <section className="w-full py-20 sm:py-28">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-card rounded-2xl p-10 sm:p-14 shadow-elevated border border-border">
+            <MotionDiv>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground">Prêt à découvrir Odoc en action ?</h2>
+              <p className="mt-4 text-lg text-muted-foreground">Essayez gratuitement ou demandez une démonstration personnalisée.</p>
+              <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                <a href={`${APP_URL}/signup`}>
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">Essayer gratuitement</Button>
+                </a>
+                <Link to="/contact">
+                  <Button size="lg" variant="outline">Demander une démo</Button>
+                </Link>
+              </div>
+            </MotionDiv>
+          </div>
         </div>
       </section>
     </div>

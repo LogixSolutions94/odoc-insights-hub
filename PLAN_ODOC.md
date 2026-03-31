@@ -32,7 +32,7 @@ Ce document sert de journal de bord pour le développement du site marketing d'O
 ## Architecture
 
 - Framework : React + Vite + TypeScript
-- Styling : Tailwind CSS (thème sombre indigo/violet)
+- Styling : Tailwind CSS (thème clair premium B2B 2026 — bleu pétrole + accent teal)
 - Routing : React Router DOM
 - Animations : Framer Motion
 - SEO : react-helmet-async + sitemap dynamique (Edge Function) + robots.txt + JSON-LD

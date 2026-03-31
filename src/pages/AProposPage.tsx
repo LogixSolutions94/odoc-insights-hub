@@ -31,7 +31,7 @@ function AnimatedCounter({ end, suffix, label }: { end: number; suffix: string; 
   }, [isInView, end]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center gap-1">
+    <div ref={ref} className="flex flex-col items-center gap-2">
       <motion.span
         className="text-4xl sm:text-5xl font-bold text-primary"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -40,15 +40,15 @@ function AnimatedCounter({ end, suffix, label }: { end: number; suffix: string; 
       >
         {count}{suffix}
       </motion.span>
-      <span className="text-sm text-muted-foreground text-center">{label}</span>
+      <span className="text-sm text-muted-foreground text-center font-medium">{label}</span>
     </div>
   );
 }
 
 const values = [
-  { icon: <Target className="h-8 w-8 text-primary" />, title: "Simplicité", description: "Un outil que vos équipes adoptent en moins d'une journée." },
-  { icon: <Shield className="h-8 w-8 text-primary" />, title: "Sécurité", description: "Vos données hébergées en Europe, chiffrées, jamais revendues." },
-  { icon: <Rocket className="h-8 w-8 text-primary" />, title: "Innovation", description: "Chaque semaine, de nouvelles fonctionnalités IA pour aller plus loin." },
+  { icon: <Target className="h-7 w-7 text-primary" />, title: "Simplicité", description: "Un outil que vos équipes adoptent en moins d'une journée." },
+  { icon: <Shield className="h-7 w-7 text-primary" />, title: "Sécurité", description: "Vos données hébergées en Europe, chiffrées, jamais revendues." },
+  { icon: <Rocket className="h-7 w-7 text-primary" />, title: "Innovation", description: "Chaque semaine, de nouvelles fonctionnalités IA pour aller plus loin." },
 ];
 
 const kpis = [
@@ -68,9 +68,9 @@ export default function AProposPage() {
       />
 
       {/* Hero */}
-      <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 text-center">
+      <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-14 text-center">
         <MotionDiv>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">L'IA au service de votre entreprise</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">L'IA au service de votre entreprise</h1>
           <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
             Odoc est né d'un constat simple : les PME perdent en moyenne 8h/semaine à gérer des tâches répétitives. Nous avons créé le copilot IA qui change la donne.
           </p>
@@ -78,9 +78,9 @@ export default function AProposPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="w-full py-16 sm:py-24 border-t border-border/40">
+      <section className="w-full py-20 sm:py-28 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-14 items-center">
             <MotionDiv>
               <h2 className="text-3xl font-bold tracking-tight text-foreground">Notre vision</h2>
               <p className="mt-6 text-muted-foreground leading-relaxed">
@@ -98,9 +98,9 @@ export default function AProposPage() {
               viewport={{ once: true }}
               className="flex items-center justify-center"
             >
-              <div className="relative w-full max-w-sm aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border border-border/60 flex items-center justify-center">
-                <Building2 className="h-24 w-24 text-primary/40" />
-                <div className="absolute -bottom-3 -right-3 rounded-lg bg-primary/20 px-4 py-2 text-sm font-semibold text-primary border border-primary/30">
+              <div className="relative w-full max-w-sm aspect-square rounded-2xl bg-secondary border border-border flex items-center justify-center shadow-card">
+                <Building2 className="h-24 w-24 text-primary/30" />
+                <div className="absolute -bottom-3 -right-3 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground shadow-lg">
                   Depuis 2025
                 </div>
               </div>
@@ -110,12 +110,12 @@ export default function AProposPage() {
       </section>
 
       {/* Valeurs */}
-      <section className="w-full py-16 sm:py-24 bg-card/50 border-y border-border/40">
+      <section className="w-full py-20 sm:py-28 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MotionDiv className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Nos valeurs</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Nos valeurs</h2>
           </MotionDiv>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
             {values.map((v, i) => (
               <MotionDiv
                 key={v.title}
@@ -123,10 +123,10 @@ export default function AProposPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.12, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="p-8 bg-card rounded-xl shadow-card hover:shadow-card-hover transition-shadow text-center"
+                className="p-8 bg-card rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 text-center border border-border"
               >
-                <div className="flex items-center justify-center h-14 w-14 rounded-lg bg-primary/10 mx-auto mb-5">{v.icon}</div>
-                <h3 className="text-xl font-semibold text-foreground">{v.title}</h3>
+                <div className="flex items-center justify-center h-14 w-14 rounded-xl bg-primary/10 mx-auto mb-5">{v.icon}</div>
+                <h3 className="text-xl font-bold text-foreground">{v.title}</h3>
                 <p className="mt-3 text-muted-foreground">{v.description}</p>
               </MotionDiv>
             ))}
@@ -135,7 +135,7 @@ export default function AProposPage() {
       </section>
 
       {/* KPIs */}
-      <section className="w-full py-16 sm:py-24">
+      <section className="w-full py-20 sm:py-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
             {kpis.map((kpi) => (
@@ -146,17 +146,19 @@ export default function AProposPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="w-full py-16 sm:py-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-card rounded-2xl p-8 sm:p-12 shadow-card">
-          <MotionDiv>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Votre copilot d'entreprise vous attend.</h2>
-            <p className="mt-4 text-lg text-muted-foreground">Démarrez gratuitement et découvrez comment Odoc peut transformer votre quotidien.</p>
-            <div className="mt-8">
-              <a href={`${APP_URL}/signup`}>
-                <Button size="lg">Démarrer gratuitement</Button>
-              </a>
-            </div>
-          </MotionDiv>
+      <section className="w-full py-20 sm:py-28">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-card rounded-2xl p-10 sm:p-14 shadow-elevated border border-border">
+            <MotionDiv>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Votre copilot d'entreprise vous attend.</h2>
+              <p className="mt-4 text-lg text-muted-foreground">Démarrez gratuitement et découvrez comment Odoc peut transformer votre quotidien.</p>
+              <div className="mt-8">
+                <a href={`${APP_URL}/signup`}>
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">Démarrer gratuitement</Button>
+                </a>
+              </div>
+            </MotionDiv>
+          </div>
         </div>
       </section>
     </div>

@@ -11,7 +11,7 @@ export function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem(STORAGE_KEY);
     if (!consent) {
-      const timer = setTimeout(() => setVisible(true), 1000);
+      const timer = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -28,34 +28,32 @@ export function CookieBanner() {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-          className="fixed bottom-0 left-0 right-0 z-50 p-4"
+          transition={{ type: "spring", damping: 25, stiffness: 200 }}
+          className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-xl"
         >
-          <div className="mx-auto max-w-3xl rounded-xl border border-border/60 bg-secondary p-4 sm:p-6 shadow-lg backdrop-blur-sm">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <p className="flex-1 text-sm text-muted-foreground">
-                Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre{" "}
-                <Link to="/politique-confidentialite" className="text-primary hover:underline">
-                  politique de confidentialité
-                </Link>.
-              </p>
-              <div className="flex gap-3 w-full sm:w-auto flex-col sm:flex-row">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handleChoice(false)}
-                  className="w-full sm:w-auto"
-                >
-                  Refuser
-                </Button>
-                <Button
-                  size="sm"
-                  onClick={() => handleChoice(true)}
-                  className="w-full sm:w-auto"
-                >
-                  Tout accepter
-                </Button>
-              </div>
+          <div className="rounded-xl border border-border bg-card p-5 shadow-elevated">
+            <p className="text-sm text-foreground leading-relaxed">
+              Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre{" "}
+              <Link to="/politique-confidentialite" className="text-primary font-medium underline underline-offset-2 hover:text-primary-glow">
+                politique de confidentialité
+              </Link>.
+            </p>
+            <div className="mt-4 flex flex-col sm:flex-row gap-2">
+              <Button
+                size="sm"
+                onClick={() => handleChoice(true)}
+                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground"
+              >
+                Tout accepter
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleChoice(false)}
+                className="w-full sm:w-auto"
+              >
+                Refuser
+              </Button>
             </div>
           </div>
         </motion.div>

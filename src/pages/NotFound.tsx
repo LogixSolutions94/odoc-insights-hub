@@ -16,7 +16,7 @@ const NotFound = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-[8rem] sm:text-[10rem] font-bold leading-none bg-gradient-to-br from-primary to-ring bg-clip-text text-transparent select-none">
+          <span className="text-[8rem] sm:text-[10rem] font-bold leading-none bg-gradient-to-br from-primary to-primary-glow bg-clip-text text-transparent select-none">
             404
           </span>
         </MotionDiv>
@@ -31,7 +31,7 @@ const NotFound = () => {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link to="/">
-              <Button size="lg">Retour à l'accueil</Button>
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">Retour à l'accueil</Button>
             </Link>
             <Link to="/fonctionnalites">
               <Button size="lg" variant="outline">Voir nos fonctionnalités</Button>

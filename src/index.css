@@ -1,38 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 240 5% 90%;
-    --card: 240 8% 7%;
-    --card-foreground: 240 5% 90%;
-    --popover: 240 10% 5%;
-    --popover-foreground: 240 5% 90%;
-    --primary: 280 80% 65%;
-    --primary-foreground: 280 10% 10%;
-    --secondary: 240 5% 15%;
-    --secondary-foreground: 240 5% 90%;
-    --muted: 240 5% 25%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 240 5% 15%;
-    --accent-foreground: 240 5% 90%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 4% 15%;
-    --input: 240 4% 15%;
-    --ring: 280 70% 75%;
+    /* ─── B2B 2026 Light Premium Theme ─── */
+    --background: 220 20% 97%;
+    --foreground: 215 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 12%;
+
+    --primary: 210 65% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-glow: 210 55% 50%;
+
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 215 25% 18%;
+
+    --muted: 220 14% 92%;
+    --muted-foreground: 215 12% 50%;
+
+    --accent: 168 55% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 210 55% 50%;
     --radius: 0.75rem;
 
-    --sidebar-background: 240 10% 5%;
-    --sidebar-foreground: 240 5% 90%;
-    --sidebar-primary: 280 80% 65%;
-    --sidebar-primary-foreground: 280 10% 10%;
-    --sidebar-accent: 240 5% 15%;
-    --sidebar-accent-foreground: 240 5% 90%;
-    --sidebar-border: 240 4% 15%;
-    --sidebar-ring: 280 70% 75%;
+    /* ─── Gradients ─── */
+    --gradient-hero: linear-gradient(135deg, hsl(210 65% 28%), hsl(210 55% 50%), hsl(168 55% 40%));
+    --gradient-cta: linear-gradient(135deg, hsl(168 55% 40%), hsl(168 50% 35%));
+
+    /* ─── Sidebar ─── */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 25% 12%;
+    --sidebar-primary: 210 65% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 95%;
+    --sidebar-accent-foreground: 215 25% 12%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 210 55% 50%;
   }
 }
 
@@ -42,6 +60,7 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;

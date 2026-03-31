@@ -32,7 +32,7 @@ Ce document sert de journal de bord pour le développement du site marketing d'O
 ## Architecture
 
 - Framework : React + Vite + TypeScript
-- Styling : Tailwind CSS (thème sombre indigo/violet)
+- Styling : Tailwind CSS (thème clair premium B2B 2026 — bleu pétrole + accent teal)
 - Routing : React Router DOM
 - Animations : Framer Motion
 - SEO : react-helmet-async + sitemap dynamique (Edge Function) + robots.txt + JSON-LD
@@ -98,5 +98,20 @@ Cible : TPE/PME, cabinets comptables, services juridiques, équipes RH.
   - Réorganisation des sections : Hero (H1 agrandi + trust badges sous CTA) → Cerveau Copilot + grille 5×2 modules → Pour qui → Social proof (témoignages + trust) → Pricing teaser → CTA final + newsletter inline
   - Sections supprimées en tant que blocs autonomes : Problème, Démo (ancre conservée sur pricing teaser)
   - Aucun changement de texte, SEO, routes ni Edge Functions
+
+- [2026-03-31] - **UI UPGRADE B2B 2026 + NOUVEAU THÈME COULEUR**
+  - Nouveau thème clair premium : --primary bleu pétrole (210 65% 28%), --primary-glow (210 55% 50%), --accent teal (168 55% 40%), fond off-white, surfaces blanches
+  - Font : Plus Jakarta Sans (remplace Inter)
+  - Tokens : gradients (hero/cta), shadows (card/card-hover/elevated/glow), animation float
+  - HomePage : UI modernisée — hero aéré, module cards avec icônes Lucide, trust badges repensés, CTA final gradient primary, newsletter intégrée
+  - PricingPage : cards épurées, accent teal sur CTA Pro, toggle amélioré
+  - FonctionnalitesPage : sticky nav refined, screenshot placeholders en bg-secondary
+  - AProposPage : valeurs + KPIs avec nouveau thème
+  - NotFound : gradient primary → primary-glow
+  - ContactPage : formulaire card + shadow-card + border
+  - SiteHeader : bg-card/80 backdrop-blur, CTA accent teal
+  - SiteFooter : bg-card, espacement amélioré
+  - CookieBanner : shadow-elevated, CTA accent teal
+  - Aucun changement de texte, SEO, routes, Edge Functions ni logique Supabase
 
 ---

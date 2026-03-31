@@ -94,5 +94,9 @@ Cible : TPE/PME, cabinets comptables, services juridiques, équipes RH.
   - sitemap.xml : ajout /politique-confidentialite
   - robots.txt : inchangé
   - PLAN_ODOC.md : mise à jour complète
+- [2026-03-31] - **REFONTE LAYOUT HOMEPAGE** — Tunnel de vente B2B 2026
+  - Réorganisation des sections : Hero (H1 agrandi + trust badges sous CTA) → Cerveau Copilot + grille 5×2 modules → Pour qui → Social proof (témoignages + trust) → Pricing teaser → CTA final + newsletter inline
+  - Sections supprimées en tant que blocs autonomes : Problème, Démo (ancre conservée sur pricing teaser)
+  - Aucun changement de texte, SEO, routes ni Edge Functions
 
 ---

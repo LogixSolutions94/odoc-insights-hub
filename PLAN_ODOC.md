@@ -120,4 +120,13 @@ Cible : TPE/PME, cabinets comptables, services juridiques, équipes RH.
   - CookieBanner : shadow-elevated, CTA accent teal
   - Aucun changement de texte, SEO, routes, Edge Functions ni logique Supabase
 
+- [2026-04-07] - **UPGRADE NAVY + NOUVELLES PAGES + SECTION PROBLÈME + TRUSTPILOT**
+  - Palette couleur : --primary navy (214 80% 18%), --primary-glow (217 75% 40%), --accent bleu (217 75% 42%), gradients mis à jour
+  - HomePage : ajout section Problème (3 pain points cards) entre Hero et Modules
+  - HomePage : remplacement témoignages fictifs par placeholder Trustpilot
+  - SiteFooter : tous liens morts activés (Roadmap, Changelog, Recrutement, Documentation, API, Statut)
+  - Nouvelles pages : /roadmap (3 phases), /changelog (timeline v1.0–v1.2 + newsletter), /recrutement (valeurs + candidature spontanée)
+  - App.tsx : 3 nouvelles routes ajoutées
+  - PLAN_ODOC.md : mise à jour complète
+
 ---

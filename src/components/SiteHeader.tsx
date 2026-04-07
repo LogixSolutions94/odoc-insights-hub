@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
+const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odocpilot.com";
 
 const navLinks = [
   { href: "/fonctionnalites", label: "Fonctionnalités" },

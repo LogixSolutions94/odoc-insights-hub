@@ -6,7 +6,7 @@ import { Target, Shield, Rocket, Building2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
-const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
+const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odocpilot.com";
 
 function AnimatedCounter({ end, suffix, label }: { end: number; suffix: string; label: string }) {
   const ref = useRef<HTMLDivElement>(null);

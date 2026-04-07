@@ -17,7 +17,7 @@ import {
   Calendar,
 } from "lucide-react";
 
-const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
+const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odocpilot.com";
 
 const modules = [
   {

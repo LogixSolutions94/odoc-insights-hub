@@ -34,7 +34,7 @@ import {
   Calendar,
 } from "lucide-react";
 
-const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
+const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odocpilot.com";
 
 const tools = [
   { icon: FileText, emoji: "📄", title: "Gestion Documentaire", description: "Uploadez, classez et retrouvez n'importe quel document en secondes. L'IA extrait les données clés automatiquement." },

@@ -10,8 +10,8 @@ export function SiteFooter() {
             <ul className="space-y-2.5">
               <li><Link to="/fonctionnalites" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Fonctionnalités</Link></li>
               <li><Link to="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Tarifs</Link></li>
-              <li><span className="text-sm text-muted-foreground/50 cursor-default">Roadmap</span></li>
-              <li><span className="text-sm text-muted-foreground/50 cursor-default">Changelog</span></li>
+              <li><Link to="/roadmap" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Roadmap</Link></li>
+              <li><Link to="/changelog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Changelog</Link></li>
             </ul>
           </div>
           <div>
@@ -20,15 +20,15 @@ export function SiteFooter() {
               <li><Link to="/a-propos" className="text-sm text-muted-foreground hover:text-foreground transition-colors">À propos</Link></li>
               <li><Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</Link></li>
               <li><Link to="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</Link></li>
-              <li><span className="text-sm text-muted-foreground/50 cursor-default">Careers</span></li>
+              <li><Link to="/recrutement" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Recrutement</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="text-sm font-bold text-foreground mb-4">Ressources</h3>
             <ul className="space-y-2.5">
-              <li><span className="text-sm text-muted-foreground/50 cursor-default">Documentation</span></li>
-              <li><span className="text-sm text-muted-foreground/50 cursor-default">API</span></li>
-              <li><span className="text-sm text-muted-foreground/50 cursor-default">Statut</span></li>
+              <li><a href="https://docs.odoc.fr" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Documentation</a></li>
+              <li><a href="https://docs.odoc.fr/api" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">API</a></li>
+              <li><a href="https://status.odoc.fr" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Statut</a></li>
             </ul>
           </div>
           <div>

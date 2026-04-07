@@ -15,6 +15,9 @@ import MentionsLegalesPage from "./pages/MentionsLegalesPage";
 import CguPage from "./pages/CguPage";
 import AProposPage from "./pages/AProposPage";
 import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialitePage";
+import RoadmapPage from "./pages/RoadmapPage";
+import ChangelogPage from "./pages/ChangelogPage";
+import RecrutementPage from "./pages/RecrutementPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,9 @@ const App = () => (
               <Route path="/cgu" element={<CguPage />} />
               <Route path="/a-propos" element={<AProposPage />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
+              <Route path="/roadmap" element={<RoadmapPage />} />
+              <Route path="/changelog" element={<ChangelogPage />} />
+              <Route path="/recrutement" element={<RecrutementPage />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

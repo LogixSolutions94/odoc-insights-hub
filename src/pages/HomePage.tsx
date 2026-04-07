@@ -28,6 +28,9 @@ import {
   Briefcase,
   Scale,
   UserCheck,
+  AlertTriangle,
+  Clock,
+  TrendingDown,
 } from "lucide-react";
 
 const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
@@ -50,30 +53,6 @@ const audiences = [
   { icon: Briefcase, title: "Cabinets Comptables", description: "Gérez vos clients, leurs factures et votre conformité depuis un seul endroit.", bullets: ["Multi-clients", "Conformité NF Z42-013", "Export FEC natif"] },
   { icon: Scale, title: "Services Juridiques", description: "Suivi des contrats, alertes de renouvellement, conformité légale intégrée.", bullets: ["Suivi contrats", "Alertes échéances", "Recherche IA"] },
   { icon: UserCheck, title: "Équipes RH & Admin", description: "Congés, projets, messagerie, documents — tout dans un seul outil.", bullets: ["Gestion congés", "Projets Kanban", "Messagerie intégrée"] },
-];
-
-const testimonials = [
-  {
-    quote: "Odoc nous a fait gagner 8h par semaine sur la gestion des factures. L'extraction IA est bluffante.",
-    name: "Sophie M.",
-    role: "DAF, cabinet comptable Paris",
-    size: "15 salariés",
-    initials: "SM",
-  },
-  {
-    quote: "Le portail fournisseur a changé notre vie. Plus d'emails, tout arrive directement dans l'app.",
-    name: "Karim B.",
-    role: "Directeur Général, PME logistique",
-    size: "28 salariés",
-    initials: "KB",
-  },
-  {
-    quote: "L'Odoc Brain répond à toutes mes questions sur mes contrats en quelques secondes. Indispensable.",
-    name: "Nathalie R.",
-    role: "Juriste d'entreprise, Lyon",
-    size: "",
-    initials: "NR",
-  },
 ];
 
 const trustBadges = [
@@ -145,7 +124,6 @@ export default function HomePage() {
           1 · HERO
       ═══════════════════════════════════════════ */}
       <section className="w-full relative overflow-hidden">
-        {/* Subtle gradient mesh background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
@@ -181,7 +159,6 @@ export default function HomePage() {
             </div>
           </MotionDiv>
 
-          {/* Trust strip */}
           <MotionDiv
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -199,6 +176,86 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════
+          1.5 · PROBLÈME
+      ═══════════════════════════════════════════ */}
+      <section className="w-full py-24 sm:py-32">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <MotionDiv>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-destructive/20 bg-destructive/5 px-4 py-1.5 text-xs font-semibold text-destructive mb-6">
+              ⚠ Le vrai problème des TPE/PME
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+              Vos outils sont partout.<br />
+              <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+                Votre temps, nulle part.
+              </span>
+            </h2>
+            <p className="mt-5 max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed">
+              La majorité des petites entreprises jonglent entre 6 à 10 outils différents,
+              perdent des heures à chercher des documents, oublient des échéances et n'ont
+              aucune visibilité sur leur activité réelle.
+            </p>
+          </MotionDiv>
+
+          <div className="mt-14 grid gap-6 grid-cols-1 sm:grid-cols-3">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0, duration: 0.5 }} viewport={{ once: true }}
+              className="p-6 rounded-xl bg-card border border-border shadow-card text-left"
+            >
+              <div className="flex items-center justify-center h-11 w-11 rounded-xl bg-destructive/10 mb-4">
+                <AlertTriangle className="h-5 w-5 text-destructive" />
+              </div>
+              <h3 className="text-base font-bold text-foreground">Informations éparpillées</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                Emails, Drive, WhatsApp, Excel... vos données critiques se perdent entre 5 outils différents.
+              </p>
+            </MotionDiv>
+
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }} viewport={{ once: true }}
+              className="p-6 rounded-xl bg-card border border-border shadow-card text-left"
+            >
+              <div className="flex items-center justify-center h-11 w-11 rounded-xl bg-accent/10 mb-4">
+                <Clock className="h-5 w-5 text-accent" />
+              </div>
+              <h3 className="text-base font-bold text-foreground">Temps gaspillé</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                2h par jour perdues à chercher des fichiers, relancer des fournisseurs,
+                ressaisir des données à la main.
+              </p>
+            </MotionDiv>
+
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }} viewport={{ once: true }}
+              className="p-6 rounded-xl bg-card border border-border shadow-card text-left"
+            >
+              <div className="flex items-center justify-center h-11 w-11 rounded-xl bg-primary/10 mb-4">
+                <TrendingDown className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="text-base font-bold text-foreground">Zéro visibilité</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                Sans tableau de bord unifié, impossible de piloter votre activité et
+                d'anticiper les problèmes avant qu'ils coûtent cher.
+              </p>
+            </MotionDiv>
+          </div>
+
+          <MotionDiv
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }} viewport={{ once: true }}
+            className="mt-10"
+          >
+            <p className="text-base font-semibold text-primary">
+              Odoc centralise tout. Un seul outil. Un seul copilot IA.
+            </p>
+          </MotionDiv>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           2 · CERVEAU COPILOT + MODULES
       ═══════════════════════════════════════════ */}
       <section className="w-full py-24 sm:py-32">
@@ -211,7 +268,6 @@ export default function HomePage() {
               </p>
             </MotionDiv>
 
-            {/* Hub visual */}
             <MotionDiv
               initial={{ opacity: 0, scale: 0.85 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -242,7 +298,6 @@ export default function HomePage() {
             </MotionDiv>
           </div>
 
-          {/* Module grid */}
           <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
             {tools.map((tool, i) => {
               const Icon = tool.icon;
@@ -308,40 +363,41 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          4 · SOCIAL PROOF
+          4 · SOCIAL PROOF (Trustpilot placeholder)
       ═══════════════════════════════════════════ */}
       <section className="w-full py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MotionDiv className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Ils ont adopté leur nouvel employé IA</h2>
           </MotionDiv>
-          <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <MotionDiv
-                key={t.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.12, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="p-6 rounded-xl bg-card border border-border shadow-card"
-              >
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-accent text-accent" />
+
+          <div className="flex flex-col items-center">
+            <div className="w-full max-w-2xl mx-auto rounded-2xl bg-card border border-border shadow-elevated p-10 sm:p-14 text-center">
+              <MotionDiv>
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <span className="text-3xl font-extrabold tracking-tight" style={{ color: '#00B67A' }}>
+                    ★ Trustpilot
+                  </span>
+                </div>
+                <div className="flex items-center justify-center gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-3xl" style={{ color: '#00B67A' }}>★</span>
                   ))}
                 </div>
-                <p className="text-sm text-foreground/80 italic leading-relaxed">"{t.quote}"</p>
-                <div className="mt-5 flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary">
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.role}{t.size && ` (${t.size})`}</p>
-                  </div>
+                <h2 className="text-2xl font-bold text-foreground">Nos clients parlent pour nous.</h2>
+                <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+                  Les avis de nos premiers utilisateurs arrivent bientôt.
+                  Vous utilisez Odoc ? Partagez votre expérience et aidez d'autres entreprises à nous découvrir.
+                </p>
+                <div className="mt-8">
+                  <a href="https://www.trustpilot.com" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="lg" className="border-[#00B67A] text-[#00B67A] hover:bg-[#00B67A]/5">
+                      Laisser un avis ★
+                    </Button>
+                  </a>
                 </div>
               </MotionDiv>
-            ))}
+            </div>
           </div>
 
           {/* Trust badges */}
@@ -410,7 +466,6 @@ export default function HomePage() {
               </p>
             </MotionDiv>
 
-            {/* Newsletter inline */}
             <div className="mt-10 pt-8 border-t border-primary-foreground/15">
               <p className="text-sm font-medium text-primary-foreground">Restez informé des nouveautés Odoc</p>
               <p className="text-xs text-primary-foreground/60 mt-1">Conseils IA, nouvelles fonctionnalités, études de cas — directement dans votre boîte mail.</p>

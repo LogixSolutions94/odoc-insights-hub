@@ -34,7 +34,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex flex-1 items-center justify-end gap-3">
-          <a href={`${APP_URL}/login`} className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href={`${APP_URL}/auth`} className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Connexion
           </a>
           <a href={`${APP_URL}/signup`} className="hidden sm:inline-flex">
@@ -63,7 +63,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <a href={`${APP_URL}/login`} className="block text-sm font-medium text-muted-foreground hover:text-foreground" onClick={() => setMobileOpen(false)}>
+          <a href={`${APP_URL}/auth`} className="block text-sm font-medium text-muted-foreground hover:text-foreground" onClick={() => setMobileOpen(false)}>
             Connexion
           </a>
           <a href={`${APP_URL}/signup`} onClick={() => setMobileOpen(false)}>

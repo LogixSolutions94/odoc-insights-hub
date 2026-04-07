@@ -8,13 +8,19 @@ Ce document sert de journal de bord pour le développement du site marketing d'O
 
 ## Pages Créées
 
-- `/` (Homepage): Landing page "Copilot IA d'entreprise" — Hero, Problème, Solution hub, 10 outils, Démo, Pour qui, Newsletter, Témoignages, Trust badges, CTA. ✅
+- `/` (Homepage): Landing page "Copilot IA d'entreprise" — Hero, Problème (pain points), Cerveau Copilot + 10 modules, Pour qui, Social proof Trustpilot, Pricing teaser, CTA + Newsletter. ✅
 - `/a-propos`: Page À propos (Vision copilot, Mission, Valeurs, 4 KPIs animés, CTA). ✅
 - `/pricing`: Page tarifs 4 plans (Starter 0€, Essentiel 29€, Pro 79€, Entreprise sur mesure) + toggle annuel + FAQ + trust badges. ✅
-- `/fonctionnalites`: 10 modules du copilot IA (Documents, Factures, Brain, Analytics, Équipe, RH, Projets, Messagerie, Portail Fournisseur, Connectors) avec sticky nav. ✅
-- `/blog`: Page index dynamique (Supabase), recherche, filtres catégories, article featured, pagination, état vide. ✅
-- `/blog/[slug]`: Article dynamique (Supabase), rendu Markdown, CTA inline, articles similaires, SEO dynamique, compteur de vues. ✅
-- `/contact`: Formulaire de contact avec validation Zod, honeypot anti-spam, soumission via Edge Function Resend. ✅
+- `/fonctionnalites`: 10 modules du copilot IA avec sticky nav. ✅
+- `/blog`: Page index dynamique (Supabase), recherche, filtres catégories. ✅
+- `/blog/[slug]`: Article dynamique (Supabase), rendu Markdown, SEO dynamique. ✅
+- `/contact`: Formulaire de contact avec validation Zod, honeypot anti-spam. ✅
+- `/mentions-legales`: Mentions légales complètes. ✅
+- `/cgu`: CGU complètes. ✅
+- `/politique-confidentialite`: Politique de confidentialité RGPD complète. ✅
+- `/roadmap`: Roadmap en 3 phases (production, en cours, à venir) + CTA contact. ✅
+- `/changelog`: Changelog timeline verticale (v1.0–v1.2) + formulaire newsletter. ✅
+- `/recrutement`: Page recrutement (valeurs, candidature spontanée → /contact). ✅
 - `/mentions-legales`: Mentions légales complètes (éditeur, hébergeur, RGPD, cookies, PI). ✅
 - `/cgu`: CGU complètes (5 articles : objet, accès, abonnements, données, responsabilité). ✅
 - `/politique-confidentialite`: Politique de confidentialité RGPD complète (9 sections). ✅

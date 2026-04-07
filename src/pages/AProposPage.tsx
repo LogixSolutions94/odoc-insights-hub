@@ -62,8 +62,8 @@ export default function AProposPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="À propos d'Odoc | Copilot IA d'entreprise"
-        description="Découvrez la mission et la vision derrière Odoc, le copilot IA qui rend accessible aux PME les outils jusqu'ici réservés aux grandes corporations."
+        title="À propos — Odoc | L'OS d'entreprise next-gen"
+        description="Odoc est né pour libérer les TPE/PME des tâches répétitives. Découvrez notre vision, notre mission et l'équipe qui construit le futur OS des entreprises françaises."
         canonical="/a-propos"
       />
 

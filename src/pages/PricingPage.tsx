@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/MotionDiv";
 import { SEOHead } from "@/components/SEOHead";
-import { Check, Lock, BadgeCheck, Shield, Zap } from "lucide-react";
+import { Check, Lock, BadgeCheck, Shield, Zap, CheckCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -16,15 +16,16 @@ const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
 const plans = [
   {
     name: "Starter",
-    badge: "Pour démarrer",
+    badge: "Gratuit pour toujours",
     monthlyPrice: 0,
     priceLabel: "Gratuit",
     features: [
-      "Jusqu'à 50 documents",
       "1 utilisateur",
+      "50 documents max",
       "Odoc Brain (10 questions/mois)",
       "Factures IA (5/mois)",
-      "Documents, Brain, Analytics basique",
+      "Analytics basique",
+      "Support communautaire",
     ],
     cta: "Commencer gratuitement",
     ctaLink: `${APP_URL}/signup`,
@@ -33,16 +34,17 @@ const plans = [
   },
   {
     name: "Essentiel",
-    badge: "Pour les petites équipes",
+    badge: "Le plus choisi",
     monthlyPrice: 29,
+    annualPrice: 23,
     priceLabel: null,
     features: [
-      "Jusqu'à 500 documents",
-      "3 utilisateurs",
+      "Jusqu'à 3 utilisateurs",
+      "500 documents",
       "Odoc Brain illimité",
       "Factures IA (50/mois)",
-      "Documents, Brain, Factures, Analytics, RH basique",
-      "Support email",
+      "Modules : Documents, Brain, Factures, Analytics, RH basique",
+      "Support email sous 24h",
     ],
     cta: "Commencer l'essai 14 jours",
     ctaLink: `${APP_URL}/signup`,
@@ -53,15 +55,16 @@ const plans = [
     name: "Pro",
     badge: "⭐ Le plus populaire",
     monthlyPrice: 79,
+    annualPrice: 63,
     priceLabel: null,
     features: [
+      "Jusqu'à 10 utilisateurs",
       "Documents illimités",
-      "10 utilisateurs",
       "Tous les modules inclus",
-      "PO Matching IA",
-      "Détection fraude",
+      "PO Matching IA + Détection fraude",
       "Export FEC + PDF",
-      "Support prioritaire",
+      "Calendrier partagé",
+      "Support prioritaire sous 4h",
     ],
     cta: "Commencer l'essai 14 jours",
     ctaLink: `${APP_URL}/signup`,
@@ -70,17 +73,17 @@ const plans = [
   },
   {
     name: "Entreprise",
-    badge: "Pour les grandes organisations",
+    badge: "Contactez-nous",
     monthlyPrice: -1,
-    priceLabel: "Parlons-en",
+    priceLabel: "Sur mesure",
     features: [
-      "Tout le plan Pro",
       "Utilisateurs illimités",
-      "SLA garanti",
+      "Tout le plan Pro",
+      "SLA garanti 99.9%",
       "Onboarding dédié",
       "Intégrations sur mesure",
-      "Facturation personnalisée",
       "Account manager dédié",
+      "Facturation personnalisée",
     ],
     cta: "Contacter l'équipe",
     ctaLink: "/contact",
@@ -112,16 +115,16 @@ export default function PricingPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Tarifs — Odoc | Copilot IA d'entreprise"
-        description="Découvrez les tarifs d'Odoc : Starter gratuit, Essentiel à 29€/mois, Pro à 79€/mois et Entreprise sur mesure. Essai gratuit 14 jours."
+        title="Tarifs — Odoc | Pricing simplifié de l'OS d'entreprise IA"
+        description="Tarifs d'Odoc : Starter gratuit, Essentiel 29€/mois, Pro 79€/mois, Entreprise sur mesure. Essai 14 jours, facturation annuelle avec 20% de remise."
         canonical="/pricing"
       />
 
       {/* Hero */}
       <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-14 text-center">
         <MotionDiv>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">Un tarif pour chaque étape de votre croissance</h1>
-          <p className="mt-5 max-w-2xl mx-auto text-lg text-muted-foreground">Commencez gratuitement. Évoluez quand vous êtes prêts.</p>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">Simple. Transparent. Sans surprise.</h1>
+          <p className="mt-5 max-w-2xl mx-auto text-lg text-muted-foreground">Commencez gratuitement. Évoluez quand votre équipe grandit. Annulez quand vous voulez.</p>
         </MotionDiv>
 
         {/* Toggle */}
@@ -143,7 +146,7 @@ export default function PricingPage() {
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan, i) => {
-            const price = plan.monthlyPrice <= 0 ? 0 : annual ? Math.round(plan.monthlyPrice * 0.8) : plan.monthlyPrice;
+            const price = plan.monthlyPrice <= 0 ? 0 : annual ? (plan.annualPrice || Math.round(plan.monthlyPrice * 0.8)) : plan.monthlyPrice;
             const isCustom = plan.monthlyPrice === -1;
 
             return (
@@ -198,6 +201,66 @@ export default function PricingPage() {
               </MotionDiv>
             );
           })}
+        </div>
+      </section>
+
+      {/* Comparison Table */}
+      <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28">
+        <MotionDiv className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Odoc vs les autres outils</h2>
+          <p className="mt-4 text-lg text-muted-foreground">Tous vos besoins en un seul endroit, au meilleur prix.</p>
+        </MotionDiv>
+
+        <div className="overflow-x-auto rounded-xl border border-border shadow-card">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-border bg-primary/5">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Fonctionnalité</th>
+                <th className="px-6 py-4 text-center text-sm font-semibold text-foreground">Odoc Pro</th>
+                <th className="px-6 py-4 text-center text-sm font-semibold text-muted-foreground">Outils séparés</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-border">
+                <td className="px-6 py-4 text-sm text-foreground font-medium">Gestion documentaire IA</td>
+                <td className="px-6 py-4 text-center"><span className="text-lg text-green-600 font-bold">✅ Inclus</span></td>
+                <td className="px-6 py-4 text-center text-sm text-muted-foreground">Dropbox 10€/mois</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="px-6 py-4 text-sm text-foreground font-medium">Factures IA</td>
+                <td className="px-6 py-4 text-center"><span className="text-lg text-green-600 font-bold">✅ Inclus</span></td>
+                <td className="px-6 py-4 text-center text-sm text-muted-foreground">Pennylane 35€/mois</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="px-6 py-4 text-sm text-foreground font-medium">Copilot IA (Brain)</td>
+                <td className="px-6 py-4 text-center"><span className="text-lg text-green-600 font-bold">✅ Inclus</span></td>
+                <td className="px-6 py-4 text-center text-sm text-muted-foreground">ChatGPT 20€/mois</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="px-6 py-4 text-sm text-foreground font-medium">Gestion RH</td>
+                <td className="px-6 py-4 text-center"><span className="text-lg text-green-600 font-bold">✅ Inclus</span></td>
+                <td className="px-6 py-4 text-center text-sm text-muted-foreground">Factorial 4€/user/mois</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="px-6 py-4 text-sm text-foreground font-medium">Messagerie équipe</td>
+                <td className="px-6 py-4 text-center"><span className="text-lg text-green-600 font-bold">✅ Inclus</span></td>
+                <td className="px-6 py-4 text-center text-sm text-muted-foreground">Slack 7.25€/user/mois</td>
+              </tr>
+              <tr className="bg-secondary/50">
+                <td className="px-6 py-4 text-sm font-bold text-foreground">Total estimé / mois</td>
+                <td className="px-6 py-4 text-center"><span className="text-lg font-bold text-primary">79€/mois</span></td>
+                <td className="px-6 py-4 text-center"><span className="text-lg font-bold text-muted-foreground line-through">~150€+/mois</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-12 rounded-xl bg-card border border-border p-6 sm:p-8 flex items-start gap-4 shadow-card">
+          <Shield className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <h3 className="font-bold text-foreground mb-2">Satisfait ou remboursé 30 jours</h3>
+            <p className="text-sm text-muted-foreground">Essayez Odoc sans risque. Si vous n'êtes pas satisfait dans les 30 jours, on vous rembourse intégralement. Sans question.</p>
+          </div>
         </div>
       </section>
 

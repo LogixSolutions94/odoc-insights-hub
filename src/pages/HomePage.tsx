@@ -31,6 +31,7 @@ import {
   AlertTriangle,
   Clock,
   TrendingDown,
+  Calendar,
 } from "lucide-react";
 
 const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
@@ -46,6 +47,7 @@ const tools = [
   { icon: MessageSquare, emoji: "💬", title: "Messagerie Interne", description: "Canaux d'équipe, messages temps réel, @mentions, pièces jointes. Tout en un, sans quitter Odoc." },
   { icon: Link2, emoji: "🔗", title: "Portail Fournisseur", description: "Envoyez un lien sécurisé à vos fournisseurs pour qu'ils déposent leurs factures directement dans Odoc." },
   { icon: Cloud, emoji: "☁️", title: "Smart Connectors", description: "Connectez Google Drive et Dropbox pour synchroniser vos documents automatiquement dans Odoc." },
+  { icon: Calendar, emoji: "📅", title: "Calendrier Partagé", description: "Planifiez, synchronisez et partagez vos événements d'équipe. Rappels automatiques, vue agenda et intégration Google Calendar." },
 ];
 
 const audiences = [
@@ -114,8 +116,8 @@ export default function HomePage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Odoc — Le Copilot IA de votre Entreprise"
-        description="Odoc centralise documents, factures, RH, projets et messagerie dans un seul copilot IA. Comme un employé en plus — sans les charges. Essai gratuit."
+        title="Odoc — OS d'entreprise IA | Copilot pour TPE/PME"
+        description="Odoc centralise documents, factures, projets, RH et équipe dans un OS IA intelligent. Comme un employé en plus — sans les charges. Essai gratuit."
         canonical="/"
         jsonLd={jsonLd}
       />
@@ -131,23 +133,23 @@ export default function HomePage() {
 
         <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 text-center">
           <MotionDiv>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary mb-8">
-              ✦ Nouveau — Copilot IA multi-outils
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary mb-8 animate-pulse">
+              ● Nouveau — OS d'entreprise IA · Déjà adopté par +200 équipes
             </span>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.92] text-foreground">
-              Odoc, votre copilot
+              Odoc, l'OS de votre entreprise.
               <br />
-              <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">d'entreprise IA</span>
+              <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Votre employé IA. 24h/24.</span>
             </h1>
 
             <p className="mt-8 max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              Une dizaine d'outils intelligents pour gérer documents, factures, équipes, projets et finances. Comme un employé en plus — sans les charges.
+              Fini les outils éparpillés. Odoc centralise tout — documents, factures, projets, équipe, finances — dans un seul copilot IA qui travaille à votre place.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <a href={`${APP_URL}/signup`}>
-                <Button size="lg" className="w-full sm:w-auto text-base px-8 py-6 bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg shadow-accent/20">
+                <Button size="lg" className="w-full sm:w-auto text-base px-10 py-6 font-bold bg-gradient-to-r from-[#1a56db] to-[#0ea5e9] text-white shadow-[0_0_30px_rgba(26,86,219,0.4)] hover:shadow-[0_0_40px_rgba(26,86,219,0.6)] hover:scale-[1.03] transition-all duration-200">
                   Essayer gratuitement <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </a>
@@ -262,9 +264,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <MotionDiv>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Un seul outil. Dix compétences.</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">L'OS de votre entreprise. Onze modules. Zéro compromis.</h2>
               <p className="mt-5 max-w-2xl mx-auto text-lg text-muted-foreground">
-                Odoc centralise tout ce dont votre entreprise a besoin dans un copilot IA qui apprend, automatise et vous assiste.
+                Odoc remplace une dizaine d'outils éparpillés par un seul OS IA qui centralise, automatise et pilote votre entreprise — comme un employé supplémentaire qui ne dort jamais.
               </p>
             </MotionDiv>
 
@@ -328,7 +330,7 @@ export default function HomePage() {
       <section className="w-full py-24 sm:py-32 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <MotionDiv className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Conçu pour les équipes qui avancent vite</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Un OS taillé pour les entreprises modernes</h2>
           </MotionDiv>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {audiences.map((a, i) => {
@@ -452,8 +454,8 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="rounded-2xl bg-gradient-to-br from-primary to-primary-glow p-10 sm:p-16 shadow-elevated">
             <MotionDiv>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground">Votre copilot d'entreprise vous attend.</h2>
-              <p className="mt-4 text-lg text-primary-foreground/80">Démarrez gratuitement. Aucune carte bancaire requise.</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground">Votre employé IA vous attend. Il commence dès aujourd'hui.</h2>
+              <p className="mt-4 text-lg text-primary-foreground/80">Setup en 2 minutes. Aucune carte bancaire. Annulation à tout moment.</p>
               <div className="mt-8">
                 <a href={`${APP_URL}/signup`}>
                   <Button size="lg" className="px-10 py-6 text-base bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg">

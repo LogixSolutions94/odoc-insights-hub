@@ -14,6 +14,7 @@ import {
   MessageSquare,
   Link2,
   Cloud,
+  Calendar,
 } from "lucide-react";
 
 const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odoc.fr";
@@ -159,6 +160,20 @@ const modules = [
     ],
     screenshotLabel: "Aperçu — Smart Connectors",
   },
+  {
+    id: "calendrier",
+    icon: Calendar,
+    title: "Calendrier Partagé",
+    description: "Planifiez et synchronisez les événements de votre équipe. Vue agenda, rappels automatiques, partage en un clic et intégration Google Calendar bidirectionnelle.",
+    benefits: [
+      "Vue agenda partagée par équipe",
+      "Rappels automatiques par email",
+      "Intégration Google Calendar bidirectionnelle",
+      "Création d'événements depuis les tâches Kanban",
+      "Disponibilités et planification simplifiées",
+    ],
+    screenshotLabel: "Aperçu — Calendrier Partagé",
+  },
 ];
 
 export default function FonctionnalitesPage() {
@@ -187,8 +202,8 @@ export default function FonctionnalitesPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Fonctionnalités — Odoc | Les 10 modules du copilot IA"
-        description="Découvrez les 10 modules d'Odoc : documents, factures IA, Odoc Brain, analytics, équipe, RH, projets, messagerie, portail fournisseur et smart connectors."
+        title="Fonctionnalités — Odoc | Les 11 modules de l'OS d'entreprise IA"
+        description="Découvrez les 11 modules d'Odoc : documents, factures IA, Odoc Brain, analytics, équipe, RH, projets, messagerie, calendrier, portail fournisseur et smart connectors."
         canonical="/fonctionnalites"
       />
 
@@ -196,7 +211,7 @@ export default function FonctionnalitesPage() {
       <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-14 text-center">
         <MotionDiv>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-            Les 10 modules de votre copilot IA
+            Les 11 modules de votre OS IA
           </h1>
           <p className="mt-5 max-w-2xl mx-auto text-lg text-muted-foreground">
             Chaque module est conçu pour automatiser une facette de votre entreprise. Ensemble, ils forment un employé IA complet.

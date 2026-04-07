@@ -38,7 +38,9 @@ export function SiteHeader() {
             Connexion
           </a>
           <a href={`${APP_URL}/signup`} className="hidden sm:inline-flex">
-            <Button size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground">Essai gratuit</Button>
+            <Button size="sm" className="bg-gradient-to-r from-[#1a56db] to-[#0ea5e9] text-white font-semibold shadow-[0_0_20px_rgba(26,86,219,0.35)] hover:shadow-[0_0_28px_rgba(26,86,219,0.5)] hover:scale-[1.03] transition-all duration-200">
+              Essai gratuit →
+            </Button>
           </a>
           <button
             className="md:hidden p-2 text-muted-foreground hover:text-foreground"
@@ -65,7 +67,9 @@ export function SiteHeader() {
             Connexion
           </a>
           <a href={`${APP_URL}/signup`} onClick={() => setMobileOpen(false)}>
-            <Button size="sm" className="w-full mt-2 bg-accent hover:bg-accent/90 text-accent-foreground">Essai gratuit</Button>
+            <Button size="sm" className="w-full mt-2 bg-gradient-to-r from-[#1a56db] to-[#0ea5e9] text-white font-semibold hover:scale-[1.02] transition-all duration-200">
+              Essai gratuit →
+            </Button>
           </a>
         </div>
       )}

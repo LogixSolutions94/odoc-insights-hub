@@ -8,13 +8,19 @@ Ce document sert de journal de bord pour le développement du site marketing d'O
 
 ## Pages Créées
 
-- `/` (Homepage): Landing page "Copilot IA d'entreprise" — Hero, Problème, Solution hub, 10 outils, Démo, Pour qui, Newsletter, Témoignages, Trust badges, CTA. ✅
+- `/` (Homepage): Landing page "Copilot IA d'entreprise" — Hero, Problème (pain points), Cerveau Copilot + 10 modules, Pour qui, Social proof Trustpilot, Pricing teaser, CTA + Newsletter. ✅
 - `/a-propos`: Page À propos (Vision copilot, Mission, Valeurs, 4 KPIs animés, CTA). ✅
 - `/pricing`: Page tarifs 4 plans (Starter 0€, Essentiel 29€, Pro 79€, Entreprise sur mesure) + toggle annuel + FAQ + trust badges. ✅
-- `/fonctionnalites`: 10 modules du copilot IA (Documents, Factures, Brain, Analytics, Équipe, RH, Projets, Messagerie, Portail Fournisseur, Connectors) avec sticky nav. ✅
-- `/blog`: Page index dynamique (Supabase), recherche, filtres catégories, article featured, pagination, état vide. ✅
-- `/blog/[slug]`: Article dynamique (Supabase), rendu Markdown, CTA inline, articles similaires, SEO dynamique, compteur de vues. ✅
-- `/contact`: Formulaire de contact avec validation Zod, honeypot anti-spam, soumission via Edge Function Resend. ✅
+- `/fonctionnalites`: 10 modules du copilot IA avec sticky nav. ✅
+- `/blog`: Page index dynamique (Supabase), recherche, filtres catégories. ✅
+- `/blog/[slug]`: Article dynamique (Supabase), rendu Markdown, SEO dynamique. ✅
+- `/contact`: Formulaire de contact avec validation Zod, honeypot anti-spam. ✅
+- `/mentions-legales`: Mentions légales complètes. ✅
+- `/cgu`: CGU complètes. ✅
+- `/politique-confidentialite`: Politique de confidentialité RGPD complète. ✅
+- `/roadmap`: Roadmap en 3 phases (production, en cours, à venir) + CTA contact. ✅
+- `/changelog`: Changelog timeline verticale (v1.0–v1.2) + formulaire newsletter. ✅
+- `/recrutement`: Page recrutement (valeurs, candidature spontanée → /contact). ✅
 - `/mentions-legales`: Mentions légales complètes (éditeur, hébergeur, RGPD, cookies, PI). ✅
 - `/cgu`: CGU complètes (5 articles : objet, accès, abonnements, données, responsabilité). ✅
 - `/politique-confidentialite`: Politique de confidentialité RGPD complète (9 sections). ✅
@@ -113,5 +119,14 @@ Cible : TPE/PME, cabinets comptables, services juridiques, équipes RH.
   - SiteFooter : bg-card, espacement amélioré
   - CookieBanner : shadow-elevated, CTA accent teal
   - Aucun changement de texte, SEO, routes, Edge Functions ni logique Supabase
+
+- [2026-04-07] - **UPGRADE NAVY + NOUVELLES PAGES + SECTION PROBLÈME + TRUSTPILOT**
+  - Palette couleur : --primary navy (214 80% 18%), --primary-glow (217 75% 40%), --accent bleu (217 75% 42%), gradients mis à jour
+  - HomePage : ajout section Problème (3 pain points cards) entre Hero et Modules
+  - HomePage : remplacement témoignages fictifs par placeholder Trustpilot
+  - SiteFooter : tous liens morts activés (Roadmap, Changelog, Recrutement, Documentation, API, Statut)
+  - Nouvelles pages : /roadmap (3 phases), /changelog (timeline v1.0–v1.2 + newsletter), /recrutement (valeurs + candidature spontanée)
+  - App.tsx : 3 nouvelles routes ajoutées
+  - PLAN_ODOC.md : mise à jour complète
 
 ---

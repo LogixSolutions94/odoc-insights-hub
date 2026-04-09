@@ -4,6 +4,34 @@
 
 ---
 
+## 🏗️ ARCHITECTURE 2 SITES — RÈGLE CRITIQUE (LIRE EN PREMIER)
+
+Ce VPS héberge DEUX applications DISTINCTES. Ne JAMAIS les confondre.
+
+| Domaine               | Rôle          | Container       | Port |
+|-----------------------|---------------|-----------------|------|
+| odocpilot.com         | Landing page  | odoc-landing    | 3000 |
+| app.odocpilot.com     | SaaS app      | odoc-frontend   | 3001 |
+
+### Règles strictes — sans exception
+1. **Ce repo (odoc-insights-hub) = UNIQUEMENT la landing page** (odocpilot.com / container odoc-landing port 3000)
+2. **JAMAIS** toucher Dockerfile, nginx.conf, docker-compose.yml du SaaS (odoc-frontend)
+3. **JAMAIS** faire `docker-compose up` sans préciser le service exact
+4. Toute commande Docker/Nginx → DEMANDER CONFIRMATION avant d'appliquer si risque de toucher le SaaS
+5. Le container SaaS (odoc-frontend / port 3001) ne doit JAMAIS être redémarré ou modifié depuis cette session
+
+### Déploiement Landing seulement
+```bash
+# ✅ CORRECT — uniquement la landing
+npm run build
+scp -i ~/.ssh/odoc_vps_rsa -r dist/* root@151.80.144.236:/var/www/odoc/
+
+# ❌ INTERDIT — ne jamais faire depuis ce repo
+docker restart odoc-frontend  # Jamais toucher le SaaS
+```
+
+---
+
 ## 📍 **CONTEXTE PROJET**
 
 ### Vision Odoc

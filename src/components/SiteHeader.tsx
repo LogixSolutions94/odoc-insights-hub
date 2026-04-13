@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const APP_URL = import.meta.env.VITE_APP_URL || "https://app.odocpilot.com";
+const LOGIN_URL = "https://app.odocpilot.com/auth";
+const SIGNUP_URL = "https://app.odocpilot.com/auth";
 
 const navLinks = [
   { href: "/fonctionnalites", label: "Fonctionnalités" },
@@ -34,10 +35,15 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex flex-1 items-center justify-end gap-3">
-          <a href={`${APP_URL}/auth`} className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href={LOGIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
             Connexion
           </a>
-          <a href={`${APP_URL}/auth`} className="hidden sm:inline-flex" target="_blank" rel="noopener noreferrer">
+          <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="hidden sm:inline-flex">
             <Button size="sm" className="bg-gradient-to-r from-[#1a56db] to-[#0ea5e9] text-white font-semibold shadow-[0_0_20px_rgba(26,86,219,0.35)] hover:shadow-[0_0_28px_rgba(26,86,219,0.5)] hover:scale-[1.03] transition-all duration-200">
               Essai gratuit →
             </Button>
@@ -63,10 +69,16 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <a href={`${APP_URL}/auth`} className="block text-sm font-medium text-muted-foreground hover:text-foreground" onClick={() => setMobileOpen(false)}>
+          <a
+            href={LOGIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-sm font-medium text-muted-foreground hover:text-foreground"
+            onClick={() => setMobileOpen(false)}
+          >
             Connexion
           </a>
-          <a href={`${APP_URL}/auth`} onClick={() => setMobileOpen(false)} target="_blank" rel="noopener noreferrer">
+          <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
             <Button size="sm" className="w-full mt-2 bg-gradient-to-r from-[#1a56db] to-[#0ea5e9] text-white font-semibold hover:scale-[1.02] transition-all duration-200">
               Essai gratuit →
             </Button>

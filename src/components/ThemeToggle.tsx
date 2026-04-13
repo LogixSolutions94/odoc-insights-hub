@@ -1,57 +1,51 @@
-import { useEffect, useState } from 'react'
-import { Sun, Moon } from 'lucide-react'
+import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    // Check localStorage first
-    if (typeof window === 'undefined') return 'light'
-    const stored = localStorage.getItem('theme')
-    if (stored === 'light' || stored === 'dark') return stored
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
-    // Fall back to system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light'
-  })
-
-  // Apply theme to document
+  // Init : lire system preference (pas localStorage — sandbox bloque)
   useEffect(() => {
-    const html = document.documentElement
-    if (theme === 'dark') {
-      html.setAttribute('data-theme', 'dark')
-    } else {
-      html.removeAttribute('data-theme')
-    }
-    localStorage.setItem('theme', theme)
-  }, [theme])
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = prefersDark ? 'dark' : 'light';
+    setTheme(initial);
+    document.documentElement.setAttribute('data-theme', initial);
+  }, []);
 
-  // Listen to system theme changes
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    const handleChange = (e: MediaQueryListEvent) => {
-      const stored = localStorage.getItem('theme')
-      if (!stored) {
-        // Only update if user hasn't manually set a preference
-        setTheme(e.matches ? 'dark' : 'light')
-      }
-    }
-
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [])
+  const toggle = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+  };
 
   return (
     <button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="p-2 rounded-lg transition-colors hover:bg-surface-offset text-text-muted hover:text-text"
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      onClick={toggle}
+      aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '36px',
+        height: '36px',
+        borderRadius: 'var(--radius)',
+        border: '1px solid var(--border)',
+        background: 'var(--background)',
+        color: 'var(--muted-foreground)',
+        cursor: 'pointer',
+        transition: 'all 200ms ease',
+        flexShrink: 0,
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLButtonElement).style.background = 'hsl(var(--muted))';
+        (e.currentTarget as HTMLButtonElement).style.color = 'hsl(var(--foreground))';
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLButtonElement).style.background = 'var(--background)';
+        (e.currentTarget as HTMLButtonElement).style.color = 'var(--muted-foreground)';
+      }}
     >
-      {theme === 'dark' ? (
-        <Sun size={18} className="stroke-current" />
-      ) : (
-        <Moon size={18} className="stroke-current" />
-      )}
+      {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
     </button>
-  )
+  );
 }

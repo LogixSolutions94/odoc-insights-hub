@@ -66,10 +66,10 @@ const trustBadges = [
 ];
 
 const pricingTeaser = [
-  { name: "Starter", price: "0€", label: "Gratuit pour toujours" },
-  { name: "Essentiel", price: "29€", label: "/mois" },
-  { name: "Pro", price: "79€", label: "/mois", highlight: true },
-  { name: "Entreprise", price: "Sur mesure", label: "" },
+  { name: "Essential", price: "49€", label: "/mois", highlight: false },
+  { name: "Pro", price: "89€", label: "/mois", highlight: true },
+  { name: "Manager", price: "149€", label: "/mois", highlight: false },
+  { name: "Entreprise", price: "Sur mesure", label: "", highlight: false },
 ];
 
 const jsonLd = {
@@ -80,9 +80,9 @@ const jsonLd = {
   operatingSystem: "Web",
   description: "Odoc centralise documents, factures, RH, projets et messagerie dans un seul copilot IA. Comme un employé en plus — sans les charges.",
   offers: [
-    { "@type": "Offer", name: "Starter", price: "0", priceCurrency: "EUR", description: "Gratuit" },
-    { "@type": "Offer", name: "Essentiel", price: "29", priceCurrency: "EUR", billingIncrement: "P1M" },
-    { "@type": "Offer", name: "Pro", price: "79", priceCurrency: "EUR", billingIncrement: "P1M" },
+    { "@type": "Offer", name: "Essential", price: "49", priceCurrency: "EUR", billingIncrement: "P1M" },
+    { "@type": "Offer", name: "Pro", price: "89", priceCurrency: "EUR", billingIncrement: "P1M" },
+    { "@type": "Offer", name: "Manager", price: "149", priceCurrency: "EUR", billingIncrement: "P1M" },
     { "@type": "Offer", name: "Entreprise", price: "0", priceCurrency: "EUR", description: "Sur mesure" },
   ],
 };

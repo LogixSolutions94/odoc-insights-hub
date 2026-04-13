@@ -66,10 +66,10 @@ const trustBadges = [
 ];
 
 const pricingTeaser = [
-  { name: "Essential", price: "49€", label: "/mois", highlight: false },
-  { name: "Pro", price: "89€", label: "/mois", highlight: true },
-  { name: "Manager", price: "149€", label: "/mois", highlight: false },
-  { name: "Entreprise", price: "Sur mesure", label: "", highlight: false },
+  { name: "Essential", price: "49€", label: "/mois", accounts: "👤 1 compte", highlight: false },
+  { name: "Pro", price: "89€", label: "/mois", accounts: "👥 3 comptes", highlight: true },
+  { name: "Manager", price: "149€", label: "/mois", accounts: "👥 5 comptes et plus", highlight: false },
+  { name: "Entreprise", price: "Sur mesure", label: "", accounts: "👥 Sur mesure", highlight: false },
 ];
 
 const jsonLd = {
@@ -434,6 +434,7 @@ export default function HomePage() {
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{plan.name}</p>
                 <p className="mt-3 text-3xl sm:text-4xl font-extrabold text-foreground">{plan.price}</p>
                 {plan.label && <p className="text-xs text-muted-foreground mt-1">{plan.label}</p>}
+                {plan.accounts && <p className="text-xs text-muted-foreground mt-2">{plan.accounts}</p>}
               </MotionDiv>
             ))}
           </div>

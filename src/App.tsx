@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { MarketingLayout } from "@/components/MarketingLayout";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import HomePage from "./pages/HomePage";
 import PricingPage from "./pages/PricingPage";
 import FonctionnalitesPage from "./pages/FonctionnalitesPage";
@@ -29,6 +30,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route element={<MarketingLayout />}>
               <Route path="/" element={<HomePage />} />

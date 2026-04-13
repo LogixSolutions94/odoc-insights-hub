@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MotionDiv } from "@/components/MotionDiv";
 import { SEOHead } from "@/components/SEOHead";
+import { HeroParticles } from "@/components/HeroParticles";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -440,6 +441,10 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="w-full relative overflow-hidden">
+        {/* Particules animées */}
+        <HeroParticles />
+
+        {/* Fond dégradé flou */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
             className="absolute -top-32 left-1/3 w-[600px] h-[600px] rounded-full blur-[120px] opacity-20"
@@ -451,7 +456,8 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 text-center">
+        {/* Contenu du hero */}
+        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 text-center z-10">
           <MotionDiv>
             <span
               className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold mb-8"

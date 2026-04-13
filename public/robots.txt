@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /auth
-Disallow: /settings
-Disallow: /team
-
-Sitemap: https://odoc.fr/sitemap.xml
+Disallow: /api/
+Sitemap: https://odocpilot.com/sitemap.xml

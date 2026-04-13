@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://odoc.fr/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://odoc.fr/pricing</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://odoc.fr/fonctionnalites</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://odoc.fr/blog</loc><priority>0.8</priority><changefreq>daily</changefreq></url>
-  <url><loc>https://odoc.fr/a-propos</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://odoc.fr/contact</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://odoc.fr/mentions-legales</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
-  <url><loc>https://odoc.fr/cgu</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
-  <url><loc>https://odoc.fr/politique-confidentialite</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://odocpilot.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://odocpilot.com/fonctionnalites</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://odocpilot.com/tarifs</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://odocpilot.com/a-propos</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://odocpilot.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://odocpilot.com/contact</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://odocpilot.com/roadmap</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://odocpilot.com/changelog</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://odocpilot.com/recrutement</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://odocpilot.com/mentions-legales</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://odocpilot.com/politique-confidentialite</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://odocpilot.com/cgu</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

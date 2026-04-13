@@ -137,7 +137,7 @@ export default function HomePage() {
               ● Nouveau — OS d'entreprise IA · Déjà adopté par +200 équipes
             </span>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[0.92] text-foreground">
+            <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[0.92] text-foreground">
               Odoc, l'OS de votre entreprise.
               <br />
               <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Votre employé IA. 24h/24.</span>
@@ -148,7 +148,7 @@ export default function HomePage() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={`${APP_URL}/signup`}>
+              <a href={`${APP_URL}/auth`} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="w-full sm:w-auto text-base px-10 py-6 font-bold bg-gradient-to-r from-[#1a56db] to-[#0ea5e9] text-white shadow-[0_0_30px_rgba(26,86,219,0.4)] hover:shadow-[0_0_40px_rgba(26,86,219,0.6)] hover:scale-[1.03] transition-all duration-200">
                   Essayer gratuitement <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -422,7 +422,7 @@ export default function HomePage() {
           <MotionDiv className="mb-14">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Un tarif pour chaque étape de votre croissance</h2>
           </MotionDiv>
-          <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {pricingTeaser.map((plan) => (
               <MotionDiv
                 key={plan.name}
@@ -457,7 +457,7 @@ export default function HomePage() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground">Votre employé IA vous attend. Il commence dès aujourd'hui.</h2>
               <p className="mt-4 text-lg text-primary-foreground/80">Setup en 2 minutes. Aucune carte bancaire. Annulation à tout moment.</p>
               <div className="mt-8">
-                <a href={`${APP_URL}/signup`}>
+                <a href={`${APP_URL}/auth`} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="px-10 py-6 text-base bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg">
                     Créer mon compte gratuit <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>

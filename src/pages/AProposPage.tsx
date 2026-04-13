@@ -153,7 +153,7 @@ export default function AProposPage() {
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Votre copilot d'entreprise vous attend.</h2>
               <p className="mt-4 text-lg text-muted-foreground">Démarrez gratuitement et découvrez comment Odoc peut transformer votre quotidien.</p>
               <div className="mt-8">
-                <a href={`${APP_URL}/signup`}>
+                <a href={`${APP_URL}/auth`} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">Démarrer gratuitement</Button>
                 </a>
               </div>

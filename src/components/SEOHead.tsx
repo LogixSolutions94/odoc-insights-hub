@@ -9,7 +9,7 @@ interface SEOHeadProps {
   jsonLd?: Record<string, unknown>;
 }
 
-const BASE_URL = "https://odoc.fr";
+const BASE_URL = "https://odocpilot.com";
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-default.png`;
 
 export function SEOHead({

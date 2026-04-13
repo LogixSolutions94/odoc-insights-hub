@@ -37,7 +37,7 @@ export default function RecrutementPage() {
       <section className="w-full py-24 sm:py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <MotionDiv className="text-center mb-16">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground">
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
               On construit Odoc.{" "}
               <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
                 Rejoins-nous.

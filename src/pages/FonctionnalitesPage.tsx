@@ -295,7 +295,7 @@ export default function FonctionnalitesPage() {
               <h2 className="text-3xl font-bold tracking-tight text-foreground">Prêt à découvrir Odoc en action ?</h2>
               <p className="mt-4 text-lg text-muted-foreground">Essayez gratuitement ou demandez une démonstration personnalisée.</p>
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-                <a href={`${APP_URL}/signup`}>
+                <a href={`${APP_URL}/auth`} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">Essayer gratuitement</Button>
                 </a>
                 <Link to="/contact">

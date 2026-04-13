@@ -1,51 +1,51 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
 
-  // Init : lire system preference (pas localStorage — sandbox bloque)
-  useEffect(() => {
+  // Init : lire system preference et appliquer immédiatement (useLayoutEffect = synchrone)
+  useLayoutEffect(() => {
+    const html = document.documentElement;
+    const stored = html.getAttribute('data-theme');
+
+    // Si data-theme n'est pas set, déterminer depuis system preference
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial = prefersDark ? 'dark' : 'light';
+    const initial = (stored as 'light' | 'dark') || (prefersDark ? 'dark' : 'light');
+
+    console.log('[ThemeToggle] Initializing with theme:', initial);
     setTheme(initial);
-    document.documentElement.setAttribute('data-theme', initial);
+    html.setAttribute('data-theme', initial);
+    setMounted(true);
   }, []);
 
   const toggle = () => {
     const next = theme === 'dark' ? 'light' : 'dark';
+    console.log('[ThemeToggle] Toggling theme:', theme, '→', next);
+
     setTheme(next);
     document.documentElement.setAttribute('data-theme', next);
+
+    // Force reflow pour s'assurer que les changements CSS sont appliqués
+    void document.documentElement.offsetHeight;
   };
+
+  if (!mounted) return null;
 
   return (
     <button
       onClick={toggle}
+      type="button"
       aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '36px',
-        height: '36px',
-        borderRadius: 'var(--radius)',
-        border: '1px solid hsl(var(--border))',
-        background: 'hsl(var(--background))',
-        color: 'hsl(var(--muted-foreground))',
-        cursor: 'pointer',
-        transition: 'all 200ms ease',
-        flexShrink: 0,
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.background = 'hsl(var(--muted))';
-        (e.currentTarget as HTMLButtonElement).style.color = 'hsl(var(--foreground))';
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.background = 'hsl(var(--background))';
-        (e.currentTarget as HTMLButtonElement).style.color = 'hsl(var(--muted-foreground))';
-      }}
+      className="flex items-center justify-center w-9 h-9 rounded-lg border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-all duration-200 cursor-pointer"
+      title={`Mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
     >
-      {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+      {theme === 'dark' ? (
+        <Sun size={18} className="stroke-current" />
+      ) : (
+        <Moon size={18} className="stroke-current" />
+      )}
     </button>
   );
 }

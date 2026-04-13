@@ -39,7 +39,7 @@ export function BlogCard({ post, variant = "default" }: BlogCardProps) {
         <div className="flex flex-col md:flex-row gap-6 bg-card rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow border border-border/50">
           <div className="md:w-1/2 aspect-video md:aspect-auto relative overflow-hidden">
             {post.cover_image_url ? (
-              <img src={post.cover_image_url} alt={post.title} className="w-full h-full object-cover" />
+              <img src={post.cover_image_url} alt={post.title} className="w-full h-full object-cover" loading="lazy" />
             ) : (
               <div className="w-full h-full min-h-[200px] bg-gradient-to-br from-primary/20 to-accent/30 flex items-center justify-center">
                 <FileText className="h-16 w-16 text-primary/50" />
@@ -74,7 +74,7 @@ export function BlogCard({ post, variant = "default" }: BlogCardProps) {
       )}>
         <div className={cn("aspect-video relative overflow-hidden", variant === "compact" && "w-1/3 aspect-auto")}>
           {post.cover_image_url ? (
-            <img src={post.cover_image_url} alt={post.title} className="w-full h-full object-cover" />
+            <img src={post.cover_image_url} alt={post.title} className="w-full h-full object-cover" loading="lazy" />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/30 flex items-center justify-center">
               <FileText className="h-10 w-10 text-primary/50" />

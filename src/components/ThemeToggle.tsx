@@ -29,9 +29,9 @@ export function ThemeToggle() {
         width: '36px',
         height: '36px',
         borderRadius: 'var(--radius)',
-        border: '1px solid var(--border)',
-        background: 'var(--background)',
-        color: 'var(--muted-foreground)',
+        border: '1px solid hsl(var(--border))',
+        background: 'hsl(var(--background))',
+        color: 'hsl(var(--muted-foreground))',
         cursor: 'pointer',
         transition: 'all 200ms ease',
         flexShrink: 0,
@@ -41,8 +41,8 @@ export function ThemeToggle() {
         (e.currentTarget as HTMLButtonElement).style.color = 'hsl(var(--foreground))';
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.background = 'var(--background)';
-        (e.currentTarget as HTMLButtonElement).style.color = 'var(--muted-foreground)';
+        (e.currentTarget as HTMLButtonElement).style.background = 'hsl(var(--background))';
+        (e.currentTarget as HTMLButtonElement).style.color = 'hsl(var(--muted-foreground))';
       }}
     >
       {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}

@@ -137,7 +137,7 @@ export default function PricingPage() {
       <SEOHead
         title="Tarifs — Plans Odoc"
         description="Essential 49€, Pro 89€, Manager 149€. Essai gratuit 14 jours sans CB. Copilot IA pour TPE et PME."
-        canonical="/tarifs"
+        canonical="/pricing"
       />
 
       {/* ═══════════════════════════════════════════

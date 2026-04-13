@@ -10,9 +10,10 @@
 
 @layer base {
   /* ─────────────────────────────────────────────────
-     LIGHT MODE (Default)
+     LIGHT MODE (Default) - Light theme ou [data-theme="light"]
      ───────────────────────────────────────────────── */
-  :root {
+  :root,
+  [data-theme="light"] {
     /* ─── Fonts ─── */
     --font-display: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif;
     --font-body: 'Satoshi', 'Inter', 'Plus Jakarta Sans', sans-serif;
@@ -107,8 +108,11 @@
   /* ─────────────────────────────────────────────────
      DARK MODE (System Preference)
      ───────────────────────────────────────────────── */
+  /* ─────────────────────────────────────────────────
+     DARK MODE via System Preference (ONLY if NO data-theme set)
+     ───────────────────────────────────────────────── */
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme]) {
       /* ─── Surfaces Dark Mode ─── */
       --color-background: 215 30% 8%;
       --color-surface: 215 30% 12%;

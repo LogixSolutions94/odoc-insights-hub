@@ -31,12 +31,12 @@
     --color-secondary-glow: 201 75% 35%;
 
     /* ─── Surfaces Light Mode ─── */
-    --color-background: 0 0% 100%;
-    --color-surface: 0 0% 100%;
-    --color-surface-2: 210 40% 96%;
+    --color-background: 220 14% 93%;
+    --color-surface: 220 14% 96%;
+    --color-surface-2: 220 14% 98%;
     --color-surface-offset: 210 20% 92%;
-    --color-border: 210 20% 85%;
-    --color-divider: 210 20% 90%;
+    --color-border: 220 14% 80%;
+    --color-divider: 220 14% 86%;
 
     /* ─── Text Light Mode ─── */
     --color-text: 210 20% 10%;
@@ -50,9 +50,9 @@
     --color-warning: 38 92% 50%;
 
     /* ─── Legacy/Compatibility ─── */
-    --background: 0 0% 100%;
+    --background: 220 14% 93%;
     --foreground: 210 20% 10%;
-    --card: 0 0% 100%;
+    --card: 220 14% 96%;
     --card-foreground: 210 20% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 210 20% 10%;
@@ -78,7 +78,7 @@
     --gradient-cta: linear-gradient(135deg, hsl(30 100% 50%), hsl(201 85% 30%));
 
     /* ─── Sidebar ─── */
-    --sidebar-background: 0 0% 100%;
+    --sidebar-background: 220 14% 93%;
     --sidebar-foreground: 210 20% 10%;
     --sidebar-primary: 30 100% 50%;
     --sidebar-primary-foreground: 0 0% 100%;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/MotionDiv";
+import { BackButton } from "@/components/BackButton";
 import { SEOHead } from "@/components/SEOHead";
 import { CheckCircle, Settings, Clock, ArrowRight } from "lucide-react";
 
@@ -37,6 +38,7 @@ const phases = [
 export default function RoadmapPage() {
   return (
     <div className="flex flex-col items-center">
+      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="Roadmap — Odoc"
         description="Découvrez les fonctionnalités en cours et à venir sur Odoc, votre copilot IA d'entreprise."

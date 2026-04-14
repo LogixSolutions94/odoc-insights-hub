@@ -1,8 +1,10 @@
 import { SEOHead } from "@/components/SEOHead";
+import { BackButton } from "@/components/BackButton";
 
 export default function CguPage() {
   return (
     <div className="mx-auto max-w-3xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="CGU — Odoc | Conditions Générales d'Utilisation"
         description="Conditions générales d'utilisation de la plateforme Odoc."

@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { MotionDiv } from "@/components/MotionDiv";
+import { BackButton } from "@/components/BackButton";
 import { BlogSEOHead } from "@/components/blog/BlogSEOHead";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { Input } from "@/components/ui/input";
@@ -65,6 +66,7 @@ export default function BlogPage() {
 
   return (
     <div className="mx-auto max-w-6xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <BackButton to="/" label="← Accueil" />
       <BlogSEOHead />
 
       {/* Hero */}

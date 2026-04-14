@@ -19,6 +19,7 @@ import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialitePage";
 import RoadmapPage from "./pages/RoadmapPage";
 import ChangelogPage from "./pages/ChangelogPage";
 import RecrutementPage from "./pages/RecrutementPage";
+import EFacturePage from "./pages/EFacturePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/changelog" element={<ChangelogPage />} />
               <Route path="/recrutement" element={<RecrutementPage />} />
+              <Route path="/e-facture" element={<EFacturePage />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

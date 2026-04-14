@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/MotionDiv";
+import { BackButton } from "@/components/BackButton";
 import { SEOHead } from "@/components/SEOHead";
 import { Rocket, Brain, Flag, ArrowRight } from "lucide-react";
 
@@ -28,6 +29,7 @@ const values = [
 export default function RecrutementPage() {
   return (
     <div className="flex flex-col items-center">
+      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="Recrutement — Odoc | Rejoins l'aventure"
         description="Rejoignez l'équipe Odoc et construisez le futur copilot IA des entreprises françaises."

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/MotionDiv";
+import { BackButton } from "@/components/BackButton";
 import { SEOHead } from "@/components/SEOHead";
 import { Target, Shield, Rocket, Building2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -61,6 +62,7 @@ const kpis = [
 export default function AProposPage() {
   return (
     <div className="flex flex-col items-center">
+      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="À propos — Odoc | L'OS d'entreprise next-gen"
         description="Odoc est né pour libérer les TPE/PME des tâches répétitives. Découvrez notre vision, notre mission et l'équipe qui construit le futur OS des entreprises françaises."

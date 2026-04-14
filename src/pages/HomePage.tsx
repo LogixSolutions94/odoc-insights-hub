@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MotionDiv } from "@/components/MotionDiv";
@@ -250,6 +251,35 @@ const stats = [
   { value: 99, suffix: ".9%", label: "Uptime garanti", icon: Globe },
 ];
 
+const ROTATING_MODULES = [
+  { word: "factures", emoji: "🧾" },
+  { word: "documents", emoji: "📄" },
+  { word: "projets", emoji: "📋" },
+  { word: "équipes", emoji: "👥" },
+  { word: "finances", emoji: "📊" },
+  { word: "contrats", emoji: "⚖️" },
+  { word: "congés RH", emoji: "🗓️" },
+  { word: "fournisseurs", emoji: "🔗" },
+];
+
+function useRotatingModule(interval = 2400) {
+  const [index, setIndex] = useState(0);
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setShow(false);
+      setTimeout(() => {
+        setIndex((i) => (i + 1) % ROTATING_MODULES.length);
+        setShow(true);
+      }, 380);
+    }, interval);
+    return () => clearInterval(t);
+  }, [interval]);
+
+  return { module: ROTATING_MODULES[index], show };
+}
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -393,6 +423,7 @@ function StatCounter({ value, suffix, label, icon: Icon, delay = 0 }: StatCounte
 
 export default function HomePage() {
   const { toast } = useToast();
+  const { module, show } = useRotatingModule();
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterLoading, setNewsletterLoading] = useState(false);
 
@@ -481,19 +512,25 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
           >
-            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tighter leading-[0.9] text-foreground">
-              Votre entreprise mérite
-              <br />
+            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tighter leading-[1.05] text-foreground">
+              Automatisez vos{" "}
               <span
                 style={{
+                  display: "inline-block",
+                  minWidth: "260px",
+                  transition: "opacity 0.35s ease, transform 0.35s ease",
+                  opacity: show ? 1 : 0,
+                  transform: show ? "translateY(0px)" : "translateY(-12px)",
                   background: `linear-gradient(135deg, ${ORANGE}, ${PETRIOL})`,
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}
               >
-                un employé IA.
+                {module.emoji} {module.word}
               </span>
+              <br />
+              avec l'IA.
             </h1>
           </MotionDiv>
 
@@ -502,19 +539,31 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <p className="mt-7 max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              Fini les outils éparpillés. Odoc centralise tout — documents,
-              factures, projets, équipe, finances — dans un seul copilot IA qui
-              travaille à votre place. <strong>24h/24, sans charges.</strong>
+            <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              Odoc remplace <strong>10 outils éparpillés</strong> par un seul OS IA.
+              Documents, factures, RH, projets, équipe — <strong>tout en un</strong>,
+              disponible <strong>24h/24 sans charges</strong>.
             </p>
           </MotionDiv>
 
           <MotionDiv
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground font-medium">
+              {["🏆 NF Z42-013 certifié", "🔒 Hébergé en France", "⚡ Setup 2 min", "🎯 11 modules", "🛡️ RGPD conforme"].map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </MotionDiv>
+
+          <MotionDiv
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            <div className="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={`${APP_URL}/auth`}
                 target="_blank"
@@ -571,9 +620,8 @@ export default function HomePage() {
                 <MotionDiv
                   key={card.title}
                   initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.07, duration: 0.5 }}
-                  viewport={{ once: true }}
                   className="group relative rounded-2xl p-6 border transition-all duration-300 hover:scale-[1.02]"
                   style={
                     card.accent
@@ -716,9 +764,8 @@ export default function HomePage() {
                 <MotionDiv
                   key={card.title}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
                   className="p-6 rounded-xl bg-card border border-border shadow-sm text-left hover:scale-[1.01] transition-transform duration-300"
                 >
                   <div
@@ -740,9 +787,8 @@ export default function HomePage() {
 
           <MotionDiv
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            viewport={{ once: true }}
             className="mt-10"
           >
             <p
@@ -786,8 +832,7 @@ export default function HomePage() {
 
             <MotionDiv
               initial={{ opacity: 0, scale: 0.85 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7 }}
               className="mt-14 mx-auto w-48 h-48 sm:w-56 sm:h-56 relative"
             >
@@ -834,9 +879,8 @@ export default function HomePage() {
                 <MotionDiv
                   key={tool.title}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.4 }}
-                  viewport={{ once: true }}
                   className="group p-5 rounded-xl border border-border bg-card hover:scale-[1.02] transition-all duration-300"
                   style={{
                     boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
@@ -896,9 +940,8 @@ export default function HomePage() {
                 <MotionDiv
                   key={a.title}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
                   className="p-6 rounded-xl bg-card border border-border hover:scale-[1.01] transition-all duration-300"
                   style={{
                     boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
@@ -1010,9 +1053,8 @@ export default function HomePage() {
 
           <MotionDiv
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            viewport={{ once: true }}
             className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-8 rounded-xl border border-border"
             style={{ background: `${ORANGE}06` }}
           >
@@ -1070,9 +1112,8 @@ export default function HomePage() {
               <MotionDiv
                 key={plan.name}
                 initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.45 }}
-                viewport={{ once: true }}
                 className={`relative p-6 rounded-xl bg-card transition-all duration-300 hover:scale-[1.02] ${
                   plan.highlight ? "scale-[1.03]" : ""
                 }`}

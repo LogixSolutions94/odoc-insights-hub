@@ -31,7 +31,11 @@ export default function BlogPage() {
         .select("*")
         .eq("status", "published")
         .order("published_at", { ascending: false });
-      if (error) throw error;
+      if (error) {
+        console.error("[Blog] Error fetching posts:", error.message);
+        throw error;
+      }
+      console.log("[Blog] Posts fetched:", data?.length || 0, "articles");
       return data;
     },
   });

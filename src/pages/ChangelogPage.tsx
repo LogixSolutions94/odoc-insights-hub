@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MotionDiv } from "@/components/MotionDiv";
-import { BackButton } from "@/components/BackButton";
 import { SEOHead } from "@/components/SEOHead";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -56,7 +55,6 @@ export default function ChangelogPage() {
 
   return (
     <div className="flex flex-col items-center">
-      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="Changelog — Odoc"
         description="Toutes les nouveautés Odoc, version par version. Suivez l'évolution de votre copilot IA d'entreprise."

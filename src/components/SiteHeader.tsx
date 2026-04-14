@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/fonctionnalites", label: "Fonctionnalités" },
   { href: "/pricing", label: "Tarifs" },
   { href: "/blog", label: "Blog" },
+  { href: "/e-facture", label: "E-Facture" },
   { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { MotionDiv } from "@/components/MotionDiv";
-import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -76,7 +75,6 @@ export default function ContactPage() {
 
   return (
     <div className="mx-auto max-w-2xl py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
-      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="Contact — Odoc | Demandez une démo"
         description="Contactez l'équipe Odoc pour une démonstration personnalisée de la plateforme d'intelligence documentaire."

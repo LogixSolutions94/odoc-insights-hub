@@ -1,10 +1,8 @@
 import { SEOHead } from "@/components/SEOHead";
-import { BackButton } from "@/components/BackButton";
 
 export default function MentionsLegalesPage() {
   return (
     <div className="mx-auto max-w-3xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="Mentions Légales — Odoc"
         description="Mentions légales du site Odoc, plateforme d'intelligence documentaire."

@@ -1,11 +1,9 @@
 import { SEOHead } from "@/components/SEOHead";
 import { MotionDiv } from "@/components/MotionDiv";
-import { BackButton } from "@/components/BackButton";
 
 export default function PolitiqueConfidentialitePage() {
   return (
     <div className="mx-auto max-w-3xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="Politique de confidentialité — Odoc"
         description="Politique de confidentialité d'Odoc. Découvrez comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD."

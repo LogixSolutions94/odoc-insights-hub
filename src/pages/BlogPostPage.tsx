@@ -5,7 +5,6 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import { supabase } from "@/integrations/supabase/client";
 import { MotionDiv } from "@/components/MotionDiv";
-import { BackButton } from "@/components/BackButton";
 import { BlogSEOHead } from "@/components/blog/BlogSEOHead";
 import { BlogCategoryBadge } from "@/components/blog/BlogCategoryBadge";
 import { BlogCard } from "@/components/blog/BlogCard";
@@ -119,7 +118,6 @@ export default function BlogPostPage() {
 
   return (
     <article className="mx-auto max-w-3xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-      <BackButton to="/blog" label="← Retour au blog" />
       <BlogSEOHead
         title={`${post.seo_title || post.title} — Blog Odoc`}
         description={post.seo_description || post.excerpt}

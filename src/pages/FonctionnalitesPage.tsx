@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/MotionDiv";
-import { BackButton } from "@/components/BackButton";
 import { SEOHead } from "@/components/SEOHead";
 import {
   FileText,
@@ -202,7 +201,6 @@ export default function FonctionnalitesPage() {
 
   return (
     <div className="flex flex-col items-center">
-      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="Fonctionnalités — Odoc | Les 11 modules de l'OS d'entreprise IA"
         description="Découvrez les 11 modules d'Odoc : documents, factures IA, Odoc Brain, analytics, équipe, RH, projets, messagerie, calendrier, portail fournisseur et smart connectors."

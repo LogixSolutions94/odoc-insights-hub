@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "@/components/MotionDiv";
-import { BackButton } from "@/components/BackButton";
 import { SEOHead } from "@/components/SEOHead";
 import { Check, Lock, BadgeCheck, Shield, Zap } from "lucide-react";
 import {
@@ -135,7 +134,6 @@ export default function PricingPage() {
 
   return (
     <div className="flex flex-col items-center">
-      <BackButton to="/" label="← Accueil" />
       <SEOHead
         title="Tarifs — Plans Odoc"
         description="Essential 49€, Pro 89€, Manager 149€. Essai gratuit 14 jours sans CB. Copilot IA pour TPE et PME."

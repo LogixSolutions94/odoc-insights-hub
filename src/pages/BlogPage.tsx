@@ -127,7 +127,12 @@ export default function BlogPage() {
         <>
           {/* Featured post */}
           {featuredPost && !search && activeCategory === "all" && (
-            <MotionDiv className="mt-10">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mt-10"
+            >
               <BlogCard post={featuredPost} variant="featured" />
             </MotionDiv>
           )}
@@ -138,13 +143,12 @@ export default function BlogPage() {
               <MotionDiv
                 key={post.slug}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
                   delay: i * 0.05,
                   duration: 0.4,
                   ease: [0.32, 0.72, 0, 1] as [number, number, number, number],
                 }}
-                viewport={{ once: true }}
               >
                 <BlogCard post={post} />
               </MotionDiv>

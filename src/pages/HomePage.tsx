@@ -458,7 +458,11 @@ export default function HomePage() {
 
         {/* Contenu du hero */}
         <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-16 lg:pb-24 text-center z-10">
-          <MotionDiv>
+          <MotionDiv
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <span
               className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold mb-8"
               style={{
@@ -474,9 +478,8 @@ export default function HomePage() {
 
           <MotionDiv
             initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05, duration: 0.6 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
           >
             <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tighter leading-[0.9] text-foreground">
               Votre entreprise mérite
@@ -496,9 +499,8 @@ export default function HomePage() {
 
           <MotionDiv
             initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
             <p className="mt-7 max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed">
               Fini les outils éparpillés. Odoc centralise tout — documents,
@@ -509,9 +511,8 @@ export default function HomePage() {
 
           <MotionDiv
             initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.5 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
           >
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <a

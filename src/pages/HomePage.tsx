@@ -457,7 +457,7 @@ export default function HomePage() {
         </div>
 
         {/* Contenu du hero */}
-        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 text-center z-10">
+        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-16 lg:pb-24 text-center z-10">
           <MotionDiv>
             <span
               className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold mb-8"
@@ -538,11 +538,14 @@ export default function HomePage() {
                   Essayer gratuitement <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </a>
-              <a href="#demo">
+              <a
+                href="/pricing"
+                rel="noopener noreferrer"
+              >
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto text-base px-8 py-6"
+                  className="w-full sm:w-auto text-base px-8 py-6 border-white/20 backdrop-blur-sm hover:bg-white/10 transition-all duration-200"
                 >
                   Voir les tarifs
                 </Button>

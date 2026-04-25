@@ -1,0 +1,322 @@
+{
+  "meta": {
+    "date": "2026-04-25",
+    "url": "https://odocpilot.com",
+    "stack": "React 18 + Vite 5 + TypeScript + Tailwind + shadcn/ui + Supabase + react-router-dom (SPA, pas de SSR)",
+    "auteur": "Audit Claude Opus 4.7 — pré-lancement 1er mai 2026"
+  },
+  "scoreGlobal": {
+    "note": "62/100",
+    "seo": "5/10",
+    "performance": "6/10",
+    "conversion": "7/10",
+    "securite": "5/10",
+    "codeQualite": "7/10",
+    "commentaire": "Fondations correctes mais SPA Vite sans pré-rendu = handicap SEO majeur pour un lancement le 1er mai. Plusieurs incohérences de domaine et de promesses produit à corriger avant ouverture commerciale."
+  },
+  "promessesMarketing": [
+    {
+      "feature": "Gestion Documentaire (GED + OCR + classification IA)",
+      "pageSite": "/fonctionnalites, /, /pricing",
+      "statutReel": "LIVRÉE",
+      "risqueCommercial": "FAIBLE",
+      "action": "OK — module présent dans le SaaS."
+    },
+    {
+      "feature": "Factures IA + conformité NF Z42-013 + Factur-X + archivage SHA-256",
+      "pageSite": "/fonctionnalites, /",
+      "statutReel": "PARTIELLE",
+      "risqueCommercial": "ÉLEVÉ",
+      "action": "Vérifier que la conformité NF Z42-013 est réellement certifiée (pas seulement 'conforme dans l'esprit'). Sinon retirer la mention ou la nuancer en 'compatible avec' — risque juridique sur facturation électronique réglementée."
+    },
+    {
+      "feature": "Odoc Brain (Copilot RAG)",
+      "pageSite": "/, /fonctionnalites, /pricing (Pro+)",
+      "statutReel": "LIVRÉE",
+      "risqueCommercial": "FAIBLE",
+      "action": "OK — argument différenciant fort, à mettre encore plus en avant."
+    },
+    {
+      "feature": "Analytics multi-métiers (Comptable / Juridique / Admin)",
+      "pageSite": "/fonctionnalites",
+      "statutReel": "PARTIELLE",
+      "risqueCommercial": "MOYEN",
+      "action": "Vérifier que les 4 dashboards distincts existent réellement dans le SaaS. Si un seul dashboard générique, reformuler."
+    },
+    {
+      "feature": "Module RH complet (employés, congés, approbations)",
+      "pageSite": "/fonctionnalites, /pricing (Pro+)",
+      "statutReel": "PARTIELLE",
+      "risqueCommercial": "MOYEN",
+      "action": "Le mot 'complet' est un piège commercial — préférer 'RH essentiel' ou lister précisément ce qui est livré (pas de paie, pas de DSN)."
+    },
+    {
+      "feature": "Projets Kanban",
+      "pageSite": "/fonctionnalites, /pricing (Pro+)",
+      "statutReel": "LIVRÉE",
+      "risqueCommercial": "FAIBLE",
+      "action": "OK."
+    },
+    {
+      "feature": "Messagerie interne temps réel",
+      "pageSite": "/fonctionnalites, /pricing (Pro+)",
+      "statutReel": "PARTIELLE",
+      "risqueCommercial": "MOYEN",
+      "action": "Confirmer le 'temps réel' (Supabase Realtime activé ?). Sinon dire 'messagerie d'équipe'."
+    },
+    {
+      "feature": "Portail Fournisseur (lien sécurisé)",
+      "pageSite": "/fonctionnalites, /pricing (Manager+)",
+      "statutReel": "PARTIELLE",
+      "risqueCommercial": "MOYEN",
+      "action": "À valider — fonctionnalité différenciante mais souvent surévaluée."
+    },
+    {
+      "feature": "Smart Connectors Google Drive + Dropbox bidirectionnels",
+      "pageSite": "/fonctionnalites, /pricing (Manager+)",
+      "statutReel": "ABSENTE",
+      "risqueCommercial": "ÉLEVÉ",
+      "action": "Si non livré au 1er mai → retirer 'bidirectionnel', remplacer par 'à venir Q3 2026' ou supprimer du teaser principal. La sync bidirectionnelle est complexe et un client qui paie le plan Manager pour ça sera déçu."
+    },
+    {
+      "feature": "Calendrier partagé + Google Calendar bidirectionnel",
+      "pageSite": "/fonctionnalites, /",
+      "statutReel": "PARTIELLE",
+      "risqueCommercial": "MOYEN",
+      "action": "Idem — vérifier la bidirectionnalité réelle."
+    },
+    {
+      "feature": "Trésorerie & SEPA Export",
+      "pageSite": "/pricing (Essential)",
+      "statutReel": "PARTIELLE",
+      "risqueCommercial": "ÉLEVÉ",
+      "action": "Vérifier que l'export SEPA XML (pain.001) est conforme et accepté par les banques françaises. Sinon retirer."
+    },
+    {
+      "feature": "CRM basique",
+      "pageSite": "/pricing (Essential)",
+      "statutReel": "ABSENTE",
+      "risqueCommercial": "MOYEN",
+      "action": "CRM n'apparaît dans AUCUN des 11 modules de /fonctionnalites — incohérence directe. Soit l'ajouter à la page features, soit le retirer du pricing."
+    },
+    {
+      "feature": "N8N Webhooks & automations",
+      "pageSite": "/pricing (Pro)",
+      "statutReel": "PARTIELLE",
+      "risqueCommercial": "MOYEN",
+      "action": "N8N n'est pas listé dans /fonctionnalites. Clarifier ou retirer."
+    },
+    {
+      "feature": "SSO SAML/OpenID, infrastructure dédiée, SLA, API privée",
+      "pageSite": "/pricing (Entreprise)",
+      "statutReel": "ABSENTE",
+      "risqueCommercial": "FAIBLE",
+      "action": "OK pour un plan 'Sur mesure' — assumé comme vendu en cycle long."
+    },
+    {
+      "feature": "Note 4.8/5 (12 avis) — aggregateRating dans JSON-LD index.html",
+      "pageSite": "index.html (schema.org)",
+      "statutReel": "ABSENTE",
+      "risqueCommercial": "ÉLEVÉ",
+      "action": "Aucun avis client réel sur le site. Déclarer une aggregateRating à Google sans preuve = violation des guidelines Google + risque légal (publicité trompeuse, art. L121-1 code conso). RETIRER IMMÉDIATEMENT le bloc aggregateRating de index.html jusqu'à avoir de vrais avis Trustpilot/G2."
+    }
+  ],
+  "bugsCritiques": [
+    {
+      "id": "C1",
+      "titre": "SPA Vite sans pré-rendu = SEO quasi nul au lancement",
+      "description": "L'app est un Single Page Application React (vite build). Le HTML servi est quasi vide hors index.html. Googlebot rend le JS mais l'indexation est lente, et tous les autres crawlers (Bing, DuckDuckGo, OpenAI, Perplexity, GPTBot, ClaudeBot, social previews tier-2) ne voient RIEN du contenu des pages /fonctionnalites, /pricing, /blog, etc. Les meta title/description par page (react-helmet-async) ne sont pas dans le HTML statique.",
+      "impact": "Aucune page interne ne se classera sur Google les 4-8 premières semaines. Partages LinkedIn/Twitter afficheront uniquement le OG global d'index.html, pas celui de la page partagée.",
+      "fix": "Activer le pre-rendering (vite-plugin-prerender, react-snap, ou migration vers Next.js/Astro). Pour 6 jours: minimum vite-plugin-prerender sur les routes statiques (/, /fonctionnalites, /pricing, /a-propos, /contact, /e-facture, légales). Le blog reste dynamique mais il faut au minimum une fallback statique."
+    },
+    {
+      "id": "C2",
+      "titre": "Footer pointe vers *.odoc.fr (mauvais domaine)",
+      "description": "src/components/SiteFooter.tsx référence docs.odoc.fr, status.odoc.fr — alors que CLAUDE.md indique docs.odocpilot.com et status.odocpilot.com. Liens cassés ou domaine externe non maîtrisé.",
+      "impact": "Liens externes morts dans le footer = mauvais signal SEO + UX dégradée + potentiel hijack si odoc.fr appartient à un tiers.",
+      "fix": "Remplacer odoc.fr → odocpilot.com dans SiteFooter.tsx (3 liens)."
+    },
+    {
+      "id": "C3",
+      "titre": "aggregateRating fictif dans JSON-LD",
+      "description": "index.html déclare ratingValue 4.8 / ratingCount 12 sans aucun avis réel publié. Violation des Google Rich Results guidelines + publicité trompeuse au sens du Code de la consommation.",
+      "impact": "Pénalité Google possible (perte de tous les rich snippets). Risque DGCCRF.",
+      "fix": "Retirer le bloc aggregateRating de index.html jusqu'à intégration d'une vraie source d'avis vérifiables."
+    },
+    {
+      "id": "C4",
+      "titre": "Sitemap incomplet — /e-facture absente",
+      "description": "public/sitemap.xml ne référence pas /e-facture (page existante et lourde, 549 lignes, optimisée SEO selon le commit récent).",
+      "impact": "La page la plus SEO-orientée du site n'est pas dans le sitemap.",
+      "fix": "Ajouter <url><loc>https://odocpilot.com/e-facture</loc>...</url> au sitemap."
+    },
+    {
+      "id": "C5",
+      "titre": "Promesse 'CRM' au plan Essential sans module CRM dans le produit",
+      "description": "PricingPage.tsx liste 'CRM basique' dans Essential, mais aucun module CRM n'apparaît dans les 11 modules de /fonctionnalites ni dans le SaaS connu.",
+      "impact": "Promesse commerciale non tenue → demandes de remboursement, mauvais avis dès les premiers clients, risque art. L121-1.",
+      "fix": "Soit retirer 'CRM basique' du pricing, soit livrer un module CRM minimal avant le 1er mai."
+    },
+    {
+      "id": "C6",
+      "titre": "HomePage importe motion (interdit par CLAUDE.md)",
+      "description": "src/pages/HomePage.tsx ligne 3: import { motion } from \"framer-motion\". Le CLAUDE.md interdit explicitement motion.div au profit de MotionDiv.",
+      "impact": "Risque de régression bug whileInView (déjà rencontré selon les derniers commits 701fe35, fdc7eaa).",
+      "fix": "Remplacer toutes les motion.* par MotionDiv ou ajouter un wrapper équivalent."
+    }
+  ],
+  "bugsImportants": [
+    {
+      "id": "I1",
+      "titre": "Pas de schema BreadcrumbList ni Article JSON-LD sur le blog",
+      "description": "BlogPostPage n'expose probablement pas de JSON-LD Article (à vérifier dans BlogSEOHead.tsx). Sans cela, pas de rich snippets sur SERP.",
+      "fix": "Ajouter JSON-LD Article (headline, datePublished, author, image) dans BlogSEOHead."
+    },
+    {
+      "id": "I2",
+      "titre": "Font loading non optimisé",
+      "description": "index.html charge Cabinet Grotesk + Satoshi via fontshare sans preconnect. Pas de font-display déclaré. La famille système 'Plus Jakarta Sans' (mentionnée dans CLAUDE.md) n'est plus utilisée — incohérence doc.",
+      "fix": "Ajouter <link rel='preconnect' href='https://api.fontshare.com'> + <link rel='preconnect' href='https://cdn.fontshare.com' crossorigin>."
+    },
+    {
+      "id": "I3",
+      "titre": "Particles tsparticles + framer-motion + recharts = bundle JS lourd",
+      "description": "@tsparticles/react + @tsparticles/slim + framer-motion + recharts + react-markdown + rehype-highlight + 25+ Radix UI = bundle initial probablement >500 KB gzipped sans code splitting agressif.",
+      "fix": "Lazy-load tsparticles (uniquement Hero homepage), recharts (jamais utilisé sur landing publique ?), react-markdown (uniquement BlogPostPage). Vérifier avec `vite build --mode production` + analyse rollup-plugin-visualizer."
+    },
+    {
+      "id": "I4",
+      "titre": "Pas de balise <html lang> dynamique ni hreflang",
+      "description": "index.html lang='fr' OK, mais aucune stratégie multilingue. Si export FR-only assumé, ajouter <meta name='language' content='fr-FR'>."
+    },
+    {
+      "id": "I5",
+      "titre": "Pas de header HTTP CSP / X-Frame-Options déclaré dans le repo",
+      "description": "Aucun fichier _headers, vercel.json, ni nginx.conf dans le repo. La sécurité headers dépend entièrement de la config nginx VPS non versionnée.",
+      "fix": "Documenter et versionner la config nginx (au minimum un nginx.conf.example) avec CSP, X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy."
+    },
+    {
+      "id": "I6",
+      "titre": "Cookie banner non bloquant + pas de Consent Mode v2",
+      "description": "CookieBanner.tsx pose un consent local mais aucun script analytics n'est conditionné. Si Google Analytics / GTM est ajouté plus tard, le banner ne respectera pas RGPD/CNIL (consentement explicite avant dépôt).",
+      "fix": "Soit pas d'analytics au lancement (statu quo OK), soit Consent Mode v2 propre dès maintenant."
+    },
+    {
+      "id": "I7",
+      "titre": "Newsletter Supabase sans double opt-in visible",
+      "description": "Le formulaire newsletter HomePage écrit directement dans newsletter_subscribers. Pas de mention de double opt-in ni de mention RGPD à côté du champ email.",
+      "fix": "Ajouter texte 'En vous inscrivant, vous acceptez de recevoir nos emails. Désinscription en 1 clic.' sous le champ + lien politique de confidentialité."
+    },
+    {
+      "id": "I8",
+      "titre": "Aucune preuve sociale (témoignages, logos clients)",
+      "description": "HomePage mentionne Trustpilot 'placeholder' (selon CLAUDE.md). Lancement à 6 jours sans aucun témoignage client = mur de friction sur la décision d'achat."
+    }
+  ],
+  "bugsMineurs": [
+    {
+      "id": "M1",
+      "titre": "Mention 'Plus Jakarta Sans' dans CLAUDE.md mais Cabinet Grotesk + Satoshi en prod",
+      "fix": "Mettre à jour CLAUDE.md."
+    },
+    {
+      "id": "M2",
+      "titre": "Cible mobile menu burger : pas d'attribut aria-expanded",
+      "fix": "Ajouter aria-expanded={mobileOpen} sur le bouton burger."
+    },
+    {
+      "id": "M3",
+      "titre": "BackButton récemment ajouté puis retiré — vérifier qu'aucune page orpheline ne le référence",
+      "fix": "Grep src/ pour 'BackButton'."
+    },
+    {
+      "id": "M4",
+      "titre": "Image OG (og-default.png, og-image.png) — vérifier qu'elles existent dans /public",
+      "fix": "ls public/og*.png — sinon générer en 1200x630."
+    },
+    {
+      "id": "M5",
+      "titre": "useQuery 'blog-posts' — pas de staleTime, refetch agressif",
+      "fix": "staleTime: 5 * 60 * 1000."
+    },
+    {
+      "id": "M6",
+      "titre": "console.log laissé en production dans BlogPage.tsx",
+      "fix": "Retirer ou wrapper avec import.meta.env.DEV."
+    },
+    {
+      "id": "M7",
+      "titre": "filter inutile dans BlogPage useMemo (variable 'result' déclarée puis ignorée)",
+      "fix": "Nettoyer."
+    },
+    {
+      "id": "M8",
+      "titre": "Domaine social cohérence : SiteHeader / Footer / index.html mélangent odocpilot.com et odoc.fr",
+      "fix": "Audit complet grep 'odoc.fr' → tout passer en odocpilot.com."
+    }
+  ],
+  "blogStatus": {
+    "framework": "Articles stockés dans Supabase (table blog_posts), pas de fichiers markdown locaux dans le repo",
+    "articlesComptes": "0 (à confirmer côté Supabase — non visible dans le repo)",
+    "requeteFiltreOK": true,
+    "cleAnonUtilisee": true,
+    "details": "src/integrations/supabase/client.ts utilise VITE_SUPABASE_PUBLISHABLE_KEY (= anon key, OK). BlogPage filtre bien .eq('status', 'published'). Le bug RLS est correctement mitigé côté requête. Reste à valider: (1) policy RLS Supabase autorise SELECT anon WHERE status='published', (2) au moins 5-10 articles publiés au 1er mai pour crédibilité."
+  },
+  "verdictLancement": "CONDITIONNEL",
+  "verdictCommentaire": "Le site peut techniquement aller en prod le 1er mai, mais 3 corrections sont NON-NÉGOCIABLES sous risque juridique/commercial : (1) retirer aggregateRating fictif, (2) régler l'incohérence CRM/pricing, (3) corriger les liens odoc.fr du footer. Le pré-rendu SEO est fortement recommandé mais peut être traité dans les 2 semaines post-lancement.",
+  "top5ActionsPriorite": [
+    {
+      "rang": 1,
+      "action": "Retirer aggregateRating de index.html + corriger toutes promesses non livrées (CRM Essential, Smart Connectors bidirectionnels, NF Z42-013) — neutraliser le risque DGCCRF/Google",
+      "impact": "CRITIQUE",
+      "effort": "1h",
+      "modele": "Haiku"
+    },
+    {
+      "rang": 2,
+      "action": "Réparer footer (odoc.fr → odocpilot.com) + ajouter /e-facture au sitemap.xml + retirer motion import dans HomePage.tsx",
+      "impact": "FORT",
+      "effort": "30min",
+      "modele": "Haiku"
+    },
+    {
+      "rang": 3,
+      "action": "Activer pre-rendering (vite-plugin-prerender) sur les 8 routes statiques pour rendre le SEO réel dès le J1",
+      "impact": "CRITIQUE",
+      "effort": "3h",
+      "modele": "Sonnet"
+    },
+    {
+      "rang": 4,
+      "action": "Ajouter section preuve sociale homepage (3 témoignages réels, même beta-testers, avec nom + entreprise + photo + 1 phrase) — c'est le levier #1 de conversion B2B",
+      "impact": "FORT",
+      "effort": "TOI (collecte) + 1h dev",
+      "modele": "TOI"
+    },
+    {
+      "rang": 5,
+      "action": "Versionner nginx.conf avec CSP, security headers, redirect www, gzip/brotli, cache assets — sécuriser le J1 contre clickjacking et améliorer perf",
+      "impact": "FORT",
+      "effort": "2h",
+      "modele": "Sonnet"
+    }
+  ],
+  "veritelancement": {
+    "Q1_journalisteTech": "Trois angles négatifs faciles : (a) 'aggregateRating 4.8/5 inventée dans le JSON-LD' = scandale en 1 capture d'écran ; (b) liens footer cassés vers odoc.fr ; (c) bundle JS ~600KB+ sur landing pour un site marketing — 'pas vraiment léger pour une boîte qui parle d'IA performante'. Aussi : 'Smart Connectors bidirectionnels' affichés mais non livrés = procès en vaporware.",
+    "Q2_indexable": "Indexable au sens robots.txt = OUI (Allow: /). Mais en pratique, comme c'est une SPA Vite sans pré-rendu, Googlebot doit faire du rendering JS pour voir le contenu — délai 1-4 semaines avant indexation correcte. Bing/Qwant/DuckDuckGo : indexation très partielle. Verdict : techniquement OK, fonctionnellement faible. Pre-rendering = booster x10 sur 6 mois.",
+    "Q3_top3conversion": "1) Ajouter une vraie preuve sociale au-dessus de la ligne de flottaison (3 témoignages clients réels avec photo + résultat chiffré, ex: '−12h/semaine sur la gestion documentaire'). 2) Remplacer le CTA générique 'Essai gratuit' par un CTA scénarisé : 'Voir une démo en 90 secondes' (vidéo Loom intégrée) → moins de friction que créer un compte. 3) Ajouter un module 'ROI calculator' sur /pricing : 'Combien Odoc vous fait gagner ? — entrez nb employés + heures/semaine sur l'admin' = engagement + collecte email qualifié.",
+    "Q4_risquesJuridiques": "OUI, trois zones de risque : (a) aggregateRating fictif dans index.html = publicité trompeuse art. L121-1 conso + violation Google guidelines ; (b) promesses 'CRM basique', 'Smart Connectors bidirectionnels', 'conformité NF Z42-013' non livrées = risque action en pratiques commerciales trompeuses + remboursement clients ; (c) newsletter sans mention RGPD claire au point de collecte = risque CNIL (sanction max 4% CA). Politique de confidentialité et CGU à relire par un avocat avant le 1er mai impérativement.",
+    "Q5_propositionsAmelioration": [
+      "Bandeau d'urgence/scarcity sur Hero : 'Lancement 1er mai — 50 premiers comptes : -30% à vie' (FOMO légitime)",
+      "Page /pricing : ajouter colonne 'Stripe vs nous' (économie réelle vs Pennylane à 99€/mois)",
+      "Démo interactive sans inscription (sandbox read-only) accessible depuis Hero — supprime la friction #1 du SaaS B2B",
+      "Tracking minimal Plausible/Umami (RGPD-friendly, pas de banner cookie nécessaire) pour mesurer dès J1 conversion landing → signup",
+      "Ajouter chat live (Crisp gratuit) sur /pricing uniquement — friction maximale au moment de la décision",
+      "OG image dynamique par page via @vercel/og ou un endpoint dédié — booste CTR LinkedIn de 30-50%",
+      "Ajouter un 'comparatif' Odoc vs Pennylane / Qonto / Sellsy — page SEO 'odocpilot vs pennylane' à fort potentiel de longue traîne",
+      "Newsletter : créer une lead magnet (ebook 'Guide facturation électronique 2026 pour PME') avant le 1er mai — collecte d'emails qualifiés multipliée par 5",
+      "Section 'Sécurité' dédiée avec page /securite (RGPD, hébergement OVH, AES-256, audit trail) — argument fort B2B France",
+      "Optimisation Core Web Vitals : virer @tsparticles du Hero (gain estimé 100ms LCP), passer images en AVIF/WebP, lazy-load tout below-fold"
+    ]
+  }
+}

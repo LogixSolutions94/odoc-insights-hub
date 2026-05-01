@@ -35,7 +35,6 @@ export default function BlogPage() {
         console.error("[Blog] Error fetching posts:", error.message);
         throw error;
       }
-      console.log("[Blog] Posts fetched:", data?.length || 0, "articles");
       return data;
     },
   });

@@ -14,7 +14,6 @@ export function ThemeToggle() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initial = (stored as 'light' | 'dark') || (prefersDark ? 'dark' : 'light');
 
-    console.log('[ThemeToggle] Initializing with theme:', initial);
     setTheme(initial);
     html.setAttribute('data-theme', initial);
     setMounted(true);
@@ -22,8 +21,6 @@ export function ThemeToggle() {
 
   const toggle = () => {
     const next = theme === 'dark' ? 'light' : 'dark';
-    console.log('[ThemeToggle] Toggling theme:', theme, '→', next);
-
     setTheme(next);
     document.documentElement.setAttribute('data-theme', next);
 

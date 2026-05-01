@@ -26,9 +26,9 @@ export function SiteFooter() {
           <div>
             <h3 className="text-sm font-bold text-foreground mb-4">Ressources</h3>
             <ul className="space-y-2.5">
-              <li><a href="https://docs.odoc.fr" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Documentation</a></li>
-              <li><a href="https://docs.odoc.fr/api" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">API</a></li>
-              <li><a href="https://status.odoc.fr" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Statut</a></li>
+              <li><a href="https://docs.odocpilot.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Documentation</a></li>
+              <li><a href="https://docs.odocpilot.com/api" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">API</a></li>
+              <li><a href="https://status.odocpilot.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Statut</a></li>
             </ul>
           </div>
           <div>

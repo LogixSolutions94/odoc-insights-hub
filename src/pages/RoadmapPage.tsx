@@ -8,9 +8,9 @@ const phases = [
   {
     badge: "✓ En production",
     badgeClass: "bg-green-500/10 text-green-600 border-green-500/20",
-    title: "Phase 1 — Les fondations",
+    title: "Phase 1 — Les fondations (disponible)",
     description:
-      "Les 10 modules core — Documents, Factures IA, Odoc Brain, Analytics, Équipe, RH, Projets, Messagerie, Portail Fournisseur, Smart Connectors.",
+      "Les 11 modules core disponibles dès aujourd'hui — Documents, Factures IA, Odoc Brain, Analytics, Équipe, RH, Projets, Messagerie, Portail Fournisseur, Smart Connectors, Calendrier partagé. CRM basique inclus dans le plan Essential.",
     icon: CheckCircle,
     iconClass: "text-green-600",
   },
@@ -19,7 +19,7 @@ const phases = [
     badgeClass: "bg-accent/10 text-accent border-accent/20",
     title: "Phase 2 — Expansion",
     description:
-      "CRM léger intégré, Calendrier partagé, Intégrations avancées (Slack, Notion, HubSpot), Mode hors-ligne.",
+      "Certification PDP (facturation électronique obligatoire 2026), intégrations avancées (Slack, Notion, HubSpot), Odoc Brain v1.2 (mémoire longue, multi-documents), mode hors-ligne, rapports dirigeant personnalisables.",
     icon: Settings,
     iconClass: "text-accent",
   },
@@ -28,7 +28,7 @@ const phases = [
     badgeClass: "bg-muted text-muted-foreground border-border",
     title: "Phase 3 — Écosystème",
     description:
-      "Application mobile iOS & Android, API publique documentée, Marketplace d'intégrations partenaires, Odoc Brain v2 (multi-agents).",
+      "Application mobile iOS & Android, API publique documentée, Marketplace d'intégrations partenaires, Odoc Brain v2 (multi-agents autonomes), tableau de bord prédictif IA.",
     icon: Clock,
     iconClass: "text-muted-foreground",
   },

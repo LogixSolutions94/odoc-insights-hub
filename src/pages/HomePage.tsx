@@ -487,7 +487,7 @@ export default function HomePage() {
         </div>
 
         {/* Contenu du hero */}
-        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-16 lg:pb-24 text-center z-10">
+        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24 text-center z-10">
           <MotionDiv
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}

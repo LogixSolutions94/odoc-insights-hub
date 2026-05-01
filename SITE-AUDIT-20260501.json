@@ -1,0 +1,580 @@
+{
+  "meta": {
+    "date": "2026-05-01",
+    "url": "https://odocpilot.com",
+    "score_global_sur_100": 72,
+    "verdict": "BON",
+    "commentaire": "Architecture solide, design cohérent, SEO bien câblé page par page. Mais pré-lancement plombé par : (1) Mentions légales avec adresse XXX placeholder, (2) emails @odoc.fr partout dans CGU/Mentions/Privacy au lieu d'@odocpilot.com, (3) footer pointant vers docs.odoc.fr / status.odoc.fr (anciens domaines), (4) og-image.png et og-default.png absents de /public, (5) blog vide en prod (0 article), (6) incohérence prix CGU 29€ vs 49€ pricing, (7) aucun lazy-loading des pages."
+  },
+  "pages": [
+    {
+      "page": "/",
+      "fichier": "src/pages/HomePage.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 8,
+      "seo": {
+        "title": "Odoc — OS d'entreprise IA | Copilot pour TPE/PME",
+        "description": "Odoc centralise documents, factures, projets, RH et équipe dans un OS IA intelligent. Comme un employé en plus — sans les charges. Essai gratuit.",
+        "canonical": "présent (/)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "Import `motion` from framer-motion ligne 3 mais MotionDiv utilisé partout — import mort",
+        "Stat « 200+ équipes actives » : vraie ou marketing ? À valider, sinon trompeur avant lancement",
+        "Section Trustpilot affichée avec « 5 étoiles » alors que zéro avis — incohérent visuellement",
+        "Hero : le rotating module avec minWidth 260px peut casser sur mobile <360px"
+      ],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "/fonctionnalites",
+      "fichier": "src/pages/FonctionnalitesPage.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 8,
+      "seo": {
+        "title": "Fonctionnalités — Odoc | Les 11 modules de l'OS d'entreprise IA",
+        "description": "présente",
+        "canonical": "présent (/fonctionnalites)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "Aucun screenshot réel — uniquement labels « Aperçu — … » (placeholders graphiques)"
+      ],
+      "contenu_vide_ou_todo": ["Visuels modules à produire (11 placeholders)"]
+    },
+    {
+      "page": "/pricing",
+      "fichier": "src/pages/PricingPage.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 8,
+      "seo": {
+        "title": "Tarifs — Plans Odoc",
+        "description": "Essential 49€, Pro 89€, Manager 149€…",
+        "canonical": "présent (/pricing)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "Tableau comparatif n'inclut PAS Calendrier, Portail Fournisseur, Smart Connectors (pourtant vendus)",
+        "FAQ n'aborde pas la facturation électronique 2026 (sujet stratégique pour le SEO)",
+        "Slug FR-non-naturel : URL `/pricing` au lieu de `/tarifs` (CLAUDE.md mentionne /tarifs)"
+      ],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "/blog",
+      "fichier": "src/pages/BlogPage.tsx",
+      "statut": "COMPLÈTE (code) / VIDE (contenu prod probable)",
+      "score_sur_10": 6,
+      "seo": {
+        "title": "via BlogSEOHead — non vérifié dans cet audit",
+        "description": "via BlogSEOHead",
+        "canonical": "via BlogSEOHead"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "console.log laissé en prod ligne 38",
+        "console.error en prod ligne 35 (acceptable mais à logger correctement)",
+        "Empty-state visible si Supabase retourne 0 article — vérifier qu'il existe au moins 3-5 posts pour le lancement"
+      ],
+      "contenu_vide_ou_todo": ["Articles à publier (état réel non testable depuis le code)"]
+    },
+    {
+      "page": "/blog/:slug",
+      "fichier": "src/pages/BlogPostPage.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 8,
+      "seo": {
+        "title": "via BlogSEOHead avec post.title",
+        "description": "via BlogSEOHead",
+        "canonical": "présent dynamique"
+      },
+      "ctas_corrects": true,
+      "problèmes": ["Inline CTA pointe vers /pricing au lieu de app.odocpilot.com/auth (sous-optimal)"],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "/contact",
+      "fichier": "src/pages/ContactPage.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 9,
+      "seo": {
+        "title": "Contact — Odoc | Demandez une démo",
+        "description": "présente",
+        "canonical": "présent (/contact)"
+      },
+      "ctas_corrects": true,
+      "problèmes": ["Honeypot field bien présent — bon point"],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "/a-propos",
+      "fichier": "src/pages/AProposPage.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 7,
+      "seo": {
+        "title": "À propos — Odoc | L'OS d'entreprise next-gen",
+        "description": "présente",
+        "canonical": "présent (/a-propos)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "KPI « 1000 entreprises visées en 2026 » = projection marketing sans preuve, à reformuler avant lancement",
+        "« 8h/semaine économisées en moyenne » : besoin de source ou nuancer (« objectif »)",
+        "Aucune photo / nom du fondateur — moins humain pour une startup"
+      ],
+      "contenu_vide_ou_todo": ["Section équipe / fondateur absente"]
+    },
+    {
+      "page": "/roadmap",
+      "fichier": "src/pages/RoadmapPage.tsx",
+      "statut": "PARTIELLE",
+      "score_sur_10": 6,
+      "seo": {
+        "title": "Roadmap — Odoc",
+        "description": "présente (générique)",
+        "canonical": "présent (/roadmap)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "Phase 2 mentionne Calendrier comme « en cours » alors qu'il est listé comme module en prod sur Home/Fonctionnalités → CONTRADICTION",
+        "Phase 2 mentionne CRM léger alors que Pricing « Essential » liste « CRM basique » comme déjà inclus → CONTRADICTION",
+        "Trois phases très haut-niveau, sans dates ni jalons concrets"
+      ],
+      "contenu_vide_ou_todo": ["Roadmap trop vague — pas d'items datés, pas de votes utilisateur"]
+    },
+    {
+      "page": "/changelog",
+      "fichier": "src/pages/ChangelogPage.tsx",
+      "statut": "PARTIELLE",
+      "score_sur_10": 6,
+      "seo": {
+        "title": "Changelog — Odoc",
+        "description": "présente",
+        "canonical": "présent (/changelog)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "3 entrées seulement (v1.0, v1.1, v1.2) — pas de mise à jour avril/mai 2026",
+        "Mai 2026 = pré-lancement officiel mais v1.0 daté « février 2026 » → narratif incohérent"
+      ],
+      "contenu_vide_ou_todo": ["Entrée changelog mai 2026 manquante"]
+    },
+    {
+      "page": "/recrutement",
+      "fichier": "src/pages/RecrutementPage.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 7,
+      "seo": {
+        "title": "Recrutement — Odoc | Rejoins l'aventure",
+        "description": "présente",
+        "canonical": "présent (/recrutement)"
+      },
+      "ctas_corrects": true,
+      "problèmes": ["Aucun poste ouvert affiché — choix assumé, mais perd l'opportunité de capter des candidatures qualifiées"],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "/e-facture",
+      "fichier": "src/pages/EFacturePage.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 9,
+      "seo": {
+        "title": "E-Facture Obligatoire 2026 — Conformité NF Z42-013 & Directive UE | Odoc",
+        "description": "présente, riche en mots-clés",
+        "canonical": "présent (/e-facture)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "Promesse « Extraction IA — 98%+ de précision » : à substantiver, sinon claim marketing risqué",
+        "« Odoc s'intègre avec les PDP certifiées et prépare sa propre certification » : à dater"
+      ],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "/mentions-legales",
+      "fichier": "src/pages/MentionsLegalesPage.tsx",
+      "statut": "PARTIELLE",
+      "score_sur_10": 3,
+      "seo": {
+        "title": "Mentions Légales — Odoc",
+        "description": "présente",
+        "canonical": "présent (/mentions-legales)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "BLOQUANT LANCEMENT : adresse siège = « XXX, 750XX Île-de-France » (placeholder)",
+        "Email contact = contact@odoc.fr au lieu de contact@odocpilot.com",
+        "Pas de RCS / SIRET / capital social"
+      ],
+      "contenu_vide_ou_todo": ["Adresse siège, RCS, SIRET, capital social"]
+    },
+    {
+      "page": "/cgu",
+      "fichier": "src/pages/CguPage.tsx",
+      "statut": "PARTIELLE",
+      "score_sur_10": 4,
+      "seo": {
+        "title": "CGU — Odoc | Conditions Générales d'Utilisation",
+        "description": "présente",
+        "canonical": "présent (/cgu)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "Article 3 : « Essentiel à partir de 29 € HT » — INCOHÉRENT avec PricingPage qui affiche 49€",
+        "Email contact@odoc.fr et privacy@odoc.fr au lieu de @odocpilot.com",
+        "« Article 3 » mentionne plan « Essentiel » au lieu de « Essential » — naming inconsistant"
+      ],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "/politique-confidentialite",
+      "fichier": "src/pages/PolitiqueConfidentialitePage.tsx",
+      "statut": "PARTIELLE",
+      "score_sur_10": 5,
+      "seo": {
+        "title": "Politique de confidentialité — Odoc",
+        "description": "présente",
+        "canonical": "présent (/politique-confidentialite)"
+      },
+      "ctas_corrects": true,
+      "problèmes": [
+        "Email privacy@odoc.fr partout au lieu de privacy@odocpilot.com",
+        "« Le Plessis-Trévise, France » : cohérent ? À confirmer (vs Mentions Légales qui dit XXX 750XX)"
+      ],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "*",
+      "fichier": "src/pages/NotFound.tsx",
+      "statut": "COMPLÈTE",
+      "score_sur_10": 8,
+      "seo": {"title": "présent", "description": "présent", "canonical": "n/a"},
+      "ctas_corrects": true,
+      "problèmes": [],
+      "contenu_vide_ou_todo": []
+    },
+    {
+      "page": "(orphelin)",
+      "fichier": "src/pages/Index.tsx",
+      "statut": "ORPHELIN — non routé dans App.tsx",
+      "score_sur_10": 0,
+      "seo": {"title": "absent", "description": "absent", "canonical": "absent"},
+      "ctas_corrects": false,
+      "problèmes": ["Fichier Index.tsx contient un placeholder Lovable « Welcome to Your Blank App » — résiduel à supprimer"],
+      "contenu_vide_ou_todo": ["FICHIER ENTIER À SUPPRIMER"]
+    }
+  ],
+  "performance": {
+    "images_sans_lazy": ["src/pages/BlogPostPage.tsx ligne 147 (avatar auteur)"],
+    "images_sans_alt": [],
+    "fonts_ok": false,
+    "fonts_remarques": [
+      "Fontshare chargé sans <link rel=preconnect> sur api.fontshare.com → latence DNS au premier render",
+      "Pas de <link rel=preload> pour Cabinet Grotesk / Satoshi → risque de FOUT",
+      "display=swap présent dans l'URL → bon point"
+    ],
+    "lazy_loading_pages": false,
+    "lazy_loading_remarques": [
+      "App.tsx importe TOUTES les pages en static (HomePage, PricingPage, FonctionnalitesPage, EFacturePage, BlogPage, BlogPostPage, etc.) → bundle initial alourdi de ~500-800KB inutiles. Aucune route en React.lazy."
+    ],
+    "deps_inutiles": [
+      "lovable-tagger (devDep) — résiduel Lovable, à supprimer",
+      "@tsparticles/react + @tsparticles/slim — utilisés uniquement dans HeroParticles, ~150KB. Garder seulement si HeroParticles est jugé essentiel.",
+      "input-otp — pas d'OTP visible côté marketing",
+      "react-day-picker — pas de date picker visible côté landing",
+      "vaul (drawer) — non utilisé apparemment",
+      "embla-carousel-react — non utilisé apparemment",
+      "recharts — non utilisé sur landing",
+      "cmdk — pas de command palette visible"
+    ],
+    "deps_obsoletes": [
+      "react-helmet-async ^3.0.0 — vérifier compat React 19+ pour le futur",
+      "react-router-dom 6.30 — v7 dispo (non bloquant)"
+    ],
+    "lovable_residuel": [
+      "src/pages/Index.tsx (placeholder Lovable Welcome page)",
+      "lovable-tagger dans package.json devDependencies"
+    ]
+  },
+  "seo_global": {
+    "jsonld_présent": true,
+    "jsonld_remarques": [
+      "3 JSON-LD dans index.html (SoftwareApplication, Organization, WebSite) — bon",
+      "EFacturePage et HomePage ajoutent un JSON-LD via SEOHead — bon",
+      "AggregateRating: 4.8/12 dans index.html — INVENTÉ (12 avis n'existent pas, blog/Trustpilot vides). RISQUE Google Rich Results review fail / pénalité manipulative."
+    ],
+    "og_complet": false,
+    "og_remarques": [
+      "og:image pointe vers /og-image.png MAIS ce fichier N'EXISTE PAS dans /public → OG cards cassées sur LinkedIn/Twitter/Slack",
+      "SEOHead.tsx fallback = /og-default.png → également ABSENT de /public",
+      "twitter:image absent dans index.html (présent dans SEOHead par page)"
+    ],
+    "sitemap_ok": false,
+    "sitemap_remarques": [
+      "/e-facture MANQUANT dans sitemap.xml (page importante SEO 2026)",
+      "Pas d'entrées <lastmod>",
+      "Sitemap statique : ne reflète pas les articles de blog dynamiques Supabase"
+    ],
+    "robots_ok": true,
+    "mots_clés_présents": {
+      "facturation électronique 2026": "EFacturePage (excellent)",
+      "copilot IA entreprise": "HomePage, AProposPage",
+      "NF Z42-013": "EFacturePage, HomePage",
+      "RGPD": "HomePage, Privacy, Mentions"
+    },
+    "mots_clés_manquants": [
+      "« gestion documentaire PME » (peu présent — surtout 'documents')",
+      "« GED TPE France » (jamais utilisé tel quel)",
+      "« logiciel RH PME » (Module RH mentionné mais sans formulation SEO)",
+      "« facturation obligatoire septembre 2026 » (variantes présentes mais cette formulation exacte absente)"
+    ]
+  },
+  "responsive": {
+    "grids_sans_breakpoint": [],
+    "grids_remarques": [
+      "HomePage modules : grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 — OK",
+      "PricingPage : grid-cols-1 md:grid-cols-2 lg:grid-cols-4 — OK",
+      "Tableau comparatif Pricing : overflow-x-auto présent — OK",
+      "Tableau comparatif EFacture : à vérifier (lecture partielle)"
+    ],
+    "textes_trop_grands_mobile": [
+      "HomePage h1 : text-5xl lg:text-7xl — pas de sm: → 5xl sur mobile = 48px, lourd sur 375px",
+      "EFacturePage h1 : text-4xl sm:text-5xl lg:text-6xl — OK"
+    ],
+    "navigation_mobile_ok": true,
+    "navigation_remarques": ["SiteHeader hamburger + drawer correct, aria-label présent"]
+  },
+  "contenu_2026": {
+    "blog_articles_count": "INDÉTERMINABLE depuis le code (Supabase runtime). lib/blog.ts a un TODO « Remplacer ce mock par une vraie source »",
+    "dernier_article_date": "À vérifier en prod sur https://odocpilot.com/blog",
+    "roadmap_vide": false,
+    "roadmap_remarques": "3 phases présentes mais incohérentes vs Pricing/Home (Calendrier, CRM)",
+    "changelog_vide": false,
+    "changelog_remarques": "3 entrées seulement, aucune en avril/mai 2026",
+    "pricing_à_jour": true,
+    "pricing_remarques": "49/89/149/Sur mesure — cohérent avec index.html JSON-LD et HomePage. MAIS CGU article 3 dit 29€ → divergence",
+    "liens_morts": [
+      "SiteFooter.tsx : https://docs.odoc.fr (devrait être docs.odocpilot.com)",
+      "SiteFooter.tsx : https://docs.odoc.fr/api (idem)",
+      "SiteFooter.tsx : https://status.odoc.fr (devrait être status.odocpilot.com)"
+    ]
+  },
+  "tâches_haiku": [
+    {
+      "id": "SITE-H-01",
+      "priorité": "CRITIQUE",
+      "page_ou_fichier": "src/components/SiteFooter.tsx (lignes 29-31)",
+      "description": "Remplacer docs.odoc.fr → docs.odocpilot.com, status.odoc.fr → status.odocpilot.com (3 occurrences). Domaines actuels n'existent pas = liens morts.",
+      "effort_estimé": "5min",
+      "type": "BUG"
+    },
+    {
+      "id": "SITE-H-02",
+      "priorité": "CRITIQUE",
+      "page_ou_fichier": "src/pages/MentionsLegalesPage.tsx (lignes 18-19) + CguPage.tsx + PolitiqueConfidentialitePage.tsx",
+      "description": "Remplacer toutes les occurrences contact@odoc.fr / privacy@odoc.fr → contact@odocpilot.com / privacy@odocpilot.com.",
+      "effort_estimé": "10min",
+      "type": "BUG"
+    },
+    {
+      "id": "SITE-H-03",
+      "priorité": "CRITIQUE",
+      "page_ou_fichier": "src/pages/CguPage.tsx ligne 40",
+      "description": "Article 3 : remplacer « 29 € HT » par « 49 € HT » et « Essentiel » par « Essential » pour cohérence avec PricingPage.",
+      "effort_estimé": "5min",
+      "type": "BUG"
+    },
+    {
+      "id": "SITE-H-04",
+      "priorité": "CRITIQUE",
+      "page_ou_fichier": "public/og-image.png + public/og-default.png",
+      "description": "Générer et déposer ces 2 images (1200x630) dans /public. Sans elles, partages LinkedIn/Twitter/Slack cassés.",
+      "effort_estimé": "30min",
+      "type": "DESIGN"
+    },
+    {
+      "id": "SITE-H-05",
+      "priorité": "CRITIQUE",
+      "page_ou_fichier": "src/pages/Index.tsx",
+      "description": "Supprimer ce fichier orphelin (Welcome to Your Blank App — résidu Lovable, non routé).",
+      "effort_estimé": "1min",
+      "type": "BUG"
+    },
+    {
+      "id": "SITE-H-06",
+      "priorité": "HAUTE",
+      "page_ou_fichier": "package.json + supprimer HeroParticles si non essentiel",
+      "description": "Supprimer lovable-tagger. Auditer puis retirer deps inutilisées : input-otp, react-day-picker, vaul, embla-carousel-react, recharts, cmdk si confirmé non utilisées (lancer un knip ou depcheck).",
+      "effort_estimé": "30min",
+      "type": "PERF"
+    },
+    {
+      "id": "SITE-H-07",
+      "priorité": "HAUTE",
+      "page_ou_fichier": "src/App.tsx",
+      "description": "Migrer toutes les pages non-Home en React.lazy + Suspense. HomePage reste statique. Réduira le bundle initial de ~50%.",
+      "effort_estimé": "1h",
+      "type": "PERF"
+    },
+    {
+      "id": "SITE-H-08",
+      "priorité": "HAUTE",
+      "page_ou_fichier": "index.html",
+      "description": "Ajouter <link rel=preconnect href=https://api.fontshare.com> + <link rel=preconnect href=https://cdn.fontshare.com crossorigin> avant le link CSS Fontshare.",
+      "effort_estimé": "5min",
+      "type": "PERF"
+    },
+    {
+      "id": "SITE-H-09",
+      "priorité": "HAUTE",
+      "page_ou_fichier": "index.html lignes 45-49",
+      "description": "Retirer le bloc aggregateRating (4.8/12) du JSON-LD SoftwareApplication tant qu'il n'y a pas de vrais avis. Risque de pénalité Google et incohérent avec section Trustpilot vide.",
+      "effort_estimé": "2min",
+      "type": "SEO"
+    },
+    {
+      "id": "SITE-H-10",
+      "priorité": "HAUTE",
+      "page_ou_fichier": "public/sitemap.xml",
+      "description": "Ajouter <url><loc>https://odocpilot.com/e-facture</loc>…</url>. Idéalement générer le sitemap au build pour inclure les articles blog.",
+      "effort_estimé": "5min",
+      "type": "SEO"
+    },
+    {
+      "id": "SITE-H-11",
+      "priorité": "HAUTE",
+      "page_ou_fichier": "src/pages/RoadmapPage.tsx",
+      "description": "Corriger Phase 2 : retirer Calendrier (déjà en prod selon Home/Fonctionnalités) et CRM (déjà inclus dans Essential pricing). Ajouter items réellement « en cours » : PDP, mobile app, etc.",
+      "effort_estimé": "20min",
+      "type": "CONTENU"
+    },
+    {
+      "id": "SITE-H-12",
+      "priorité": "HAUTE",
+      "page_ou_fichier": "src/pages/HomePage.tsx ligne 3",
+      "description": "Supprimer `import { motion } from \"framer-motion\";` (utilisé nulle part dans HomePage, MotionDiv suffit).",
+      "effort_estimé": "1min",
+      "type": "PERF"
+    },
+    {
+      "id": "SITE-H-13",
+      "priorité": "MOYENNE",
+      "page_ou_fichier": "src/components/ThemeToggle.tsx (lignes 17, 25) + src/pages/BlogPage.tsx (lignes 35, 38)",
+      "description": "Supprimer console.log (garder console.error éventuellement piped vers Sentry).",
+      "effort_estimé": "5min",
+      "type": "BUG"
+    },
+    {
+      "id": "SITE-H-14",
+      "priorité": "MOYENNE",
+      "page_ou_fichier": "src/pages/PricingPage.tsx",
+      "description": "Ajouter dans le tableau comparatif les lignes : Calendrier partagé, Portail fournisseur, Smart Connectors. Et 1 question FAQ sur l'e-facture obligatoire 2026.",
+      "effort_estimé": "30min",
+      "type": "SEO"
+    },
+    {
+      "id": "SITE-H-15",
+      "priorité": "MOYENNE",
+      "page_ou_fichier": "src/pages/HomePage.tsx",
+      "description": "Soit retirer la section Trustpilot (5 étoiles factices alors que zéro avis), soit la transformer en « Recevez les premiers retours » sans étoiles.",
+      "effort_estimé": "10min",
+      "type": "DESIGN"
+    },
+    {
+      "id": "SITE-H-16",
+      "priorité": "MOYENNE",
+      "page_ou_fichier": "src/pages/HomePage.tsx ligne 515",
+      "description": "h1 : ajouter sm:text-5xl avant lg:text-7xl pour mobile (actuellement text-5xl direct, lourd sur < 380px).",
+      "effort_estimé": "5min",
+      "type": "DESIGN"
+    },
+    {
+      "id": "SITE-H-17",
+      "priorité": "MOYENNE",
+      "page_ou_fichier": "src/pages/ChangelogPage.tsx",
+      "description": "Ajouter une entrée v1.3 (avril/mai 2026) reflétant le pré-lancement.",
+      "effort_estimé": "10min",
+      "type": "CONTENU"
+    },
+    {
+      "id": "SITE-H-18",
+      "priorité": "BASSE",
+      "page_ou_fichier": "src/pages/BlogPostPage.tsx ligne 188-202",
+      "description": "Inline CTA : pointer vers ${APP_URL}/auth au lieu de /pricing pour conversion directe.",
+      "effort_estimé": "5min",
+      "type": "CONTENU"
+    },
+    {
+      "id": "SITE-H-19",
+      "priorité": "BASSE",
+      "page_ou_fichier": "Routes",
+      "description": "Ajouter une redirection /tarifs → /pricing (CLAUDE.md mentionne /tarifs, plus naturel FR pour SEO). Ou inversement.",
+      "effort_estimé": "10min",
+      "type": "SEO"
+    },
+    {
+      "id": "SITE-H-20",
+      "priorité": "BASSE",
+      "page_ou_fichier": "src/pages/BlogPostPage.tsx ligne 147",
+      "description": "Ajouter loading=\"lazy\" sur l'avatar auteur.",
+      "effort_estimé": "1min",
+      "type": "PERF"
+    }
+  ],
+  "tâches_humain": [
+    {
+      "id": "SITE-BUS-01",
+      "domaine": "Légal",
+      "description": "Fournir l'adresse réelle du siège Logix Solutions SASU + RCS + SIRET + capital social pour MentionsLegalesPage. Actuellement « XXX, 750XX Île-de-France » → BLOQUE le lancement légal.",
+      "urgence": "AVANT LANCEMENT"
+    },
+    {
+      "id": "SITE-BUS-02",
+      "domaine": "Décision",
+      "description": "Trancher la cohérence email : @odoc.fr (legacy) vs @odocpilot.com (nouveau). Si @odocpilot.com : créer les boîtes contact@ et privacy@ ET mettre à jour MX.",
+      "urgence": "AVANT LANCEMENT"
+    },
+    {
+      "id": "SITE-BUS-03",
+      "domaine": "Contenu",
+      "description": "Valider ou retirer la stat « +200 équipes actives » sur HomePage et « 1000 entreprises visées 2026 » sur AProposPage. Si pas substantielles : reformuler en objectif/projection.",
+      "urgence": "AVANT LANCEMENT"
+    },
+    {
+      "id": "SITE-BUS-04",
+      "domaine": "Blog",
+      "description": "Publier minimum 3-5 articles dans Supabase blog_posts avant lancement (e-facture 2026, GED PME, Brain RAG, étude de cas, comparatif outils). Sinon /blog affiche empty state = mauvais signal.",
+      "urgence": "AVANT LANCEMENT"
+    },
+    {
+      "id": "SITE-BUS-05",
+      "domaine": "Décision",
+      "description": "Statuer sur le claim « Extraction IA — 98%+ de précision » (EFacturePage). Si non mesuré : reformuler « jusqu'à 98% » ou retirer le chiffre.",
+      "urgence": "AVANT LANCEMENT"
+    },
+    {
+      "id": "SITE-BUS-06",
+      "domaine": "Contenu",
+      "description": "Faire produire 11 vrais screenshots des modules pour FonctionnalitesPage (actuellement labels textuels uniquement).",
+      "urgence": "J+30"
+    },
+    {
+      "id": "SITE-BUS-07",
+      "domaine": "Décision",
+      "description": "Activer (ou non) Trustpilot officiellement et collecter 5-10 vrais avis avant de remettre le bloc « 5 étoiles ».",
+      "urgence": "J+7"
+    },
+    {
+      "id": "SITE-BUS-08",
+      "domaine": "Copy",
+      "description": "Story équipe / fondateur sur AProposPage : ajouter une section « Qui construit Odoc » avec 1-2 photos et noms. Boost crédibilité TPE/PME.",
+      "urgence": "J+30"
+    },
+    {
+      "id": "SITE-BUS-09",
+      "domaine": "Décision",
+      "description": "Position sur la certification PDP (mentionnée comme « en préparation » sur EFacturePage). Confirmer la roadmap réelle pour ne pas exposer un risque légal/marketing.",
+      "urgence": "J+7"
+    }
+  ]
+}

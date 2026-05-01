@@ -29,8 +29,8 @@ export default function RecrutementPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Recrutement — Odoc | Rejoins l'aventure"
-        description="Rejoignez l'équipe Odoc et construisez le futur copilot IA des entreprises françaises."
+        title="Recrutement Odoc — Rejoignez l'équipe qui réinvente l'OS d'entreprise"
+        description="Rejoignez l'équipe Odoc et construisez le futur OS d'entreprise IA pour les TPE et PME françaises. Postes ouverts en ingénierie, design et growth."
         canonical="/recrutement"
       />
 

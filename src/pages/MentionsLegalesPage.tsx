@@ -4,8 +4,8 @@ export default function MentionsLegalesPage() {
   return (
     <div className="mx-auto max-w-3xl py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
       <SEOHead
-        title="Mentions Légales — Odoc"
-        description="Mentions légales du site Odoc, plateforme d'intelligence documentaire."
+        title="Mentions Légales — OdocPilot | Logix Solutions SASU"
+        description="Mentions légales d'OdocPilot : éditeur, hébergeur, propriété intellectuelle. Site édité par Logix Solutions SASU, 89-91 Av. de la République, 75011 Paris."
         canonical="/mentions-legales"
       />
       <h1 className="text-3xl font-bold tracking-tight text-foreground">Mentions Légales</h1>

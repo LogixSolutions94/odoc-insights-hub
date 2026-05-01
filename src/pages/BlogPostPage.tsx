@@ -124,6 +124,8 @@ export default function BlogPostPage() {
         canonical={`/blog/${post.slug}`}
         ogImage={post.og_image_url || post.cover_image_url || undefined}
         ogType="article"
+        publishedTime={post.published_at ?? undefined}
+        modifiedTime={post.updated_at ?? post.published_at ?? undefined}
       />
 
       <MotionDiv>

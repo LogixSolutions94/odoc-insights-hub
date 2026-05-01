@@ -135,9 +135,21 @@ export default function PricingPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Tarifs — Plans Odoc"
-        description="Essential 49€, Pro 89€, Manager 149€. Essai gratuit 14 jours sans CB. Copilot IA pour TPE et PME."
+        title="Tarifs Odoc — Essential, Pro, Manager | Essai 14 jours gratuit"
+        description="Comparez les plans Odoc : Essential 49€, Pro 89€, Manager 149€. Essai gratuit 14 jours sans carte bancaire. Annulation à tout moment."
         canonical="/pricing"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }}
       />
 
       {/* ═══════════════════════════════════════════

@@ -1,5 +1,7 @@
 import { SEOHead } from "@/components/SEOHead";
 
+const BASE_URL = "https://odocpilot.com";
+
 interface BlogSEOHeadProps {
   title?: string;
   description?: string;
@@ -7,6 +9,7 @@ interface BlogSEOHeadProps {
   ogImage?: string;
   ogType?: string;
   publishedTime?: string;
+  modifiedTime?: string;
   category?: string;
   keywords?: string;
 }
@@ -18,9 +21,36 @@ export function BlogSEOHead({
   ogImage,
   ogType = "website",
   publishedTime,
-  category,
-  keywords,
+  modifiedTime,
 }: BlogSEOHeadProps) {
+  const articleJsonLd =
+    ogType === "article" && publishedTime
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: title,
+          description: description,
+          author: {
+            "@type": "Organization",
+            name: "OdocPilot",
+            url: BASE_URL,
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "OdocPilot",
+            logo: {
+              "@type": "ImageObject",
+              url: `${BASE_URL}/og-image.svg`,
+            },
+          },
+          datePublished: publishedTime,
+          dateModified: modifiedTime || publishedTime,
+          url: `${BASE_URL}${canonical}`,
+          inLanguage: "fr-FR",
+          ...(ogImage ? { image: ogImage } : {}),
+        }
+      : undefined;
+
   return (
     <SEOHead
       title={title}
@@ -28,6 +58,7 @@ export function BlogSEOHead({
       canonical={canonical}
       ogImage={ogImage}
       ogType={ogType}
+      jsonLd={articleJsonLd}
     />
   );
 }

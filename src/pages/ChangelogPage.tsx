@@ -56,8 +56,8 @@ export default function ChangelogPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Changelog — Odoc"
-        description="Toutes les nouveautés Odoc, version par version. Suivez l'évolution de votre copilot IA d'entreprise."
+        title="Changelog Odoc — Nouveautés et mises à jour de la plateforme"
+        description="Suivez l'évolution d'Odoc : nouvelles fonctionnalités IA, améliorations de performance et correctifs. Mises à jour hebdomadaires pour votre OS d'entreprise."
         canonical="/changelog"
       />
 

@@ -38,8 +38,8 @@ export default function RoadmapPage() {
   return (
     <div className="flex flex-col items-center">
       <SEOHead
-        title="Roadmap — Odoc"
-        description="Découvrez les fonctionnalités en cours et à venir sur Odoc, votre copilot IA d'entreprise."
+        title="Roadmap Odoc — Fonctionnalités à venir et en développement"
+        description="Découvrez les prochaines fonctionnalités d'Odoc : certification PDP 2026, Odoc Brain v2, API publique et app mobile. Votez pour les features qui comptent."
         canonical="/roadmap"
       />
 

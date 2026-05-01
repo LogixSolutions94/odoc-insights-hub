@@ -5,17 +5,17 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
 
-  // Init : lire system preference et appliquer immédiatement (useLayoutEffect = synchrone)
+  // Init : lire localStorage et appliquer immédiatement (useLayoutEffect = synchrone)
   useLayoutEffect(() => {
     const html = document.documentElement;
-    const stored = html.getAttribute('data-theme');
 
-    // Si data-theme n'est pas set, déterminer depuis system preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial = (stored as 'light' | 'dark') || (prefersDark ? 'dark' : 'light');
+    // Chercher le thème : localStorage > data-theme > défaut dark
+    const stored = localStorage.getItem('theme') || html.getAttribute('data-theme');
+    const initial = (stored as 'light' | 'dark') || 'dark';
 
     setTheme(initial);
     html.setAttribute('data-theme', initial);
+    localStorage.setItem('theme', initial);
     setMounted(true);
   }, []);
 
@@ -23,6 +23,7 @@ export function ThemeToggle() {
     const next = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
     document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
 
     // Force reflow pour s'assurer que les changements CSS sont appliqués
     void document.documentElement.offsetHeight;

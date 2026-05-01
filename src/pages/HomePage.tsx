@@ -20,7 +20,6 @@ import {
   MessageSquare,
   Link2,
   Cloud,
-  Star,
   CheckCircle,
   Shield,
   Lock,
@@ -992,64 +991,53 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF */}
+      {/* BÊTA & TRUST */}
       <section className="w-full py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <MotionDiv className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-              Ils ont adopté leur nouvel employé IA
-            </h2>
-          </MotionDiv>
-
-          <div className="flex flex-col items-center">
-            <div
-              className="w-full max-w-2xl mx-auto rounded-2xl bg-card border border-border p-10 sm:p-14 text-center"
-              style={{ boxShadow: "0 8px 48px rgba(0,0,0,0.08)" }}
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full max-w-2xl mx-auto rounded-2xl bg-card border border-border p-10 sm:p-14 text-center"
+            style={{ boxShadow: "0 8px 48px rgba(0,0,0,0.08)" }}
+          >
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold mb-6"
+              style={{
+                border: `1px solid ${ORANGE}44`,
+                background: `${ORANGE}12`,
+                color: ORANGE,
+              }}
             >
-              <MotionDiv>
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <span
-                    className="text-2xl font-extrabold tracking-tight"
-                    style={{ color: "#00B67A" }}
-                  >
-                    ★ Trustpilot
-                  </span>
-                </div>
-                <div className="flex items-center justify-center gap-1 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-7 w-7 fill-current"
-                      style={{ color: "#00B67A" }}
-                    />
-                  ))}
-                </div>
-                <h2 className="text-2xl font-bold text-foreground">
-                  Nos clients parlent pour nous.
-                </h2>
-                <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-                  Les avis de nos premiers utilisateurs arrivent bientôt. Vous
-                  utilisez Odoc ? Partagez votre expérience et aidez d'autres
-                  entreprises à nous découvrir.
-                </p>
-                <div className="mt-8">
-                  <a
-                    href="https://www.trustpilot.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="border-[#00B67A] text-[#00B67A] hover:bg-[#00B67A]/5"
-                    >
-                      Laisser un avis ★
-                    </Button>
-                  </a>
-                </div>
-              </MotionDiv>
+              <span className="animate-pulse">●</span>
+              Bêta privée ouverte
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+              Rejoignez les premiers utilisateurs
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+              OdocPilot est en bêta active. Testez gratuitement et façonnez
+              le produit avec nous — votre retour compte.
+            </p>
+            <div className="mt-8">
+              <a
+                href={`${APP_URL}/auth`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="px-8 font-bold text-white transition-all duration-200 hover:scale-[1.03]"
+                  style={{
+                    background: `linear-gradient(135deg, ${ORANGE}, ${PETRIOL})`,
+                    boxShadow: `0 0 24px rgba(249,115,22,0.35)`,
+                  }}
+                >
+                  Demander l'accès gratuit →
+                </Button>
+              </a>
             </div>
-          </div>
+          </MotionDiv>
 
           <MotionDiv
             initial={{ opacity: 0, y: 10 }}

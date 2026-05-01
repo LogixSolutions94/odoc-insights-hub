@@ -6,7 +6,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const BASE_URL = "https://odoc.fr";
+const BASE_URL = "https://odocpilot.com";
 
 const staticPages = [
   { loc: "/", priority: "1.0", changefreq: "weekly" },

@@ -153,6 +153,10 @@ Deno.serve(async (req) => {
         .eq("slug", slug);
 
       if (error) throw error;
+
+      // Ping Google to trigger immediate sitemap re-crawl
+      fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent("https://odocpilot.com/sitemap.xml")}`).catch(() => {});
+
       return new Response(
         JSON.stringify({ success: true, action, slug, id: existing.id }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }

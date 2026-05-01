@@ -20,10 +20,29 @@ Ce VPS héberge DEUX applications DISTINCTES. Ne JAMAIS les confondre.
 4. Toute commande Docker/Nginx → DEMANDER CONFIRMATION avant d'appliquer si risque de toucher le SaaS
 5. Le container SaaS (odoc-frontend / port 3001) ne doit JAMAIS être redémarré ou modifié depuis cette session
 
-### Déploiement Landing seulement
+### Déploiement Landing — Workflow CORRECT
+
+⚠️ **RÈGLE ABSOLUE** : Ce repo utilise une image Docker **baked-in** (pas de volume mount).
+`docker restart odoc-landing` seul **NE rebuild PAS l'image** → les changements ne sont **PAS** déployés !
+
 ```bash
-# ✅ CORRECT — uniquement la landing
-npm run build
+# ✅ WORKFLOW CORRECT à chaque déploiement
+git pull origin main                      # Récupérer les changements VPS
+docker build -t odoc-landing .            # Reconstruire l'image
+docker stop odoc-landing && docker rm odoc-landing  # Arrêter & supprimer
+docker run -d \
+  --name odoc-landing \
+  --network coolify \
+  -p 3000:80 \
+  --restart unless-stopped \
+  odoc-landing                            # Relancer avec nouvelle image
+
+curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3000  # Vérifier 200
+
+# ❌ JAMAIS SEUL (ancien build reste actif)
+docker restart odoc-landing
+
+# ❌ JAMAIS SCP sans rebuild (fichiers sur VPS mais pas dans image)
 scp -i ~/.ssh/odoc_vps_rsa -r dist/* root@151.80.144.236:/var/www/odoc/
 
 # ❌ INTERDIT — ne jamais faire depuis ce repo

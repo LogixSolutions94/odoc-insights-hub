@@ -21,7 +21,7 @@ export default function PolitiqueConfidentialitePage() {
           <p>
             Logix Solutions SASU, éditrice de la plateforme Odoc<br />
             Siège social : Le Plessis-Trévise, France<br />
-            Contact : <a href="mailto:privacy@odoc.fr" className="text-primary hover:underline">privacy@odoc.fr</a>
+            Contact : <a href="mailto:privacy@odocpilot.com" className="text-primary hover:underline">privacy@odocpilot.com</a>
           </p>
         </section>
 
@@ -71,7 +71,7 @@ export default function PolitiqueConfidentialitePage() {
             <li><strong className="text-foreground">Droit d'opposition :</strong> vous opposer au traitement de vos données pour des motifs légitimes.</li>
           </ul>
           <p className="mt-3">
-            Pour exercer vos droits, contactez-nous à : <a href="mailto:privacy@odoc.fr" className="text-primary hover:underline">privacy@odoc.fr</a>
+            Pour exercer vos droits, contactez-nous à : <a href="mailto:privacy@odocpilot.com" className="text-primary hover:underline">privacy@odocpilot.com</a>
           </p>
         </section>
 
@@ -98,7 +98,7 @@ export default function PolitiqueConfidentialitePage() {
           <h2 className="text-xl font-semibold text-foreground mb-4">9. Contact</h2>
           <p>
             Pour toute question relative à la protection de vos données personnelles, vous pouvez nous contacter à :<br />
-            <a href="mailto:privacy@odoc.fr" className="text-primary hover:underline">privacy@odoc.fr</a>
+            <a href="mailto:privacy@odocpilot.com" className="text-primary hover:underline">privacy@odocpilot.com</a>
           </p>
           <p className="mt-3">
             Vous disposez également du droit d'introduire une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés) : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.cnil.fr</a>

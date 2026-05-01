@@ -27,7 +27,7 @@ export default function CguPage() {
             L'accès à la plateforme Odoc nécessite la création d'un compte utilisateur. L'utilisateur s'engage à fournir des informations exactes et à jour lors de son inscription, et à maintenir la confidentialité de ses identifiants de connexion.
           </p>
           <p className="mt-2">
-            L'utilisateur est seul responsable de toute activité effectuée depuis son compte. En cas de suspicion d'utilisation non autorisée, l'utilisateur doit en informer immédiatement Odoc à l'adresse contact@odoc.fr.
+            L'utilisateur est seul responsable de toute activité effectuée depuis son compte. En cas de suspicion d'utilisation non autorisée, l'utilisateur doit en informer immédiatement Odoc à l'adresse contact@odocpilot.com.
           </p>
           <p className="mt-2">
             Odoc se réserve le droit de suspendre ou de résilier l'accès d'un utilisateur en cas de non-respect des présentes CGU, sans préavis ni indemnité.
@@ -59,7 +59,7 @@ export default function CguPage() {
             L'utilisateur peut à tout moment exporter l'intégralité de ses données (documents, métadonnées) aux formats PDF, CSV ou JSON depuis les paramètres de son compte. En cas de suppression de compte, les données sont supprimées sous 30 jours.
           </p>
           <p className="mt-2">
-            Pour toute question relative à vos données personnelles : <strong className="text-foreground">privacy@odoc.fr</strong>.
+            Pour toute question relative à vos données personnelles : <strong className="text-foreground">privacy@odocpilot.com</strong>.
           </p>
         </section>
 

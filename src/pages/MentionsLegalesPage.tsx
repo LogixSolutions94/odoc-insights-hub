@@ -16,7 +16,7 @@ export default function MentionsLegalesPage() {
             <p><strong className="text-foreground">Raison sociale :</strong> Logix Solutions SASU</p>
             <p><strong className="text-foreground">Nom commercial :</strong> Odoc SaaS</p>
             <p><strong className="text-foreground">Siège social :</strong> XXX, 750XX Île-de-France, France</p>
-            <p><strong className="text-foreground">Email :</strong> contact@odoc.fr</p>
+            <p><strong className="text-foreground">Email :</strong> contact@odocpilot.com</p>
             <p><strong className="text-foreground">Directeur de la publication :</strong> Le représentant légal de Logix Solutions SASU</p>
           </div>
         </section>
@@ -44,7 +44,7 @@ export default function MentionsLegalesPage() {
             Conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679) et à la loi Informatique et Libertés du 6 janvier 1978 modifiée, vous disposez d'un droit d'accès, de rectification, de suppression, de limitation du traitement, de portabilité et d'opposition concernant vos données personnelles.
           </p>
           <p className="mt-2">
-            Pour exercer ces droits ou pour toute question relative au traitement de vos données, vous pouvez nous contacter à l'adresse : <strong className="text-foreground">privacy@odoc.fr</strong>.
+            Pour exercer ces droits ou pour toute question relative au traitement de vos données, vous pouvez nous contacter à l'adresse : <strong className="text-foreground">privacy@odocpilot.com</strong>.
           </p>
           <p className="mt-2">
             Vos données personnelles sont collectées uniquement dans le cadre de l'utilisation de nos services et ne sont en aucun cas cédées, vendues ou louées à des tiers à des fins commerciales.

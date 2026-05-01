@@ -8,6 +8,7 @@
   <url><loc>https://odocpilot.com/contact</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://odocpilot.com/roadmap</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://odocpilot.com/changelog</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://odocpilot.com/e-facture</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://odocpilot.com/recrutement</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://odocpilot.com/mentions-legales</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://odocpilot.com/politique-confidentialite</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

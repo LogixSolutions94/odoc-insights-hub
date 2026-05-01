@@ -515,18 +515,26 @@ export default function HomePage() {
               Automatisez vos{" "}
               <span
                 style={{
-                  display: "inline-block",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.35em",
                   minWidth: "260px",
                   transition: "opacity 0.35s ease, transform 0.35s ease",
                   opacity: show ? 1 : 0,
                   transform: show ? "translateY(0px)" : "translateY(-12px)",
-                  background: `linear-gradient(135deg, ${ORANGE}, ${PETRIOL})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
                 }}
               >
-                {module.emoji} {module.word}
+                <span style={{ WebkitTextFillColor: "initial" }}>{module.emoji}</span>
+                <span
+                  style={{
+                    background: `linear-gradient(135deg, ${ORANGE}, ${PETRIOL})`,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  {module.word}
+                </span>
               </span>
               <br />
               avec l'IA.

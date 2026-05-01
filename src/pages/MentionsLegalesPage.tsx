@@ -14,10 +14,10 @@ export default function MentionsLegalesPage() {
           <h2 className="text-xl font-semibold text-foreground">Éditeur du site</h2>
           <div className="mt-3 space-y-1">
             <p><strong className="text-foreground">Raison sociale :</strong> Logix Solutions SASU</p>
-            <p><strong className="text-foreground">Nom commercial :</strong> Odoc SaaS</p>
-            <p><strong className="text-foreground">Siège social :</strong> XXX, 750XX Île-de-France, France</p>
+            <p><strong className="text-foreground">Noms commerciaux :</strong> OdocPilot, Odoc — marques appartenant à Logix Solutions SASU</p>
+            <p><strong className="text-foreground">Siège social :</strong> 89-91 Avenue de la République, 75011 Paris, France</p>
             <p><strong className="text-foreground">Email :</strong> contact@odocpilot.com</p>
-            <p><strong className="text-foreground">Directeur de la publication :</strong> Le représentant légal de Logix Solutions SASU</p>
+            <p><strong className="text-foreground">Directeur de la publication :</strong> Lucas Belloc</p>
           </div>
         </section>
 

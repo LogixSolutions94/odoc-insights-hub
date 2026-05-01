@@ -10,7 +10,7 @@ interface SEOHeadProps {
 }
 
 const BASE_URL = "https://odocpilot.com";
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-default.png`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.svg`;
 
 export function SEOHead({
   title,

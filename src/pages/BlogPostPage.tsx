@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
+import remarkGfm from "remark-gfm";
 import { supabase } from "@/integrations/supabase/client";
 import { MotionDiv } from "@/components/MotionDiv";
 import { BlogSEOHead } from "@/components/blog/BlogSEOHead";
@@ -182,7 +183,7 @@ export default function BlogPostPage() {
 
         {/* Content part 1 */}
         <div className="mt-12 prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-strong:text-foreground prose-li:marker:text-primary">
-          <ReactMarkdown rehypePlugins={[rehypeHighlight]} components={markdownComponents}>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]} components={markdownComponents}>
             {contentWithCTA.before}
           </ReactMarkdown>
         </div>
@@ -198,14 +199,14 @@ export default function BlogPostPage() {
           <p className="text-foreground font-medium">
             Automatisez vos factures avec l'IA d'Odoc
           </p>
-          <Link to="/pricing" className="inline-block mt-4">
+          <Link to="/pricing" className="inline-block mt-4" data-umami-event="blog-cta-article">
             <Button>Démarrer l'essai gratuit →</Button>
           </Link>
         </div>
 
         {/* Content part 2 */}
         <div className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-strong:text-foreground prose-li:marker:text-primary">
-          <ReactMarkdown rehypePlugins={[rehypeHighlight]} components={markdownComponents}>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]} components={markdownComponents}>
             {contentWithCTA.after}
           </ReactMarkdown>
         </div>

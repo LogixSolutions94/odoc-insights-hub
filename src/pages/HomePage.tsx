@@ -571,6 +571,7 @@ export default function HomePage() {
                 href={`${APP_URL}/auth`}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-umami-event="cta-essai-gratuit"
               >
                 <Button
                   size="lg"
@@ -594,6 +595,7 @@ export default function HomePage() {
               <a
                 href="/pricing"
                 rel="noopener noreferrer"
+                data-umami-event="cta-tarifs"
               >
                 <Button
                   size="lg"
@@ -1198,6 +1200,7 @@ export default function HomePage() {
                   href={`${APP_URL}/auth`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-umami-event="cta-essai-gratuit"
                 >
                   <Button
                     size="lg"

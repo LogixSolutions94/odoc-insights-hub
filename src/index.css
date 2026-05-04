@@ -239,3 +239,26 @@
     text-wrap: pretty;
   }
 }
+
+/* ── Prose table styles (remark-gfm) ──────────────────────── */
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background: hsl(var(--muted));
+  font-weight: 600;
+}
+
+.prose tr:nth-child(even) {
+  background: hsl(var(--muted) / 0.3);
+}

@@ -52,6 +52,7 @@ export function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex text-sm font-medium text-text-muted hover:text-text transition-colors"
+            data-umami-event="cta-connexion"
           >
             Connexion
           </a>
@@ -62,6 +63,7 @@ export function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex"
+            data-umami-event="cta-essai-gratuit"
           >
             <Button
               size="sm"
@@ -103,6 +105,7 @@ export function SiteHeader() {
               rel="noopener noreferrer"
               className="block text-sm font-medium text-text-muted hover:text-text transition-colors"
               onClick={() => setMobileOpen(false)}
+              data-umami-event="cta-connexion"
             >
               Connexion
             </a>
@@ -111,6 +114,7 @@ export function SiteHeader() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
+              data-umami-event="cta-essai-gratuit"
             >
               <Button
                 size="sm"

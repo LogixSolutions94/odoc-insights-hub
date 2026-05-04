@@ -51,6 +51,70 @@ docker restart odoc-frontend  # Jamais toucher le SaaS
 
 ---
 
+## 📝 BIBLE SEO — GÉNÉRATION D'ARTICLES BLOG
+
+> **RÈGLE ABSOLUE** : Avant de générer ou modifier tout article de blog, lire et appliquer scrupuleusement la bible SEO complète.
+
+@SEOBlog.md
+
+### Workflow de génération d'article (Pipeline Perplexity → Claude Code)
+
+```
+ÉTAPE 1 — BRIEF (fourni par le demandeur via Perplexity)
+  Le brief suit EXACTEMENT le template Section 3 de SEOBlog.md
+  Il contient : KW principal, intent, angle unique, outline H2/H3, sources
+
+ÉTAPE 2 — GÉNÉRATION (Claude Code = toi)
+  1. Lire SEOBlog.md en entier (via @SEOBlog.md ci-dessus)
+  2. Générer l'article en respectant :
+     - Structure Section 4 (H1/H2/H3, intro, Atomic Answers, FAQ, CTA)
+     - Checklist 32 points Section 5 (valider chaque point)
+     - Schema JSON-LD Section 8 (BlogPosting + FAQPage + BreadcrumbList)
+     - Maillage interne Section 10 (3-5 liens, ancres riches)
+  3. Format : Markdown avec frontmatter YAML
+
+ÉTAPE 3 — INSERTION SUPABASE
+  Insérer dans table blog_posts (title, slug, content, excerpt, cover_image, published_at)
+  L'indexation Google Search Console est automatique ✅
+```
+
+### Template frontmatter article blog
+
+```yaml
+---
+title: "[TITRE H1 — 55-65 chars]"
+slug: "[slug-url-article]"
+excerpt: "[Meta description 150-160 chars avec KW principal]"
+category: "[Nom du silo]"
+tags: ["tag1", "tag2", "tag3"]
+author: "OdocPilot"
+published_at: "[AAAA-MM-JJ]"
+updated_at: "[AAAA-MM-JJ]"
+cover_image: "/images/blog/[slug].webp"
+featured: false
+seo:
+  canonical: "https://odocpilot.com/blog/[slug]"
+  og_title: "[Titre OG]"
+  og_description: "[Description OG 150-160 chars]"
+schema:
+  type: "BlogPosting"
+  faq: true
+---
+```
+
+### Règles spécifiques au blog OdocPilot
+
+- **Ton** : Direct, concret, terrain. Voix d'un fondateur qui connaît les PME françaises.
+- **Audience** : Dirigeants TPE/PME France, 35-55 ans, secteur BTP/artisans en priorité.
+- **Produit** : OdocPilot = SaaS IA tout-en-un (CRM + Facturation X + OCR + Automatisation N8N), 79€/mois, self-hosted OVH France, RGPD.
+- **Différenciation** : Alternative moins chère ET plus intelligente qu'Axonaut, Pennylane, Sellsy.
+- **CTA principal** : `<a href="https://app.odocpilot.com/signup">Essayer OdocPilot 14 jours — gratuit, sans CB</a>`
+- **Ne JAMAIS** utiliser le langage GPT générique (voir liste Section 14.3 de SEOBlog.md)
+- **Toujours** inclure au moins 1 stat/chiffre sourcé récent (< 12 mois)
+- **Toujours** inclure la section FAQ avec 4-6 questions + schema FAQPage JSON-LD
+
+---
+
 ## 📍 **CONTEXTE PROJET**
 
 ### Vision Odoc
@@ -296,7 +360,7 @@ Règle : Pro plan = highlight (border + ring)
 ✅ Benefits points pour chaque module
 ✅ CTA final : "Essayer gratuitement"
 
-Modules : Documents, Factures, Brain, Analytics, Équipe, RH, Projets, 
+Modules : Documents, Factures, Brain, Analytics, Équipe, RH, Projets,
           Messagerie, Portail Fournisseur, Smart Connectors, Calendrier
 ```
 
@@ -350,16 +414,19 @@ import { NewIcon } from "lucide-react";
 
 ### Ajouter un article blog
 ```
-1. Créer dans Supabase table blog_posts :
+1. Générer le brief via Perplexity (template Section 3 de SEOBlog.md)
+2. Donner le brief à Claude Code — il lit SEOBlog.md automatiquement via @SEOBlog.md
+3. Claude génère le contenu Markdown complet avec frontmatter + JSON-LD
+4. Insérer dans Supabase table blog_posts :
    - title: "Titre Article"
    - slug: "titre-article"
    - content: "Markdown content..."
    - excerpt: "Courte description"
    - cover_image: "https://..."
    - published_at: NOW()
-
-2. Article apparaît auto sur BlogPage
-3. Accessible sur /blog/titre-article
+5. Article apparaît auto sur BlogPage
+6. Accessible sur /blog/titre-article
+7. Indexation automatique Google Search Console déjà configurée ✅
 ```
 
 ### Ajouter une nouvelle page
@@ -388,6 +455,9 @@ import { NewIcon } from "lucide-react";
 □ Pas d'import Lucide dupliqué
 □ Images optimisées (placeholders OK pour MVP)
 □ Git message clair & descriptif
+□ [BLOG] Checklist 32 points SEOBlog.md validée si article publié
+□ [BLOG] Schema JSON-LD présent (BlogPosting + FAQPage)
+□ [BLOG] Maillage interne vérifié (3-5 liens, ancres riches)
 ```
 
 ---
@@ -405,12 +475,13 @@ Description détaillée (optionnel) :
 Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>
 ```
 
-**Types acceptés:**
+**Types acceptés :**
 - `FEATURE:` Nouvelle fonctionnalité
 - `FIX:` Correction de bug
 - `UPGRADE:` Amélioration/refactor majeur
 - `DOCS:` Documentation
 - `STYLE:` Changements esthétiques/design
+- `BLOG:` Nouvel article ou mise à jour article blog
 
 ---
 
@@ -434,23 +505,27 @@ Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>
 - ✅ Conseils IA, études de cas
 - ✅ SEO + newsletter
 - ✅ Renforce l'autorité
+- ✅ Générés via pipeline Perplexity → Claude Code → Supabase
+- ✅ Bible SEO dans SEOBlog.md (lue automatiquement via @SEOBlog.md)
 
 ---
 
 ## 🤝 **QUESTIONS? BESOIN D'AIDE?**
 
-**Avant de coder:**
+**Avant de coder :**
 1. Lire ce CLAUDE.md
-2. Vérifier le code existant dans les pages similaires
-3. Tester localement : `npm run dev`
+2. Lire SEOBlog.md (pour tout travail lié au blog)
+3. Vérifier le code existant dans les pages similaires
+4. Tester localement : `npm run dev`
 
-**En cas de doute:**
+**En cas de doute :**
 - ✅ Utiliser MotionDiv pour animations
 - ✅ Importer icônes Lucide correctement
 - ✅ Vérifier APP_URL = app.odocpilot.com
 - ✅ Toujours inclure SEOHead sur les pages
+- ✅ Toujours appliquer SEOBlog.md pour les articles
 
-**Déploiement:**
+**Déploiement :**
 ```bash
 npm run build && \
 scp -i ~/.ssh/odoc_vps_rsa -r dist/* root@151.80.144.236:/var/www/odoc/
@@ -458,6 +533,6 @@ scp -i ~/.ssh/odoc_vps_rsa -r dist/* root@151.80.144.236:/var/www/odoc/
 
 ---
 
-**Dernière mise à jour:** 2026-04-07
-**Version:** 1.1 (Landing + Blog + SaaS intégration)
-**Status:** 🟢 En production
+**Dernière mise à jour :** 2026-05-04  
+**Version :** 1.2 (Landing + Blog + SaaS intégration + Pipeline SEO)  
+**Status :** 🟢 En production

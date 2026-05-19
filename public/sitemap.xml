@@ -41,62 +41,86 @@
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://odocpilot.com/blog/odoc-vs-axonaut-logiciel-gestion-tpe-2026</loc>
-    <lastmod>2026-05-01</lastmod>
+    <loc>https://odocpilot.com/blog/fec-comptable</loc>
+    <lastmod>2026-05-19</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://odocpilot.com/blog/signes-entreprise-perd-argent-outils-gestion-2026</loc>
-    <lastmod>2026-05-01</lastmod>
+    <loc>https://odocpilot.com/blog/devis-numerique-artisan</loc>
+    <lastmod>2026-05-14</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://odocpilot.com/blog/facturation-electronique-obligatoire-2026-guide-dirigeant</loc>
-    <lastmod>2026-05-01</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://odocpilot.com/blog/copilot-ia-gestion-entreprise-tpe-pme</loc>
-    <lastmod>2026-05-01</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://odocpilot.com/blog/gestion-rh-pme-conges-fiches-paie</loc>
-    <lastmod>2026-05-01</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://odocpilot.com/blog/odocpilot-lancement-business-os-ia</loc>
-    <lastmod>2026-05-01</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://odocpilot.com/blog/copilot-ia-entreprise-pme</loc>
-    <lastmod>2026-05-01</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://odocpilot.com/blog/centraliser-gestion-petite-entreprise</loc>
-    <lastmod>2026-04-11</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://odocpilot.com/blog/gestion-documentaire-tpe-gagner-du-temps</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://odocpilot.com/blog/note-de-frais-entreprise-digitale</loc>
+    <lastmod>2026-05-14</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://odocpilot.com/blog/d-couvrez-odoc-copilote-ia-pour-tpe-gestion-docs-factures</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/odocpilot-vs-pennylane-2026</loc>
+    <lastmod>2026-05-19</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/odoc-vs-axonaut-logiciel-gestion-tpe-2026</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/signes-entreprise-perd-argent-outils-gestion-2026</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/facturation-electronique-obligatoire-2026-guide-dirigeant</loc>
+    <lastmod>2026-05-19</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/copilot-ia-gestion-entreprise-tpe-pme</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/gestion-rh-pme-conges-fiches-paie</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/odocpilot-lancement-business-os-ia</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/copilot-ia-entreprise-pme</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/centraliser-gestion-petite-entreprise</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://odocpilot.com/blog/gestion-documentaire-tpe-gagner-du-temps</loc>
+    <lastmod>2026-05-14</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
